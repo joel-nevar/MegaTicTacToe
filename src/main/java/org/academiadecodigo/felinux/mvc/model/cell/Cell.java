@@ -11,26 +11,56 @@ public class Cell implements Valuable {
     private String middlePart = "| |";
     private String bottomPart = "---";
     private String cellSeparator = "|";
+    private String concatTopCell = "";
+    private String concatMidCell = "";
+    private String concatBotCell = "";
 
-    public Cell(String row, String column){
+    public Cell(CellBuilder cellBuilder){
         this.row = row;
         this.column = column;
-    }
-
-    public void drawCellInNewLine(){
-        System.out.println(topPart);
-        System.out.println(middlePart);
-        System.out.println(bottomPart);
-    }
-    public void drawCellInSameLine(Cell cell){
-        System.out.println(cell.topPart.concat(cellSeparator).concat(topPart));
-        System.out.println(cell.middlePart.concat(cellSeparator).concat(middlePart));
-        System.out.println(cell.bottomPart.concat(cellSeparator).concat(bottomPart));
-
     }
 
     @Override
     public CellValueType getValue() {
         return this.cellValue;
+    }
+
+    //=================BUILDER CLASS ====================\\
+
+    public static class CellBuilder{
+
+        private String row;
+        private String column;
+        private CellValueType cellValue;
+        private String topPart = "---";
+        private String middlePart = "| |";
+        private String bottomPart = "---";
+        private String cellSeparator = "|";
+        private String concatTopCell = "";
+        private String concatMidCell = "";
+        private String concatBotCell = "";
+
+
+        public CellBuilder(String row, String column, CellValueType cellValue){
+            this.row = row;
+            this.column = column;
+            this.cellValue = cellValue;
+        }
+        public Cell build(){
+            return new Cell(this);
+        }
+
+        public CellBuilder setDrawCellInNewLine(){
+            System.out.println(concatTopCell.concat(topPart));
+            System.out.println(concatMidCell.concat(middlePart));
+            System.out.println(concatBotCell.concat(bottomPart));
+            return this;
+        }
+        public CellBuilder setDrawCellInSameLine(Cell cell){
+            System.out.println(cell.concatTopCell.concat(topPart));
+            System.out.println(cell.concatMidCell.concat(middlePart));
+            System.out.println(cell.concatBotCell.concat(bottomPart));
+            return this;
+        }
     }
 }
