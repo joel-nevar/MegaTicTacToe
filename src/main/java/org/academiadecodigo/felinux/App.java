@@ -1,10 +1,12 @@
 package org.academiadecodigo.felinux;
 
+import org.academiadecodigo.felinux.service.BootStrap;
+
 public class App {
 
 
     public static void main(String[] args) {
 
-        System.out.println("Robindomizer");
+        BootStrap.init();
     }
 }
