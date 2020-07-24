@@ -19,4 +19,8 @@ public class Grid implements Gridable, Valuable {
     public CellValueType getCellValue(int index) {
         return this.cells[index].getValue();
     }
+
+    public Valuable[] getCells() {
+        return this.cells;
+    }
 }
