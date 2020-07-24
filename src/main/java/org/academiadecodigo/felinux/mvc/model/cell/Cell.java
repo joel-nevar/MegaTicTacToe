@@ -1,6 +1,8 @@
 package org.academiadecodigo.felinux.mvc.model.cell;
 
-public class Cell {
+import org.academiadecodigo.felinux.mvc.model.Cellable;
+
+public class Cell implements Cellable {
 
     private String row;
     private String column;
@@ -27,4 +29,8 @@ public class Cell {
 
     }
 
+    @Override
+    public CellValueType getValue() {
+        return this.cellValue;
+    }
 }
