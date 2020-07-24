@@ -24,7 +24,7 @@ public enum WinCombinations {
         this.k = k;
     }
 
-    public CellValueType[] getCells(Grid grid) {
-        return new CellValueType[] {grid.getCells(i).getValue(), grid.getCells(j).getValue(), grid.getCells(k).getValue()};
+    public CellValueType[] getCells(Gridable grid) {
+        return new CellValueType[] {grid.getCellValue(i), grid.getCellValue(j), grid.getCellValue(k)};
     }
 }
