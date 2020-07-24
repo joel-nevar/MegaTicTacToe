@@ -5,21 +5,26 @@ public class Cell {
     private String row;
     private String column;
     private CellValueType cellValue;
-    private String cellVisualRepresentation = "¬¬¬¬¬¬\n" +
-                                              "|    |\n" +
-                                              "|    |\n" +
-                                              "¬¬¬¬¬¬";
+    private String topPart = "---";
+    private String middlePart = "| |";
+    private String bottomPart = "---";
+    private String cellSeparator = "|";
 
     public Cell(String row, String column){
         this.row = row;
         this.column = column;
     }
 
-    public void drawCell(){
-        System.out.println(cellVisualRepresentation);
+    public void drawCellInNewLine(){
+        System.out.println(topPart);
+        System.out.println(middlePart);
+        System.out.println(bottomPart);
     }
-    public void drawCellBellow(){
-        System.out.println("aqui");
+    public void drawCellInSameLine(Cell cell){
+        System.out.println(cell.topPart.concat(cellSeparator).concat(topPart));
+        System.out.println(cell.middlePart.concat(cellSeparator).concat(middlePart));
+        System.out.println(cell.bottomPart.concat(cellSeparator).concat(bottomPart));
+
     }
 
 }

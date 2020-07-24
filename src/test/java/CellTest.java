@@ -4,6 +4,7 @@ public class CellTest {
     public static void main(String[] args) {
 
         Cell cell = new Cell("a", "b");
-        cell.drawCell();
+        cell.drawCellInNewLine();
+        cell.drawCellInSameLine(cell);
     }
 }
