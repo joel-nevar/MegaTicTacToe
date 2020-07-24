@@ -2,6 +2,9 @@ package org.academiadecodigo.felinux.service;
 
 import org.academiadecodigo.bootcamp.Prompt;
 import org.academiadecodigo.bootcamp.scanners.integer.IntegerRangeInputScanner;
+import org.academiadecodigo.felinux.mvc.controller.CentralController;
+import org.academiadecodigo.felinux.mvc.model.Lobby;
+import org.academiadecodigo.felinux.mvc.model.PlayerHandler;
 import org.academiadecodigo.felinux.mvc.model.Server;
 
 import java.io.IOException;
@@ -21,7 +24,14 @@ public class BootStrap {
             portScanner.setError("A valid one thx\n");
             int port = serverPrompt.getUserInput(portScanner);
 
+            CentralController centralController = new CentralController();
+            Lobby lobby = new Lobby();
+
+            centralController.setLobby(lobby);
+
+
             Server server = new Server(port);
+            server.setCentralController(centralController);
             server.start();
 
         } catch (IOException e) {
