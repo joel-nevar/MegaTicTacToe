@@ -1,8 +1,8 @@
 package org.academiadecodigo.felinux.mvc.model.cell;
 
-import org.academiadecodigo.felinux.mvc.model.Cellable;
+import org.academiadecodigo.felinux.mvc.model.Valuable;
 
-public class Cell implements Cellable {
+public class Cell implements Valuable {
 
     private String row;
     private String column;
