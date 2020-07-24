@@ -23,4 +23,4 @@ public enum WinCombinations {
 
         return [grid.getCells()[indexes[0]], grid.getCells()[indexes[1]], grid.getCells()[indexes[2]]];
     }
-    
+
