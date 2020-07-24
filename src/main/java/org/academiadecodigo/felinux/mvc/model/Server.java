@@ -21,6 +21,14 @@ public class Server {
     public void start() throws IOException{
 
         System.out.println("Server Online, Waiting connection\n");
+        acceptConnection();
+    }
+
+    private void acceptConnection() throws IOException {
+
+        //serverLoop
         threadPool.submit(new PlayerHandler(serverSocket.accept()));
+        System.out.println("Client Found");
+        acceptConnection();
     }
 }
