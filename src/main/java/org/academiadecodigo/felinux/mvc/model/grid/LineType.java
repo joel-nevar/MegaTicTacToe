@@ -1,8 +1,9 @@
-package org.academiadecodigo.felinux.mvc.model;
+package org.academiadecodigo.felinux.mvc.model.grid;
 
+import org.academiadecodigo.felinux.mvc.model.Gridable;
 import org.academiadecodigo.felinux.mvc.model.cell.CellValueType;
 
-public enum WinCombinations {
+public enum LineType {
 
     LINE_1(0, 1, 2),
     LINE_2(3, 4, 5),
@@ -17,7 +18,7 @@ public enum WinCombinations {
     private int j;
     private int k;
 
-    WinCombinations(int i, int j, int k) {
+    LineType(int i, int j, int k) {
         this.i = i;
         this.j = j;
         this.k = k;
