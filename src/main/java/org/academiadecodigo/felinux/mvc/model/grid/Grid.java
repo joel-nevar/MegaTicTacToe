@@ -48,24 +48,33 @@ public class Grid implements Gridable, Valuable {
     private String middleMiddlePart =   YELLOW + "2" + RESET + "  B   |  B   |  B   ";
     private String bottomMiddlePart =   YELLOW + "3" + RESET + "  C   |  C   |  C   ";
 
-    private String topTopPart =             "       |      |      ";
-    private String topMiddleConcatPart =    "   " + cells[0].getValue().getMoveType() + "   |  " + cells[1].getValue().getMoveType() + "   |  " + cells[2].getValue().getMoveType() + "   ";
-    private String topBottomPart =          " ______|______|______";
-    private String middleTopPart =          "       |      |      ";
-    private String middleMiddleConcatPart = "   " + cells[3].getValue().getMoveType() + "   |  " + cells[4].getValue().getMoveType() + "   |  " + cells[5].getValue().getMoveType() + "   ";
-    private String middleBottomPart =       " ______|______|______";
-    private String bottomTopPart =          "       |      |      ";
-    private String bottomMiddleConcatPart = "   " + cells[6].getValue().getMoveType() + "   |  " + cells[7].getValue().getMoveType() + "   |  " + cells[8].getValue().getMoveType() + "   ";
-    private String bottomBottomPart =       "       |      |      ";
-
+    String topTopPart;
+    String topMiddleConcatPart;
+    String topBottomPart;
+    String middleTopPart;
+    String middleMiddleConcatPart;
+    String middleBottomPart;
+    String bottomTopPart;
+    String bottomMiddleConcatPart;
+    String bottomBottomPart;
 
     private LinkedList<String> firstCell;
     private LinkedList<String> everyOtherCell;
 
     public Grid() {
-        this.cells = new Cell[9];
         initCells();
         this.cellValue = CellValueType.EMPTY;
+
+        topTopPart =             "       |      |      ";
+        topMiddleConcatPart =    "   " + cells[0].getValue().getMoveType() + "   |  " + cells[1].getValue().getMoveType() + "   |  " + cells[2].getValue().getMoveType() + "   ";
+        topBottomPart =          " ______|______|______";
+        middleTopPart =          "       |      |      ";
+        middleMiddleConcatPart = "   " + cells[3].getValue().getMoveType() + "   |  " + cells[4].getValue().getMoveType() + "   |  " + cells[5].getValue().getMoveType() + "   ";
+        middleBottomPart =       " ______|______|______";
+        bottomTopPart =          "       |      |      ";
+        bottomMiddleConcatPart = "   " + cells[6].getValue().getMoveType() + "   |  " + cells[7].getValue().getMoveType() + "   |  " + cells[8].getValue().getMoveType() + "   ";
+        bottomBottomPart =       "       |      |      ";
+
 
         this.firstCell = new LinkedList<>();
         this.firstCell.add(topTopPart);
@@ -91,6 +100,7 @@ public class Grid implements Gridable, Valuable {
     }
 
     public void initCells(){
+        this.cells = new Cell[9];
         for (int i = 0; i < cells.length ; i++) {
             cells[i] = new Cell();
         }

@@ -30,22 +30,22 @@ public class SuperGrid implements Gridable {
     public final String WHITE_BACKGROUND = "\u001B[47m";
 
     private String cellVerticalSeparator =  BLUE + "||" + RESET;
-    private String cellHorizontalSeparator = BLUE + "============================================================================" + RESET;
+    private String cellHorizontalSeparator = BLUE + "===================================================================" + RESET;
 
-    private String topHeader =  BLUE_BACKGROUND + "            _                        ___                      ___           "+ RESET + "\n" +
-                                BLUE_BACKGROUND + "           /_\\                      | _ )                   / __|           "+ RESET + "\n" +
-                                BLUE_BACKGROUND + "          / _ \\                     | _ \\                   | (__           "+ RESET + "\n" +
-                                BLUE_BACKGROUND + "         /_/ \\_\\                    |___/                   \\___|           " + RESET;
+    private String topHeader =  BLUE_BACKGROUND + "          _                      ___                    ___        "+ RESET + "\n" +
+                                BLUE_BACKGROUND + "         /_\\                    | _ )                 / __|        "+ RESET + "\n" +
+                                BLUE_BACKGROUND + "        / _ \\                   | _ \\                 | (__        "+ RESET + "\n" +
+                                BLUE_BACKGROUND + "       /_/ \\_\\                  |___/                 \\___|        " + RESET;
 
-    private String headerNamePart = YELLOW + "   A        B       C    " + RESET;
+    private String headerNamePart = YELLOW + "   A      B      C     " + RESET;
 
     public SuperGrid() {
-        this.grids = new Grid[9];
         initGrids();
-
     }
 
     private void initGrids() {
+
+        this.grids = new Grid[9];
 
         for (int i = 0; i < grids.length; i++) {
             grids[i] = new Grid();
