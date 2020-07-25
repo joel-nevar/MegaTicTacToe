@@ -1,4 +1,4 @@
-package org.academiadecodigo.felinux.mvc.model.grid;
+package org.academiadecodigo.felinux.mvc.view.textIO;
 
 public class DrawColors {
 

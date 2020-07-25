@@ -3,22 +3,12 @@ package org.academiadecodigo.felinux.mvc.model.grid;
 import org.academiadecodigo.felinux.mvc.model.Gridable;
 import org.academiadecodigo.felinux.mvc.model.Valuable;
 import org.academiadecodigo.felinux.mvc.model.cell.CellValueType;
-
-import java.util.LinkedList;
+import org.academiadecodigo.felinux.mvc.view.textIO.DrawBoardText;
+import org.academiadecodigo.felinux.mvc.view.textIO.DrawColors;
 
 public class SuperGrid implements Gridable {
 
     Grid[] grids;
-
-    private String cellVerticalSeparator =  DrawColors.BLUE + "||" + DrawColors.RESET;
-    private String cellHorizontalSeparator =  DrawColors.BLUE_BACKGROUND + "     " + DrawColors.RESET + DrawColors.BLUE + "  =====================================================================" + DrawColors.RESET;
-
-    private String topHeader =  DrawColors.BLUE_BACKGROUND + "           _                      ___                     ___               " + DrawColors.RESET + "\n" +
-                                DrawColors.BLUE_BACKGROUND + "          /_\\                    | _ )                  / __|               " + DrawColors.RESET + "\n" +
-                                DrawColors.BLUE_BACKGROUND + "         / _ \\                   | _ \\                  | (__               " + DrawColors.RESET + "\n" +
-                                DrawColors.BLUE_BACKGROUND + "        /_/ \\_\\                  |___/                  \\___|               " + DrawColors.RESET;
-
-    private String headerNamePart = DrawColors.YELLOW + "    A      B      C      " + DrawColors.RESET;
 
     private int counterForGridNumber = 0;
 
@@ -36,9 +26,9 @@ public class SuperGrid implements Gridable {
     }
     public void drawGameBoard(){
 
-        System.out.println(topHeader);
+        System.out.println(DrawBoardText.bigHeader);
         String drawBeforeHeader = DrawColors.BLUE_BACKGROUND + "     " + DrawColors.RESET;
-        System.out.println(drawBeforeHeader.concat(headerNamePart).concat(headerNamePart).concat(headerNamePart));
+        System.out.println(drawBeforeHeader.concat(DrawBoardText.smallHeader).concat(DrawBoardText.smallHeader).concat(DrawBoardText.smallHeader));
 
         for (int counter = 0; counter < 3; counter++) {
             for (int i = 0; i < grids.length; i++) {
@@ -47,15 +37,15 @@ public class SuperGrid implements Gridable {
                         getGridNumber()
                         .concat(grids[0].getCellNumber())
                         .concat(grids[i].getCellList().get(i))
-                        .concat(cellVerticalSeparator)
+                        .concat(DrawBoardText.cellVerticalSeparator)
                         .concat(grids[0].getCellNumber()
                         .concat(grids[i].getCellList().get(i)))
-                        .concat(cellVerticalSeparator)
+                        .concat(DrawBoardText.cellVerticalSeparator)
                         .concat(grids[0].getCellNumber()
                         .concat(grids[i].getCellList().get(i))));
             }
             if (counter != 2) {
-                System.out.println(cellHorizontalSeparator);
+                System.out.println(DrawBoardText.cellHorizontalSeparator);
             }
         }
     }
@@ -63,46 +53,31 @@ public class SuperGrid implements Gridable {
     public String getGridNumber(){
         counterForGridNumber++;
 
-        String leftHeader1 =    DrawColors.BLUE_BACKGROUND + "  _  " + DrawColors.RESET + " ";
-        String leftHeader11 =   DrawColors.BLUE_BACKGROUND + " / | " + DrawColors.RESET + " ";
-        String leftHeader111 =  DrawColors.BLUE_BACKGROUND + " | | " + DrawColors.RESET + " ";
-        String leftHeader1111 = DrawColors.BLUE_BACKGROUND + " |_| " + DrawColors.RESET + " ";
-
-        String leftHeader2 =    DrawColors.BLUE_BACKGROUND + " ___ " + DrawColors.RESET + " ";
-        String leftHeader22 =   DrawColors.BLUE_BACKGROUND + "|_  )" + DrawColors.RESET + " ";
-        String leftHeader222 =  DrawColors.BLUE_BACKGROUND + " / / " + DrawColors.RESET + " ";
-        String leftHeader2222 = DrawColors.BLUE_BACKGROUND + "/___|" + DrawColors.RESET + " ";
-
-        String leftHeader3 =    DrawColors.BLUE_BACKGROUND + " ___ " + DrawColors.RESET + " ";
-        String leftHeader33 =   DrawColors.BLUE_BACKGROUND + "|__ /" + DrawColors.RESET + " ";
-        String leftHeader333 =  DrawColors.BLUE_BACKGROUND +  " |_ \\" + DrawColors.RESET + " ";
-        String leftHeader3333 = DrawColors.BLUE_BACKGROUND + "|___/" + DrawColors.RESET + " ";
-
         switch (counterForGridNumber){
             case 3:
-                return leftHeader1;
+                return DrawBoardText.leftHeader1;
             case 4:
-                return leftHeader11;
+                return DrawBoardText.leftHeader11;
             case 5:
-                return leftHeader111;
+                return DrawBoardText.leftHeader111;
             case 6:
-                return leftHeader1111;
+                return DrawBoardText.leftHeader1111;
             case 12:
-                return leftHeader2;
+                return DrawBoardText.leftHeader2;
             case 13:
-                return leftHeader22;
+                return DrawBoardText.leftHeader22;
             case 14:
-                return leftHeader222;
+                return DrawBoardText.leftHeader222;
             case 15:
-                return leftHeader2222;
+                return DrawBoardText.leftHeader2222;
             case 21:
-                return leftHeader3;
+                return DrawBoardText.leftHeader3;
             case 22:
-                return leftHeader33;
+                return DrawBoardText.leftHeader33;
             case 23:
-                return leftHeader333;
+                return DrawBoardText.leftHeader333;
             case 24:
-                return leftHeader3333;
+                return DrawBoardText.leftHeader3333;
             default:
                 return DrawColors.BLUE_BACKGROUND + "     " + DrawColors.RESET + " ";
         }

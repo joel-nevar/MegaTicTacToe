@@ -4,6 +4,8 @@ import org.academiadecodigo.felinux.mvc.model.Gridable;
 import org.academiadecodigo.felinux.mvc.model.Valuable;
 import org.academiadecodigo.felinux.mvc.model.cell.Cell;
 import org.academiadecodigo.felinux.mvc.model.cell.CellValueType;
+import org.academiadecodigo.felinux.mvc.view.textIO.DrawBoardText;
+import org.academiadecodigo.felinux.mvc.view.textIO.DrawColors;
 
 import java.util.LinkedList;
 
@@ -58,6 +60,20 @@ public class Grid implements Gridable, Valuable {
             cells[i] = new Cell();
         }
     }
+    public void drawGameBoard(){
+
+
+        System.out.println(DrawBoardText.smallHeader);
+
+        for (int i = 0; i < cells.length; i++) {
+            //draws full game board
+            System.out.println(
+                    getCellNumber()
+                            .concat(getCellNumber())
+                            .concat(getCellList().get(i)));
+
+        }
+    }
 
     @Override
     public CellValueType getValue() {
@@ -94,13 +110,10 @@ public class Grid implements Gridable, Valuable {
         switch (counterForCellNumber){
             case 4:
                 return DrawColors.YELLOW + "1" + DrawColors.RESET;
-            case 13:
+            case 10:
                 return DrawColors.YELLOW + "2" + DrawColors.RESET;
-            case 22:
+            case 16:
                 return DrawColors.YELLOW + "3" + DrawColors.RESET;
-            case 27:
-                counterForCellNumber = 0;
-                return " ";
             default:
                 return " ";
         }
