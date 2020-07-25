@@ -50,6 +50,16 @@ public class Cell implements Valuable{
         private String cellVerticalSeparator =  "||";
         private String cellHorizontalSeparator ="==========================================================";
 
+        public static final String RESET = "\u001B[0m";
+        public static final String BLACK = "\u001B[30m";
+        public static final String RED = "\u001B[31m";
+        public static final String GREEN = "\u001B[32m";
+        public static final String YELLOW = "\u001B[33m";
+        public static final String BLUE = "\u001B[34m";
+        public static final String PURPLE = "\u001B[35m";
+        public static final String CYAN = "\u001B[36m";
+        public static final String WHITE = "\u001B[37m";
+
         public CellBuilder(String row, String column, CellValueType cellValue){
             this.row = row;
             this.column = column;
@@ -79,7 +89,7 @@ public class Cell implements Valuable{
         }
 
         public CellBuilder drawGameBoard(){
-
+            final String RED = "\u001B[31m";
             System.out.println(headerNamePart.concat(headerNamePart).concat(headerNamePart));
 
             for (int counter = 0; counter < 3; counter++) {
@@ -90,6 +100,7 @@ public class Cell implements Valuable{
                 }
                 if (counter != 2) {
                     System.out.println(cellHorizontalSeparator);
+                    System.out.println("\u001B[43m" + "Please bro" + RED);
                 }
             }
             return this;
