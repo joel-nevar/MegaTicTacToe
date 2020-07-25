@@ -12,25 +12,6 @@ public class Grid implements Gridable, Valuable {
     Cell[] cells;
     CellValueType cellValue;
 
-    public final String RESET = "\u001B[0m";
-    public final String BLACK = "\u001B[30m";
-    public final String RED = "\u001B[31m";
-    public final String GREEN = "\u001B[32m";
-    public final String YELLOW = "\u001B[33m";
-    public final String BLUE = "\u001B[34m";
-    public final String PURPLE = "\u001B[35m";
-    public final String CYAN = "\u001B[36m";
-    public final String WHITE = "\u001B[37m";
-
-    public final String SELECTED_GREEN_BACKGROUND = "\u001B[42m";
-    public final String BLUE_BACKGROUND = "\u001B[44m";
-    public final String BLACK_BACKGROUND = "\u001B[40m";
-    public final String RED_BACKGROUND = "\u001B[41m";
-    public final String YELLOW_BACKGROUND = "\u001B[43m";
-    public final String PURPLE_BACKGROUND = "\u001B[45m";
-    public final String CYAN_BACKGROUND = "\u001B[46m";
-    public final String WHITE_BACKGROUND = "\u001B[47m";
-
     private String topTopPart;
     private String topMiddlePart;
     private String topBottomPart;
@@ -112,17 +93,16 @@ public class Grid implements Gridable, Valuable {
 
         switch (counterForCellNumber){
             case 4:
-                return "1";
+                return DrawColors.YELLOW + "1" + DrawColors.RESET;
             case 13:
-                return "2";
+                return DrawColors.YELLOW + "2" + DrawColors.RESET;
             case 22:
-                return "3";
+                return DrawColors.YELLOW + "3" + DrawColors.RESET;
             case 27:
                 counterForCellNumber = 0;
                 return " ";
             default:
                 return " ";
         }
-
     }
 }
