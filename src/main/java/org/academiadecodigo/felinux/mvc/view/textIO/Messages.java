@@ -2,6 +2,8 @@ package org.academiadecodigo.felinux.mvc.view.textIO;
 
 public class Messages {
 
+    public static String CLEAN_SCREEN = "\033[H\033[2J";
+
     public static String MENU_MESSAGE = "Welcome to Mega TicTacToe! Please select:";
     public static String VIEW_MAIN_ERROR = "Item does not exit";
 

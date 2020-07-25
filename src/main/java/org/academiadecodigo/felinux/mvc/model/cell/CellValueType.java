@@ -1,6 +1,7 @@
 package org.academiadecodigo.felinux.mvc.model.cell;
 
 public enum CellValueType {
+
     PLAYER_1("X"),
     PLAYER_2("O"),
     EMPTY("-");

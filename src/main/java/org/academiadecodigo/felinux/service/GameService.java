@@ -1,5 +1,6 @@
 package org.academiadecodigo.felinux.service;
 
+import org.academiadecodigo.felinux.mvc.model.Valuable;
 import org.academiadecodigo.felinux.mvc.model.grid.LineType;
 import org.academiadecodigo.felinux.mvc.model.cell.CellValueType;
 import org.academiadecodigo.felinux.mvc.model.grid.Grid;
@@ -33,6 +34,20 @@ public class GameService {
         }
 
         return win;
+    }
+
+    public boolean hasTied(Grid grid) {
+
+        boolean tie = true;
+
+        for (Valuable cell : grid.getCells()) {
+
+            if (cell.getValue() == CellValueType.EMPTY) {
+                tie = false;
+            }
+        }
+
+        return tie;
     }
 
     public boolean setValue(Grid grid, String playerInput, CellValueType playerValue) {

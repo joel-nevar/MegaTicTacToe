@@ -3,54 +3,15 @@ package org.academiadecodigo.felinux.mvc.model.grid;
 import org.academiadecodigo.felinux.mvc.model.Gridable;
 import org.academiadecodigo.felinux.mvc.model.Valuable;
 import org.academiadecodigo.felinux.mvc.model.cell.CellValueType;
-
-import java.util.LinkedList;
+import org.academiadecodigo.felinux.mvc.view.textIO.DrawBoardText;
+import org.academiadecodigo.felinux.mvc.view.textIO.DrawColors;
 
 public class SuperGrid implements Gridable {
 
     Grid[] grids;
 
-    public final String RESET = "\u001B[0m";
-    public final String BLACK = "\u001B[30m";
-    public final String RED = "\u001B[31m";
-    public final String GREEN = "\u001B[32m";
-    public final String YELLOW = "\u001B[33m";
-    public final String BLUE = "\u001B[34m";
-    public final String PURPLE = "\u001B[35m";
-    public final String CYAN = "\u001B[36m";
-    public final String WHITE = "\u001B[37m";
-
-    public final String SELECTED_GREEN_BACKGROUND = "\u001B[42m";
-    public final String BLUE_BACKGROUND = "\u001B[44m";
-    public final String BLACK_BACKGROUND = "\u001B[40m";
-    public final String RED_BACKGROUND = "\u001B[41m";
-    public final String YELLOW_BACKGROUND = "\u001B[43m";
-    public final String PURPLE_BACKGROUND = "\u001B[45m";
-    public final String CYAN_BACKGROUND = "\u001B[46m";
-    public final String WHITE_BACKGROUND = "\u001B[47m";
-
-    private String cellVerticalSeparator =  BLUE + "||" + RESET;
-    private String cellHorizontalSeparator = BLUE + "===================================================================" + RESET;
-
-    private String topHeader =  BLUE_BACKGROUND + "           _                      ___                     ___        "+ RESET + "\n" +
-                                BLUE_BACKGROUND + "          /_\\                    | _ )                  / __|        "+ RESET + "\n" +
-                                BLUE_BACKGROUND + "         / _ \\                   | _ \\                  | (__        "+ RESET + "\n" +
-                                BLUE_BACKGROUND + "        /_/ \\_\\                  |___/                  \\___|        " + RESET;
-
-    private String leftHeader1 = "  _   ";
-    private String leftHeader11 = " / |  ";
-    private String leftHeader111 = " | |  ";
-    private String leftHeader1111 = " |_|_ ";
-    private String leftHeader2 = "  ___ ";
-    private String leftHeader22 = " |_  )";
-    private String leftHeader222 = "  / / ";
-    private String leftHeader2222 = " /___|";
-    private String leftHeader3 = "  ___ ";
-    private String leftHeader33 = " |__ /";
-    private String leftHeader333 = "  |_ \\";
-    private String leftHeader3333 = " |___/";
-
-    private String headerNamePart = YELLOW + "    A      B      C     " + RESET;
+    private int counterForGridNumber = 0;
+    private int counterForCellNumber = 0;
 
     public SuperGrid() {
         initGrids();
@@ -66,25 +27,79 @@ public class SuperGrid implements Gridable {
     }
     public void drawGameBoard(){
 
-        System.out.println(topHeader);
-        System.out.println(headerNamePart.concat(headerNamePart).concat(headerNamePart));
+        System.out.println(DrawBoardText.bigHeader);
+        String drawBeforeHeader = DrawColors.BLUE_BACKGROUND + "     " + DrawColors.RESET;
+        System.out.println(drawBeforeHeader.concat(DrawBoardText.smallHeader).concat(DrawBoardText.smallHeader).concat(DrawBoardText.smallHeader));
 
         for (int counter = 0; counter < 3; counter++) {
             for (int i = 0; i < grids.length; i++) {
                 //draws full game board
                 System.out.println(
-                        grids[i].getCellNumber()
+                        getGridNumber()
+                        .concat(getCellNumber())
                         .concat(grids[i].getCellList().get(i))
-                        .concat(cellVerticalSeparator)
-                        .concat(grids[i].getCellNumber()
+                        .concat(DrawBoardText.cellVerticalSeparator)
+                        .concat(getCellNumber()
                         .concat(grids[i].getCellList().get(i)))
-                        .concat(cellVerticalSeparator)
-                        .concat(grids[i].getCellNumber()
+                        .concat(DrawBoardText.cellVerticalSeparator)
+                        .concat(getCellNumber()
                         .concat(grids[i].getCellList().get(i))));
             }
             if (counter != 2) {
-                System.out.println(cellHorizontalSeparator);
+                System.out.println(DrawBoardText.cellHorizontalSeparator);
             }
+        }
+    }
+
+    //Draws the blue left-most part
+    public String getGridNumber(){
+        counterForGridNumber++;
+
+        switch (counterForGridNumber){
+            case 3:
+                return DrawBoardText.leftHeader1;
+            case 4:
+                return DrawBoardText.leftHeader11;
+            case 5:
+                return DrawBoardText.leftHeader111;
+            case 6:
+                return DrawBoardText.leftHeader1111;
+            case 12:
+                return DrawBoardText.leftHeader2;
+            case 13:
+                return DrawBoardText.leftHeader22;
+            case 14:
+                return DrawBoardText.leftHeader222;
+            case 15:
+                return DrawBoardText.leftHeader2222;
+            case 21:
+                return DrawBoardText.leftHeader3;
+            case 22:
+                return DrawBoardText.leftHeader33;
+            case 23:
+                return DrawBoardText.leftHeader333;
+            case 24:
+                return DrawBoardText.leftHeader3333;
+            default:
+                return DrawColors.BLUE_BACKGROUND + "     " + DrawColors.RESET + " ";
+        }
+    }
+    public String getCellNumber(){
+        //Outputs to the console the "1,2,3" numbers on the left of each left-most grid
+        counterForCellNumber++;
+
+        switch (counterForCellNumber){
+            case 4:
+                return DrawColors.YELLOW + "1" + DrawColors.RESET;
+            case 13:
+                return DrawColors.YELLOW + "2" + DrawColors.RESET;
+            case 22:
+                return DrawColors.YELLOW + "3" + DrawColors.RESET;
+            case 27:
+                counterForCellNumber = 0;
+                return " ";
+            default:
+                return " ";
         }
     }
 

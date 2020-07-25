@@ -30,10 +30,5 @@ public class RoomService {
             //notifyAll();
             playerController2.listenToPlayer();
         }
-
-
-
     }
-
-
 }
