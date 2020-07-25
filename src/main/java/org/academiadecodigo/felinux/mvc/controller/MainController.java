@@ -2,7 +2,9 @@ package org.academiadecodigo.felinux.mvc.controller;
 
 public class MainController {
 
-    public void onMenuSelection(Integer userInput) {
+    private int userInput = -1;
 
+    public void onMenuSelection(Integer userInput) {
+        this.userInput = userInput;
     }
 }

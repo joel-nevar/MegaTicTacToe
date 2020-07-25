@@ -2,7 +2,7 @@ package org.academiadecodigo.felinux.mvc.view;
 
 import org.academiadecodigo.bootcamp.Prompt;
 
-public abstract class AbstactView implements View {
+public abstract class AbstractView implements View {
 
     protected Prompt prompt;
 

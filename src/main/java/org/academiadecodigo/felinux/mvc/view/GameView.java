@@ -3,8 +3,7 @@ package org.academiadecodigo.felinux.mvc.view;
 import org.academiadecodigo.bootcamp.scanners.string.StringInputScanner;
 import org.academiadecodigo.felinux.mvc.controller.PlayerController;
 
-public class GameView extends AbstactView {
-
+public class GameView extends AbstractView {
 
     private PlayerStream stream;
     private PlayerController controller;
