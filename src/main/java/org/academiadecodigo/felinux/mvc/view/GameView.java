@@ -6,19 +6,19 @@ import org.academiadecodigo.felinux.mvc.controller.PlayerController;
 public class GameView implements View{
 
 
-    private PlayerPrompt playerPrompt;
+    private PlayerStream stream;
     private PlayerController controller;
     private StringInputScanner scanner;
 
     @Override
     public void show() {
 
-        controller.transmit(playerPrompt.getPrompt().getUserInput(scanner));
+        controller.transmit(stream.getPrompt().getUserInput(scanner));
     }
 
-    public void setPrompt(PlayerPrompt playerPrompt) {
+    public void setPrompt(PlayerStream playerPrompt) {
 
-        this.playerPrompt = playerPrompt;
+        this.stream = playerPrompt;
     }
 
     public void setController(PlayerController controller) {
@@ -34,5 +34,10 @@ public class GameView implements View{
         }
 
         scanner.setMessage(message + "\n");
+    }
+
+    public void sendMessage(String message) {
+
+        stream.getWriter().println(message);
     }
 }

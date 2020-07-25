@@ -6,31 +6,48 @@ import org.academiadecodigo.felinux.mvc.view.GameView;
 public class PlayerController implements Controller {
 
 
-    private GameView playerScreen;
+    private GameView view;
     private PlayerHandler player;
 
     @Override
     public void init() {
 
-        //todo flag to stop this
+        view.setMessage("Your Play?");
 
-        player.getRoom().broadcast("Player has joined the room");
-
-        while (true){
-
-            startGame();
-        }
+        gameLoop();
     }
 
-    private void startGame() {
+    private void gameLoop(){
 
-        System.out.println("maybe");
-        playerScreen.show();
+        System.out.println(player + " " +player.isYourTurn());
+
+        if(player.isYourTurn()){
+
+            listenToPlayer();
+            notifyAll();
+            player.changeTurns();
+        }
+
+        try {
+
+            player.changeTurns();
+            wait();
+
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        gameLoop();
+    }
+
+    private void listenToPlayer() {
+
+        view.show();
     }
 
     public void setView(GameView playerScreen) {
 
-        this.playerScreen = playerScreen;
+        this.view = playerScreen;
     }
 
     public void setPlayer(PlayerHandler playerHandler) {
@@ -40,8 +57,7 @@ public class PlayerController implements Controller {
 
     public void receive(String message){
 
-        playerScreen.setMessage(message);
-        playerScreen.show();
+        view.sendMessage(message);
     }
 
     public void transmit(String message){

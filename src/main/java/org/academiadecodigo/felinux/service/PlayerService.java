@@ -11,13 +11,18 @@ public class PlayerService {
     private Lobby lobby;
 
     public void registerPlayer(PlayerHandler player){
+
         ArrayList<Room> rooms = lobby.getRooms();
+
         for(Room room : rooms){
+
             if(!room.checkRoomIsFull()){
+
                 room.addPlayer(player);
                 return;
             }
         }
+
         Room room = new Room(player);
         lobby.addRoom(room);
     }

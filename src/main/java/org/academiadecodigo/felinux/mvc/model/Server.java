@@ -32,10 +32,12 @@ public class Server {
     }
 
     private void acceptConnection() throws IOException {
+
         if(playerCount == 2){
             System.out.println("Max players reached");
             return;
         }
+
         //serverLoop
         PlayerHandler playerHandler = new PlayerHandler(serverSocket.accept());
         BootStrap.initPlayer(playerHandler);

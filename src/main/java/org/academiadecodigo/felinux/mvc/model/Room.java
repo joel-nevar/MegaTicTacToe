@@ -21,6 +21,7 @@ public class Room {
     }
 
     public void addPlayer(PlayerHandler player2) {
+
         this.player2 = player2;
         player2.setRoom(this);
         roomIsFull = true;

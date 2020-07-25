@@ -8,7 +8,7 @@ import org.academiadecodigo.felinux.mvc.model.Lobby;
 import org.academiadecodigo.felinux.mvc.model.PlayerHandler;
 import org.academiadecodigo.felinux.mvc.model.Server;
 import org.academiadecodigo.felinux.mvc.view.GameView;
-import org.academiadecodigo.felinux.mvc.view.PlayerPrompt;
+import org.academiadecodigo.felinux.mvc.view.PlayerStream;
 
 import java.io.IOException;
 
@@ -50,7 +50,7 @@ public class BootStrap {
 
     public static void initPlayer(PlayerHandler playerHandler) {
 
-        PlayerPrompt playerPrompt = new PlayerPrompt(playerHandler.getSocket());
+        PlayerStream playerPrompt = new PlayerStream(playerHandler.getSocket());
         GameView playerScreen = new GameView();
         playerScreen.setPrompt(playerPrompt);
 
