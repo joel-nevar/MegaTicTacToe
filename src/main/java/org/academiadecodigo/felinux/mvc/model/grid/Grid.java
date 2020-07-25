@@ -49,15 +49,15 @@ public class Grid implements Gridable, Valuable {
         initCells();
         this.cellValue = CellValueType.EMPTY;
 
-        topTopPart =             "      |      |      ";
-        topMiddlePart =    "  " + cells[0].getValue().getMoveType() + "   |  " + cells[1].getValue().getMoveType() + "   |  " + cells[2].getValue().getMoveType() + "   ";
-        topBottomPart =          "______|______|______";
-        middleTopPart =          "      |      |      ";
-        middleMiddlePart = "  " + cells[3].getValue().getMoveType() + "   |  " + cells[4].getValue().getMoveType() + "   |  " + cells[5].getValue().getMoveType() + "   ";
-        middleBottomPart =       "______|______|______";
-        bottomTopPart =          "      |      |      ";
-        bottomMiddlePart = "  " + cells[6].getValue().getMoveType() + "   |  " + cells[7].getValue().getMoveType() + "   |  " + cells[8].getValue().getMoveType() + "   ";
-        bottomBottomPart =       "      |      |      ";
+        topTopPart =             "      |      |       ";
+        topMiddlePart =    "  " + cells[0].getValue().getMoveType() + "   |  " + cells[1].getValue().getMoveType() + "   |  " + cells[2].getValue().getMoveType() + "    ";
+        topBottomPart =          "______|______|______ ";
+        middleTopPart =          "      |      |       ";
+        middleMiddlePart = "  " + cells[3].getValue().getMoveType() + "   |  " + cells[4].getValue().getMoveType() + "   |  " + cells[5].getValue().getMoveType() + "    ";
+        middleBottomPart =       "______|______|______ ";
+        bottomTopPart =          "      |      |       ";
+        bottomMiddlePart = "  " + cells[6].getValue().getMoveType() + "   |  " + cells[7].getValue().getMoveType() + "   |  " + cells[8].getValue().getMoveType() + "    ";
+        bottomBottomPart =       "      |      |       ";
 
         this.cellsInTheGrid = new LinkedList<>();
         this.cellsInTheGrid.add(topTopPart);
@@ -107,17 +107,21 @@ public class Grid implements Gridable, Valuable {
     }
 
     public String getCellNumber(){
+        //Outputs to the console the "1,2,3" numbers on the left of each left-most grid
         counterForCellNumber++;
 
         switch (counterForCellNumber){
-            case 1:
-                return "1 ";
             case 4:
-                return "2 ";
-            case 7:
-                return "3 ";
+                return "1";
+            case 13:
+                return "2";
+            case 22:
+                return "3";
+            case 27:
+                counterForCellNumber = 0;
+                return " ";
             default:
-                return "  ";
+                return " ";
         }
 
     }

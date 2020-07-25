@@ -30,7 +30,7 @@ public class SuperGrid implements Gridable {
     public final String WHITE_BACKGROUND = "\u001B[47m";
 
     private String cellVerticalSeparator =  BLUE + "||" + RESET;
-    private String cellHorizontalSeparator = BLUE + "===================================================================" + RESET;
+    private String cellHorizontalSeparator = BLUE + " =====================================================================" + RESET;
 
     private String topHeader =  BLUE_BACKGROUND + "           _                      ___                     ___        "+ RESET + "\n" +
                                 BLUE_BACKGROUND + "          /_\\                    | _ )                  / __|        "+ RESET + "\n" +
@@ -50,7 +50,7 @@ public class SuperGrid implements Gridable {
     private String leftHeader333 = "  |_ \\";
     private String leftHeader3333 = " |___/";
 
-    private String headerNamePart = YELLOW + "    A      B      C     " + RESET;
+    private String headerNamePart = YELLOW + "   A      B      C     " + RESET;
 
     public SuperGrid() {
         initGrids();
@@ -73,13 +73,13 @@ public class SuperGrid implements Gridable {
             for (int i = 0; i < grids.length; i++) {
                 //draws full game board
                 System.out.println(
-                        grids[i].getCellNumber()
+                        grids[0].getCellNumber()
                         .concat(grids[i].getCellList().get(i))
                         .concat(cellVerticalSeparator)
-                        .concat(grids[i].getCellNumber()
+                        .concat(grids[0].getCellNumber()
                         .concat(grids[i].getCellList().get(i)))
                         .concat(cellVerticalSeparator)
-                        .concat(grids[i].getCellNumber()
+                        .concat(grids[0].getCellNumber()
                         .concat(grids[i].getCellList().get(i))));
             }
             if (counter != 2) {
