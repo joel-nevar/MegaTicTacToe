@@ -2,8 +2,6 @@ package org.academiadecodigo.felinux.mvc.model;
 
 import org.academiadecodigo.felinux.mvc.model.grid.Grid;
 
-import java.util.concurrent.SynchronousQueue;
-
 public class Room {
 
 
@@ -14,11 +12,8 @@ public class Room {
 
     private Grid grid;
 
-    private SynchronousQueue<String> queue;
-
     public Room(PlayerHandler player1){
 
-        queue = new SynchronousQueue<>();
         this.player1 = player1;
         grid = new Grid();
         player1.setYourTurn();
@@ -27,6 +22,7 @@ public class Room {
 
     public void addPlayer(PlayerHandler player2) {
         this.player2 = player2;
+        player2.setRoom(this);
         roomIsFull = true;
     }
 
@@ -34,15 +30,9 @@ public class Room {
         return roomIsFull;
     }
 
-    public void addToQueue(String message){
+    public void broadcast(String message){
 
-        System.out.println("queue add");
-        queue.add(message);
-    }
-
-    public String removeFromQueue(){
-
-        System.out.println("queue remove");
-        return queue.poll();
+        player1.getController().receive(message);
+        player2.getController().receive(message);
     }
 }

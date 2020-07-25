@@ -1,6 +1,8 @@
 package org.academiadecodigo.felinux.mvc.model;
 
 import org.academiadecodigo.felinux.mvc.controller.CentralController;
+import org.academiadecodigo.felinux.mvc.controller.PlayerController;
+import org.academiadecodigo.felinux.service.BootStrap;
 
 import java.io.IOException;
 import java.net.ServerSocket;
@@ -31,6 +33,7 @@ public class Server {
 
         //serverLoop
         PlayerHandler playerHandler = new PlayerHandler(serverSocket.accept());
+        BootStrap.initPlayer(playerHandler);
         centralController.registerPlayer(playerHandler);
         threadPool.submit(playerHandler);
 

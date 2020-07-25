@@ -33,6 +33,6 @@ public class GameView implements View{
             scanner.setError("That's not valid");
         }
 
-        scanner.setMessage(message);
+        scanner.setMessage(message + "\n");
     }
 }

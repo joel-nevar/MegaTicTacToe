@@ -1,7 +1,6 @@
 package org.academiadecodigo.felinux.mvc.model;
 
 import org.academiadecodigo.felinux.mvc.controller.PlayerController;
-import org.academiadecodigo.felinux.service.BootStrap;
 
 import java.net.Socket;
 
@@ -21,9 +20,6 @@ public class PlayerHandler implements Runnable{
     @Override
     public void run() {
 
-        System.out.println("ta aqui uma bela merda");
-        controller = BootStrap.initPlayer(this);
-        System.out.println("reeeeeeeeeeee");
         controller.init();
     }
 
@@ -39,6 +35,11 @@ public class PlayerHandler implements Runnable{
         return yourTurn;
     }
 
+    public void setController(PlayerController controller) {
+
+        this.controller = controller;
+    }
+
     public void setYourTurn() {
 
         if(yourTurn){
@@ -51,7 +52,6 @@ public class PlayerHandler implements Runnable{
 
     public void setRoom(Room room) {
         this.room = room;
-        System.out.println(room);
     }
 
     public Room getRoom() {

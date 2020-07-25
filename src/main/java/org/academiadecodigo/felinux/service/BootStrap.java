@@ -3,7 +3,6 @@ package org.academiadecodigo.felinux.service;
 import org.academiadecodigo.bootcamp.Prompt;
 import org.academiadecodigo.bootcamp.scanners.integer.IntegerRangeInputScanner;
 import org.academiadecodigo.felinux.mvc.controller.CentralController;
-import org.academiadecodigo.felinux.mvc.controller.Controller;
 import org.academiadecodigo.felinux.mvc.controller.PlayerController;
 import org.academiadecodigo.felinux.mvc.model.Lobby;
 import org.academiadecodigo.felinux.mvc.model.PlayerHandler;
@@ -48,26 +47,18 @@ public class BootStrap {
     }
 
 
-    public static PlayerController initPlayer(PlayerHandler playerHandler) {
-
-        System.out.println("broculos grelhados");
+    public static void initPlayer(PlayerHandler playerHandler) {
 
         PlayerPrompt playerPrompt = new PlayerPrompt(playerHandler.getSocket());
         GameView playerScreen = new GameView();
         playerScreen.setPrompt(playerPrompt);
 
-        System.out.println("gelado de cogumelos");
-
         PlayerController controller = new PlayerController();
         controller.setView(playerScreen);
         controller.setPlayer(playerHandler);
 
-        System.out.println("penino com chocolate");
-
         playerScreen.setController(controller);
 
-        System.out.println("kebab");
-
-        return controller;
+        playerHandler.setController(controller);
     }
 }

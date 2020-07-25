@@ -13,24 +13,19 @@ public class PlayerController implements Controller {
     public void init() {
 
         //todo flag to stop this
+
+        player.getRoom().broadcast("Player has joined the room");
+
         while (true){
 
-            System.out.println("hm");
             startGame();
         }
     }
 
     private void startGame() {
 
-        if(player.isYourTurn()){
-
-            receive();
-            player.setYourTurn();
-            return;
-        }
-
+        System.out.println("maybe");
         playerScreen.show();
-        player.setYourTurn();
     }
 
     public void setView(GameView playerScreen) {
@@ -43,17 +38,14 @@ public class PlayerController implements Controller {
         this.player = playerHandler;
     }
 
-    public void receive(){
+    public void receive(String message){
 
-        String message = player.getRoom().removeFromQueue();
-        System.out.println(message);
         playerScreen.setMessage(message);
         playerScreen.show();
     }
 
     public void transmit(String message){
 
-        player.getRoom().addToQueue(message);
-        System.out.println(message);
+        player.getRoom().broadcast(message);
     }
 }
