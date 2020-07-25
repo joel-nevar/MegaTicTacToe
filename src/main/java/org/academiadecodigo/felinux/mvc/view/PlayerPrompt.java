@@ -14,7 +14,7 @@ public class PlayerPrompt {
 
         try {
 
-            playerPrompt = new Prompt(socket.getInputStream(), (PrintStream) socket.getOutputStream());
+            playerPrompt = new Prompt(socket.getInputStream(), new PrintStream(socket.getOutputStream()));
 
         } catch (IOException e) {
             e.printStackTrace();

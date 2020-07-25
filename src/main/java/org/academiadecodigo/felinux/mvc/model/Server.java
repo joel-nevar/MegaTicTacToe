@@ -1,5 +1,9 @@
 package org.academiadecodigo.felinux.mvc.model;
 
+import org.academiadecodigo.felinux.mvc.controller.CentralController;
+import org.academiadecodigo.felinux.mvc.controller.PlayerController;
+import org.academiadecodigo.felinux.service.BootStrap;
+
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.util.concurrent.ExecutorService;
@@ -11,6 +15,7 @@ public class Server {
     private ServerSocket serverSocket;
     private ExecutorService threadPool;
     private final int THREAD_COUNT = 5;
+    private CentralController centralController;
 
     public Server(int port) throws IOException {
 
@@ -27,8 +32,16 @@ public class Server {
     private void acceptConnection() throws IOException {
 
         //serverLoop
-        threadPool.submit(new PlayerHandler(serverSocket.accept()));
+        PlayerHandler playerHandler = new PlayerHandler(serverSocket.accept());
+        BootStrap.initPlayer(playerHandler);
+        centralController.registerPlayer(playerHandler);
+        threadPool.submit(playerHandler);
+
         System.out.println("Client Found");
         acceptConnection();
+    }
+
+    public void setCentralController(CentralController centralController) {
+        this.centralController = centralController;
     }
 }

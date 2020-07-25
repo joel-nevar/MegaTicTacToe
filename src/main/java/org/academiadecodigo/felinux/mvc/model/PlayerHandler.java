@@ -1,18 +1,18 @@
 package org.academiadecodigo.felinux.mvc.model;
 
-import org.academiadecodigo.felinux.mvc.controller.player.PlayerController;
+import org.academiadecodigo.felinux.mvc.controller.PlayerController;
 
 import java.net.Socket;
 
-/**
- * Player Mini Main, start everything on PlayerController
- */
 public class PlayerHandler implements Runnable{
 
 
     private Socket socket;
+    private PlayerController controller;
+    private Room room;
+    private boolean yourTurn;
 
-    public PlayerHandler(Socket socket){
+    public PlayerHandler(Socket socket) {
 
         this.socket = socket;
     }
@@ -20,8 +20,41 @@ public class PlayerHandler implements Runnable{
     @Override
     public void run() {
 
-        PlayerController playerController = new PlayerController();
-        playerController.setSocket(socket);
-        playerController.init();
+        controller.init();
+    }
+
+    public Socket getSocket() {
+        return socket;
+    }
+
+    public PlayerController getController() {
+        return controller;
+    }
+
+    public boolean isYourTurn() {
+        return yourTurn;
+    }
+
+    public void setController(PlayerController controller) {
+
+        this.controller = controller;
+    }
+
+    public void setYourTurn() {
+
+        if(yourTurn){
+            yourTurn=false;
+            return;
+        }
+
+        yourTurn = true;
+    }
+
+    public void setRoom(Room room) {
+        this.room = room;
+    }
+
+    public Room getRoom() {
+        return room;
     }
 }
