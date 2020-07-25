@@ -11,6 +11,7 @@ public class SuperGrid implements Gridable {
     Grid[] grids;
 
     private int counterForGridNumber = 0;
+    private int counterForCellNumber = 0;
 
     public SuperGrid() {
         initGrids();
@@ -35,13 +36,13 @@ public class SuperGrid implements Gridable {
                 //draws full game board
                 System.out.println(
                         getGridNumber()
-                        .concat(grids[0].getCellNumber())
+                        .concat(getCellNumber())
                         .concat(grids[i].getCellList().get(i))
                         .concat(DrawBoardText.cellVerticalSeparator)
-                        .concat(grids[0].getCellNumber()
+                        .concat(getCellNumber()
                         .concat(grids[i].getCellList().get(i)))
                         .concat(DrawBoardText.cellVerticalSeparator)
-                        .concat(grids[0].getCellNumber()
+                        .concat(getCellNumber()
                         .concat(grids[i].getCellList().get(i))));
             }
             if (counter != 2) {
@@ -50,6 +51,7 @@ public class SuperGrid implements Gridable {
         }
     }
 
+    //Draws the blue left-most part
     public String getGridNumber(){
         counterForGridNumber++;
 
@@ -80,6 +82,24 @@ public class SuperGrid implements Gridable {
                 return DrawBoardText.leftHeader3333;
             default:
                 return DrawColors.BLUE_BACKGROUND + "     " + DrawColors.RESET + " ";
+        }
+    }
+    public String getCellNumber(){
+        //Outputs to the console the "1,2,3" numbers on the left of each left-most grid
+        counterForCellNumber++;
+
+        switch (counterForCellNumber){
+            case 4:
+                return DrawColors.YELLOW + "1" + DrawColors.RESET;
+            case 13:
+                return DrawColors.YELLOW + "2" + DrawColors.RESET;
+            case 22:
+                return DrawColors.YELLOW + "3" + DrawColors.RESET;
+            case 27:
+                counterForCellNumber = 0;
+                return " ";
+            default:
+                return " ";
         }
     }
 
