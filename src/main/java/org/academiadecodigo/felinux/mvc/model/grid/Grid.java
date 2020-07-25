@@ -133,7 +133,7 @@ public class Grid implements Gridable, Valuable {
 
         System.out.println("  " + DrawBoardText.smallHeader);
 
-        for (int i = 0; i < cellsInTheGrid.size() - 2; i+=3) {
+        for (int i = 0; i < cellsInTheGrid.size(); i+=3) {
             //draws full game board
             System.out.println(
                     getCellNumber()
@@ -146,7 +146,7 @@ public class Grid implements Gridable, Valuable {
     public void player1Play(){
         for (Cell cell: cells) {
             if(!cell.getValue().getMoveType().equals(CellValueType.EMPTY.getMoveType())){
-                //paint stuff
+                //TODO make player paint the cell
             }
         }
     }
