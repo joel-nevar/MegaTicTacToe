@@ -5,6 +5,8 @@ public class Messages {
     public static String MENU_MESSAGE = "Welcome to Mega TicTacToe! Please select:";
     public static String VIEW_MAIN_ERROR = "Item does not exit";
 
+    public static String WRONG_COORDINATE = "No such cell exists, try again";
+
     public static String[] getMenuMessages() {
 
         String[] menuStrings = new String[MenuOptions.values().length];

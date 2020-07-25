@@ -6,7 +6,7 @@ import java.util.Set;
 public class GameInput {
 
     public static final Set<String> cellCoordinates = new HashSet<String>() {
-        { 
+        {
             add("A1");
             add("A2");
             add("A3");
