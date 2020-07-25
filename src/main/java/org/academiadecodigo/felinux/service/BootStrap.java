@@ -3,9 +3,13 @@ package org.academiadecodigo.felinux.service;
 import org.academiadecodigo.bootcamp.Prompt;
 import org.academiadecodigo.bootcamp.scanners.integer.IntegerRangeInputScanner;
 import org.academiadecodigo.felinux.mvc.controller.CentralController;
+import org.academiadecodigo.felinux.mvc.controller.Controller;
+import org.academiadecodigo.felinux.mvc.controller.PlayerController;
 import org.academiadecodigo.felinux.mvc.model.Lobby;
 import org.academiadecodigo.felinux.mvc.model.PlayerHandler;
 import org.academiadecodigo.felinux.mvc.model.Server;
+import org.academiadecodigo.felinux.mvc.view.GameView;
+import org.academiadecodigo.felinux.mvc.view.PlayerPrompt;
 
 import java.io.IOException;
 
@@ -37,5 +41,20 @@ public class BootStrap {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+
+    public static Controller initPlayer(PlayerHandler playerHandler) {
+
+        PlayerPrompt playerPrompt = new PlayerPrompt(playerHandler.getSocket());
+        GameView playerScreen = new GameView();
+        playerScreen.setPrompt(playerPrompt);
+
+        PlayerController controller = new PlayerController();
+        controller.setView(playerScreen);
+        controller.setPlayer(playerHandler);
+        playerScreen.setController(controller);
+
+        return controller;
     }
 }

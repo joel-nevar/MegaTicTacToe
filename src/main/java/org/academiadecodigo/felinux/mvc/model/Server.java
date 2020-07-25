@@ -31,6 +31,7 @@ public class Server {
 
         //serverLoop
         PlayerHandler playerHandler = new PlayerHandler(serverSocket.accept());
+        centralController.registerPlayer(playerHandler);
         threadPool.submit(playerHandler);
 
         System.out.println("Client Found");

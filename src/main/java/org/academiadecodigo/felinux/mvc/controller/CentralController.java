@@ -2,17 +2,24 @@ package org.academiadecodigo.felinux.mvc.controller;
 
 import org.academiadecodigo.felinux.mvc.model.Lobby;
 import org.academiadecodigo.felinux.mvc.model.PlayerHandler;
+import org.academiadecodigo.felinux.mvc.view.PlayerPrompt;
+import org.academiadecodigo.felinux.mvc.view.View;
 
 public class CentralController implements Controller{
 
 
     private Lobby lobby;
 
+    public CentralController (){
+
+        this.lobby = new Lobby();
+    }
 
     @Override
     public void init() {
 
     }
+
     public void registerPlayer(PlayerHandler player){
 
     }
