@@ -63,13 +63,19 @@ public class Grid implements Gridable, Valuable {
     private LinkedList<String> everyOtherCell;
 
     public Grid() {
-        this.cells = new Cell[9];
-<<<<<<< HEAD
-        initCell();
-=======
         initCells();
->>>>>>> 8b07aec27513876f4cce63af17512c5a1e146284
         this.cellValue = CellValueType.EMPTY;
+
+        topTopPart =             "       |      |      ";
+        topMiddleConcatPart =    "   " + cells[0].getValue().getMoveType() + "   |  " + cells[1].getValue().getMoveType() + "   |  " + cells[2].getValue().getMoveType() + "   ";
+        topBottomPart =          " ______|______|______";
+        middleTopPart =          "       |      |      ";
+        middleMiddleConcatPart = "   " + cells[3].getValue().getMoveType() + "   |  " + cells[4].getValue().getMoveType() + "   |  " + cells[5].getValue().getMoveType() + "   ";
+        middleBottomPart =       " ______|______|______";
+        bottomTopPart =          "       |      |      ";
+        bottomMiddleConcatPart = "   " + cells[6].getValue().getMoveType() + "   |  " + cells[7].getValue().getMoveType() + "   |  " + cells[8].getValue().getMoveType() + "   ";
+        bottomBottomPart =       "       |      |      ";
+
 
         this.firstCell = new LinkedList<>();
         this.firstCell.add(topTopPart);
@@ -95,13 +101,8 @@ public class Grid implements Gridable, Valuable {
     }
 
     public void initCells(){
+        this.cells = new Cell[9];
         for (int i = 0; i < cells.length ; i++) {
-            cells[i] = new Cell();
-        }
-    }
-
-    public void initCell() {
-        for (int i = 0; i < 9; i++) {
             cells[i] = new Cell();
         }
     }
