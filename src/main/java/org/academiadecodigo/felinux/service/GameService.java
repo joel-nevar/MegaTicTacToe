@@ -7,13 +7,12 @@ import org.academiadecodigo.felinux.mvc.model.grid.Grid;
 
 public class GameService {
 
-    LineType lineType;
 
     public boolean hasWon(Grid grid, CellValueType playerValue) {
 
         boolean win = false;
 
-        for (LineType winCombination : lineType.values()) {
+        for (LineType winCombination : LineType.values()) {
 
             win = true;
 

@@ -19,13 +19,32 @@ public class SinglePlayerController implements Controller {
     }
 
     private void newGame() {
+
         grid = new Grid();
         singlePlayerView.setGrid(grid);
 
-        while (grid.getValue() == CellValueType.EMPTY) {
+        boolean win = false;
+        boolean lose = false;
+        boolean tie = false;
+
+        while (grid.getValue() == CellValueType.EMPTY && !tie) {
+
             singlePlayerView.show();
-            System.out.println(grid.getCellValue(0));
+
+            win = gameService.hasWon(grid, CellValueType.PLAYER_1);
+            lose = gameService.hasWon(grid, CellValueType.PLAYER_2);
+            tie = gameService.hasTied(grid);
+
+            if (win) {
+                grid.setValue(CellValueType.PLAYER_1);
+            }
+
+            if (lose) {
+                grid.setValue(CellValueType.PLAYER_2);
+            }
         }
+
+        grid.drawGameBoard();
     }
 
     public void getPlayerInput(String playerChoice) {
@@ -33,6 +52,7 @@ public class SinglePlayerController implements Controller {
 
         while (!validChoice) {
             validChoice = gameService.setValue(grid, playerChoice, CellValueType.PLAYER_1);
+
         }
     }
 

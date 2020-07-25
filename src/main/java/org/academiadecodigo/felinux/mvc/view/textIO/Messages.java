@@ -12,6 +12,11 @@ public class Messages {
 
     public static String UNAVAILABLE_CELL = "This cell is unavailable, choose another";
 
+    public static String WIN_GAME = "Congratulations, you won!";
+    public static String LOST_GAME = "Sorry, you have lost!";
+    public static String TIED_GAME = "It's a tie!";
+    public static String NEXT_GAME = "New game?";
+
     public static String[] getMenuMessages() {
 
         String[] menuStrings = new String[MenuOptions.values().length];
