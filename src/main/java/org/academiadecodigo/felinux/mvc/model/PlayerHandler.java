@@ -10,7 +10,7 @@ public class PlayerHandler implements Runnable{
     private Socket socket;
     private PlayerController controller;
     private Room room;
-    private boolean yourTurn;
+    private boolean yourTurn = false;
 
     public PlayerHandler(Socket socket) {
 
@@ -19,17 +19,10 @@ public class PlayerHandler implements Runnable{
 
     @Override
     public void run() {
-
+        System.out.println(controller);
         controller.init();
     }
 
-    public Socket getSocket() {
-        return socket;
-    }
-
-    public PlayerController getController() {
-        return controller;
-    }
 
     public boolean isYourTurn() {
         return yourTurn;
@@ -52,4 +45,12 @@ public class PlayerHandler implements Runnable{
     public Room getRoom() {
         return room;
     }
+    public Socket getSocket() {
+        return socket;
+    }
+
+    public PlayerController getController() {
+        return controller;
+    }
+
 }
