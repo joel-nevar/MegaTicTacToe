@@ -11,4 +11,7 @@ public class Lobby {
         rooms.add(room);
     }
 
+    public ArrayList<Room>getRooms(){
+        return rooms;
+    }
 }

@@ -30,8 +30,12 @@ public class BootStrap {
 
             CentralController centralController = new CentralController();
             Lobby lobby = new Lobby();
+            PlayerService playerService = new PlayerService();
 
             centralController.setLobby(lobby);
+            centralController.setPlayerService(playerService);
+
+            playerService.setLobby(lobby);
 
 
             Server server = new Server(port);

@@ -7,7 +7,7 @@ public class Room {
     private PlayerHandler player1;
     private PlayerHandler player2;
 
-    private boolean roomFull = false;
+    private boolean roomIsFull = false;
 
     private Grid grid;
 
@@ -16,9 +16,13 @@ public class Room {
         grid = new Grid();
     }
 
-    public void setPlayer2(PlayerHandler player2) {
+    public void addPlayer(PlayerHandler player2) {
         this.player2 = player2;
-        roomFull = true;
+        roomIsFull = true;
+    }
+
+    public boolean checkRoomIsFull(){
+        return roomIsFull;
     }
 
 
