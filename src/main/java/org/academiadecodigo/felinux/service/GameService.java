@@ -1,18 +1,18 @@
 package org.academiadecodigo.felinux.service;
 
-import org.academiadecodigo.felinux.mvc.model.WinCombinations;
+import org.academiadecodigo.felinux.mvc.model.grid.LineType;
 import org.academiadecodigo.felinux.mvc.model.cell.CellValueType;
 import org.academiadecodigo.felinux.mvc.model.grid.Grid;
 
 public class GameService {
 
-    WinCombinations winCombinations;
+    LineType lineType;
 
     public boolean hasWon(Grid grid, CellValueType playerValue) {
 
         boolean win = false;
 
-        for (WinCombinations winCombination : winCombinations.values()) {
+        for (LineType winCombination : lineType.values()) {
 
             win = true;
 

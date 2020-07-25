@@ -4,7 +4,7 @@ import org.academiadecodigo.felinux.mvc.model.Valuable;
 
 import java.util.LinkedList;
 
-public class Cell implements Valuable{
+public class Cell implements Valuable {
 
     private String row;
     private String column;
@@ -55,10 +55,10 @@ public class Cell implements Valuable{
         private String cellVerticalSeparator =  "||";
         private String cellHorizontalSeparator ="==========================================================";
 
-        public CellBuilder(String row, String column, CellValueType cellValue){
+        public CellBuilder(String row, String column){
             this.row = row;
             this.column = column;
-            this.cellValue = cellValue;
+            this.cellValue = CellValueType.EMPTY;
 
             this.firstCell = new LinkedList<>();
             this.firstCell.add(topTopPart);

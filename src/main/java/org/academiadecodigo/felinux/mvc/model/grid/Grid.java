@@ -10,6 +10,11 @@ public class Grid implements Gridable, Valuable {
     Cell[] cells;
     CellValueType cellValue;
 
+    public Grid() {
+        this.cells = new Cell[9];
+        this.cellValue = CellValueType.EMPTY;
+    }
+
     @Override
     public CellValueType getValue() {
         return this.cellValue;
