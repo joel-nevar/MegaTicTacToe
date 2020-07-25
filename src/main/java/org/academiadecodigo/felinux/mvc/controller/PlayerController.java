@@ -21,23 +21,20 @@ public class PlayerController implements Controller {
 
         while(player.getSocket().isBound()){
 
-            System.out.println(player + " " +player.isYourTurn());
-
-            while (!player.isYourTurn()){
+            while (player.isYourTurn()){
 
                 try {
 
                     wait();
-                    player.changeTurns();
 
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
             }
 
+            player.changeTurns();
             listenToPlayer();
             notifyAll();
-            System.out.println(player.isYourTurn());
         }
     }
 
