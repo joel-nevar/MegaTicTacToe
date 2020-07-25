@@ -9,54 +9,56 @@ import java.util.LinkedList;
 
 public class Grid implements Gridable, Valuable {
 
-    Cell[] cells;
-    CellValueType cellValue;
-
-    private String topTopPart;
-    private String topMiddlePart;
-    private String topBottomPart;
-    private String middleTopPart;
-    private String middleMiddlePart;
-    private String middleBottomPart;
-    private String bottomTopPart ;
-    private String bottomMiddlePart;
-    private String bottomBottomPart;
+    private Cell[] cells;
+    private CellValueType cellValue;
 
     private int counterForCellNumber = 0;
 
     private LinkedList<String> cellsInTheGrid;
 
     public Grid() {
+
         initCells();
-        this.cellValue = CellValueType.EMPTY;
-
-        topTopPart =             "      |      |       ";
-        topMiddlePart =    "  " + cells[0].getValue().getMoveType() + "   |  " + cells[1].getValue().getMoveType() + "   |  " + cells[2].getValue().getMoveType() + "    ";
-        topBottomPart =          "______|______|______ ";
-        middleTopPart =          "      |      |       ";
-        middleMiddlePart = "  " + cells[3].getValue().getMoveType() + "   |  " + cells[4].getValue().getMoveType() + "   |  " + cells[5].getValue().getMoveType() + "    ";
-        middleBottomPart =       "______|______|______ ";
-        bottomTopPart =          "      |      |       ";
-        bottomMiddlePart = "  " + cells[6].getValue().getMoveType() + "   |  " + cells[7].getValue().getMoveType() + "   |  " + cells[8].getValue().getMoveType() + "    ";
-        bottomBottomPart =       "      |      |       ";
-
-        this.cellsInTheGrid = new LinkedList<>();
-        this.cellsInTheGrid.add(topTopPart);
-        this.cellsInTheGrid.add(topMiddlePart);
-        this.cellsInTheGrid.add(topBottomPart);
-        this.cellsInTheGrid.add(middleTopPart);
-        this.cellsInTheGrid.add(middleMiddlePart);
-        this.cellsInTheGrid.add(middleBottomPart);
-        this.cellsInTheGrid.add(bottomTopPart);
-        this.cellsInTheGrid.add(bottomMiddlePart);
-        this.cellsInTheGrid.add(bottomBottomPart);
+        initGrid();
     }
 
-    public void initCells(){
+    public void initCells() {
+
         this.cells = new Cell[9];
+
         for (int i = 0; i < cells.length ; i++) {
             cells[i] = new Cell();
         }
+
+        this.cellValue = CellValueType.EMPTY;
+    }
+
+    public void initGrid() {
+
+        String topTopPart =             "      |      |       ";
+        String topMiddlePart =    "  " + cells[0].getValue().getMoveType() + "   |  " + cells[1].getValue().getMoveType() + "   |  " + cells[2].getValue().getMoveType() + "    ";
+        String topBottomPart =          "______|______|______ ";
+        String middleTopPart =          "      |      |       ";
+        String middleMiddlePart = "  " + cells[3].getValue().getMoveType() + "   |  " + cells[4].getValue().getMoveType() + "   |  " + cells[5].getValue().getMoveType() + "    ";
+        String middleBottomPart =       "______|______|______ ";
+        String bottomTopPart =          "      |      |       ";
+        String bottomMiddlePart = "  " + cells[6].getValue().getMoveType() + "   |  " + cells[7].getValue().getMoveType() + "   |  " + cells[8].getValue().getMoveType() + "    ";
+        String bottomBottomPart =       "      |      |       ";
+
+        this.cellsInTheGrid = new LinkedList<String>() {
+            {
+                add(topTopPart);
+                add(topMiddlePart);
+                add(topBottomPart);
+                add(middleTopPart);
+                add(middleMiddlePart);
+                add(middleBottomPart);
+                add(bottomTopPart);
+                add(bottomMiddlePart);
+                add(bottomBottomPart);
+            }
+
+        };
     }
 
     @Override
