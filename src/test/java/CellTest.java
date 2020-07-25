@@ -1,8 +1,11 @@
 import org.academiadecodigo.felinux.mvc.model.cell.Cell;
 import org.academiadecodigo.felinux.mvc.model.cell.CellValueType;
+import org.academiadecodigo.felinux.mvc.model.grid.Grid;
+import org.academiadecodigo.felinux.mvc.model.grid.SuperGrid;
 
 public class CellTest {
     public static void main(String[] args) {
-        Cell cellBuilder = new Cell.CellBuilder().drawGameBoard().build();
+        SuperGrid grid = new SuperGrid();
+        grid.drawGameBoard();
     }
 }

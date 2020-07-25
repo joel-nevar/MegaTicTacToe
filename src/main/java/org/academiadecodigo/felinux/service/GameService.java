@@ -39,7 +39,7 @@ public class GameService {
 
         int index = 0;
 
-        char col = playerInput.charAt(0);
+        char col = playerInput.toUpperCase().charAt(0);
         int row = Integer.parseInt(String.valueOf(playerInput.charAt(1))) - 1;
 
         switch (col) {
