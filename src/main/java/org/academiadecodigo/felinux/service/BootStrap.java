@@ -20,12 +20,14 @@ public class BootStrap {
 
             //Todo passar isto pra ServerStartService ou merda assim
 
+            /*
             Prompt serverPrompt = new Prompt(System.in, System.out);
 
             IntegerRangeInputScanner portScanner = new IntegerRangeInputScanner(0,16000);
             portScanner.setMessage("Insert a port number to initialize the server\n");
             portScanner.setError("A valid one thx\n");
             int port = serverPrompt.getUserInput(portScanner);
+            */
 
             CentralController centralController = new CentralController();
             Lobby lobby = new Lobby();
@@ -37,8 +39,9 @@ public class BootStrap {
             playerService.setLobby(lobby);
 
 
-            Server server = new Server(port);
+            Server server = new Server(1103);
             server.setCentralController(centralController);
+
             //This says Client Found
             server.start();
 

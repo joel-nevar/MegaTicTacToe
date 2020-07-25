@@ -45,9 +45,11 @@ public class Room {
     public RoomService getRoomService() {
         return roomService;
     }
+
     public PlayerHandler getPlayer1(){
         return player1;
     }
+
     public PlayerHandler getPlayer2(){
         return player2;
     }

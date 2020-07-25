@@ -16,7 +16,7 @@ public class RoomService {
     }
 
     public void gameLoop(){
-        System.out.println("Before loopfgggggggggggggggggggggggggggggggg");
+        System.out.println("Before loop");
         PlayerHandler player1 = room.getPlayer1();
         PlayerHandler player2 = room.getPlayer2();
 

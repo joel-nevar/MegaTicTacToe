@@ -5,6 +5,7 @@ import org.academiadecodigo.felinux.mvc.controller.PlayerController;
 import org.academiadecodigo.felinux.service.BootStrap;
 
 import java.io.IOException;
+import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -38,14 +39,16 @@ public class Server {
             return;
         }
 
+        if(threadPool.isShutdown() || threadPool.isTerminated()){
+            System.out.println("Players connected: " + --playerCount + "/2");
+        }
+
         //serverLoop
         PlayerHandler playerHandler = new PlayerHandler(serverSocket.accept());
         BootStrap.initPlayer(playerHandler);
         centralController.registerPlayer(playerHandler);
         threadPool.submit(playerHandler);
-
         System.out.println("Players connected: " + ++playerCount + "/2");
-
         acceptConnection();
     }
 
