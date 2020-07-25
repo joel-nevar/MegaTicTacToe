@@ -1,7 +1,5 @@
 package org.academiadecodigo.felinux.mvc.view;
 
-import org.graalvm.compiler.lir.LIRInstruction;
-
 public class Messages {
 
     protected static String MENU_MESSAGE = "Welcome to Mega TicTacToe! Please select:";

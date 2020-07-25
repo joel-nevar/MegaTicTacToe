@@ -19,25 +19,26 @@ public class PlayerController implements Controller {
 
     private void gameLoop(){
 
-        System.out.println(player + " " +player.isYourTurn());
+        while(player.getSocket().isBound()){
 
-        if(player.isYourTurn()){
+            System.out.println(player + " " +player.isYourTurn());
+
+            while (!player.isYourTurn()){
+
+                try {
+
+                    wait();
+                    player.changeTurns();
+
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
 
             listenToPlayer();
             notifyAll();
-            player.changeTurns();
+            System.out.println(player.isYourTurn());
         }
-
-        try {
-
-            player.changeTurns();
-            wait();
-
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
-        gameLoop();
     }
 
     private void listenToPlayer() {
