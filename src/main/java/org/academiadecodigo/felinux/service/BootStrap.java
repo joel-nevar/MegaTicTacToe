@@ -39,6 +39,7 @@ public class BootStrap {
 
             Server server = new Server(port);
             server.setCentralController(centralController);
+            //This says Client Found
             server.start();
 
         } catch (IOException e) {

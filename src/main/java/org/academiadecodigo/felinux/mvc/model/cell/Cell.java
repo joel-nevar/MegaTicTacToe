@@ -6,13 +6,9 @@ import java.util.LinkedList;
 
 public class Cell implements Valuable {
 
-    private String row;
-    private String column;
     private CellValueType cellValue;
 
     private Cell(CellBuilder cellBuilder){
-        this.row = cellBuilder.row;
-        this.column = cellBuilder.column;
         this.cellValue = cellBuilder.cellValue;
         //mais cenas se necessário
     }
@@ -30,19 +26,30 @@ public class Cell implements Valuable {
 
     public static class CellBuilder {
 
-        private String row;
-        private String column;
         private CellValueType cellValue;
 
         LinkedList<String> firstCell;
         LinkedList<String> everyOtherCell;
 
+        public final String RESET = "\u001B[0m";
+        public final String BLACK = "\u001B[30m";
+        public final String RED = "\u001B[31m";
+        public final String GREEN = "\u001B[32m";
+        public final String YELLOW = "\u001B[33m";
+        public final String BLUE = "\u001B[34m";
+        public final String PURPLE = "\u001B[35m";
+        public final String CYAN = "\u001B[36m";
+        public final String WHITE = "\u001B[37m";
 
-        private String topMiddlePart =          "1  -  |  -  |  -  ";
-        private String middleMiddlePart =       "2  -  |  -  |  -  ";
-        private String bottomMiddlePart =       "3  -  |  -  |  -  ";
+        public final String SELECTED_GREEN_BACKGROUND = "\u001B[42m";
+        public final String UNSELECTED_BLACK_BACKGROUND = "\u001B[40m";
 
-        private String headerNamePart =         "   A     B     C    ";
+
+        private String topMiddlePart =      YELLOW + "1" + RESET + "  -  |  -  |  -  ";
+        private String middleMiddlePart =   YELLOW + "2" + RESET + "  -  |  -  |  -  ";
+        private String bottomMiddlePart =   YELLOW + "3" + RESET + "  -  |  -  |  -  ";
+
+        private String headerNamePart = YELLOW +"   A     B     C    " + RESET;
         private String topTopPart =             "      |     |     ";
         private String topMiddleConcatPart =    "   -  |  -  |  -  ";
         private String topBottomPart =          " _____|_____|_____";
@@ -52,23 +59,10 @@ public class Cell implements Valuable {
         private String bottomTopPart =          "      |     |     ";
         private String bottomMiddleConcatPart = "   -  |  -  |  -  ";
         private String bottomBottomPart =       "      |     |     ";
-        private String cellVerticalSeparator =  "||";
-        private String cellHorizontalSeparator ="==========================================================";
+        private String cellVerticalSeparator =  BLUE + "||" + RESET;
+        private String cellHorizontalSeparator = BLUE + "==========================================================" + RESET;
 
-        public static final String RESET = "\u001B[0m";
-        public static final String BLACK = "\u001B[30m";
-        public static final String RED = "\u001B[31m";
-        public static final String GREEN = "\u001B[32m";
-        public static final String YELLOW = "\u001B[33m";
-        public static final String BLUE = "\u001B[34m";
-        public static final String PURPLE = "\u001B[35m";
-        public static final String CYAN = "\u001B[36m";
-        public static final String WHITE = "\u001B[37m";
-
-        public CellBuilder(String row, String column, CellValueType cellValue){
-        public CellBuilder(String row, String column){
-            this.row = row;
-            this.column = column;
+        public CellBuilder(){
             this.cellValue = CellValueType.EMPTY;
 
             this.firstCell = new LinkedList<>();

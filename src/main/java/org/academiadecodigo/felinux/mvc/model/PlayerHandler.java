@@ -31,7 +31,7 @@ public class PlayerHandler implements Runnable{
         return controller;
     }
 
-    public boolean isYourTurn() {
+    public boolean checkTurn() {
         return yourTurn;
     }
 
@@ -40,7 +40,7 @@ public class PlayerHandler implements Runnable{
         this.controller = controller;
     }
 
-    public void setYourTurn() {
+    public void changeTurns() {
 
         if(yourTurn){
             yourTurn=false;

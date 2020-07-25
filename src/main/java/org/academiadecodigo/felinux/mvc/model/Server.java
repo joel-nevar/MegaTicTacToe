@@ -16,6 +16,8 @@ public class Server {
     private ExecutorService threadPool;
     private final int THREAD_COUNT = 5;
     private CentralController centralController;
+    private int playerCount = 0;
+
 
     public Server(int port) throws IOException {
 
@@ -30,14 +32,18 @@ public class Server {
     }
 
     private void acceptConnection() throws IOException {
-
+        if(playerCount == 2){
+            System.out.println("Max players reached");
+            return;
+        }
         //serverLoop
         PlayerHandler playerHandler = new PlayerHandler(serverSocket.accept());
         BootStrap.initPlayer(playerHandler);
         centralController.registerPlayer(playerHandler);
         threadPool.submit(playerHandler);
 
-        System.out.println("Client Found");
+        System.out.println("Players connected: " + ++playerCount + "/2");
+
         acceptConnection();
     }
 

@@ -16,7 +16,7 @@ public class Room {
 
         this.player1 = player1;
         grid = new Grid();
-        player1.setYourTurn();
+        player1.changeTurns();
         player1.setRoom(this);
     }
 
