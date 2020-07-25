@@ -36,6 +36,18 @@ public class SuperGrid implements Gridable {
                                 BLUE_BACKGROUND + "         /_\\                    | _ )                 / __|        "+ RESET + "\n" +
                                 BLUE_BACKGROUND + "        / _ \\                   | _ \\                 | (__        "+ RESET + "\n" +
                                 BLUE_BACKGROUND + "       /_/ \\_\\                  |___/                 \\___|        " + RESET;
+    private String leftHeader1 = "  _   ";
+    private String leftHeader11 = " / |  ";
+    private String leftHeader111 = " | |  ";
+    private String leftHeader1111 = " |_|_ ";
+    private String leftHeader2 = "  ___ ";
+    private String leftHeader22 = " |_  )";
+    private String leftHeader222 = "  / / ";
+    private String leftHeader2222 = " /___|";
+    private String leftHeader3 = "  ___ ";
+    private String leftHeader33 = " |__ /";
+    private String leftHeader333 = "  |_ \\";
+    private String leftHeader3333 = " |___/";
 
     private String headerNamePart = YELLOW + "   A      B      C     " + RESET;
 

@@ -31,19 +31,6 @@ public class Grid implements Gridable, Valuable {
     public final String CYAN_BACKGROUND = "\u001B[46m";
     public final String WHITE_BACKGROUND = "\u001B[47m";
 
-    private String leftHeader1 = "  _   ";
-    private String leftHeader11 = " / |  ";
-    private String leftHeader111 = " | |  ";
-    private String leftHeader1111 = " |_|_ ";
-    private String leftHeader2 = "  ___ ";
-    private String leftHeader22 = " |_  )";
-    private String leftHeader222 = "  / / ";
-    private String leftHeader2222 = " /___|";
-    private String leftHeader3 = "  ___ ";
-    private String leftHeader33 = " |__ /";
-    private String leftHeader333 = "  |_ \\";
-    private String leftHeader3333 = " |___/";
-
     private String topMiddlePart =      YELLOW + "1" + RESET + "  A   |  A   |  A   ";
     private String middleMiddlePart =   YELLOW + "2" + RESET + "  B   |  B   |  B   ";
     private String bottomMiddlePart =   YELLOW + "3" + RESET + "  C   |  C   |  C   ";
