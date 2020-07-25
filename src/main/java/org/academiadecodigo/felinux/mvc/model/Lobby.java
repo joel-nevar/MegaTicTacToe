@@ -9,6 +9,7 @@ public class Lobby {
     public Lobby(){
 
         rooms = new ArrayList<>();
+
     }
 
     public void addRoom(Room room){

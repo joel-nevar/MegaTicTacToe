@@ -15,7 +15,7 @@ public class PlayerController implements Controller {
     public void init() {
         view.setMessage("Your Play?");
         view.show();
-        System.out.print(room.getRoomService());
+        System.out.print("Room service " + room.getRoomService());
         room.getRoomService().gameLoop();
       //  gameLoop();
     }
@@ -47,8 +47,6 @@ public class PlayerController implements Controller {
         view.show();
     }
 
-
-
     public void receive(String message){
 
         view.sendMessage(message);
@@ -67,6 +65,4 @@ public class PlayerController implements Controller {
 
         this.player = playerHandler;
     }
-
-
 }
