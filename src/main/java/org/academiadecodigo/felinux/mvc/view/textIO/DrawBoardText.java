@@ -11,7 +11,7 @@ public class DrawBoardText {
             DrawColors.BLUE_BACKGROUND + "         / _ \\                   | _ \\                  | (__               " + DrawColors.RESET + "\n" +
             DrawColors.BLUE_BACKGROUND + "        /_/ \\_\\                  |___/                  \\___|               " + DrawColors.RESET;
 
-    public static String smallHeader = DrawColors.YELLOW + "    A      B      C      " + DrawColors.RESET;
+    public static String smallHeader = DrawColors.YELLOW + "    A      B      C     " + DrawColors.RESET;
 
     public static String leftHeader1 =    DrawColors.BLUE_BACKGROUND + "  _  " + DrawColors.RESET + " ";
     public static String leftHeader11 =   DrawColors.BLUE_BACKGROUND + " / | " + DrawColors.RESET + " ";

@@ -8,8 +8,8 @@ import org.academiadecodigo.felinux.mvc.view.MenuView;
 
 public class CellTest {
     public static void main(String[] args) {
-        /*SuperGrid grid = new SuperGrid();
-        grid.drawGameBoard();*/
+        SuperGrid grid = new SuperGrid();
+        grid.drawGameBoard();
         Grid grid1 = new Grid();
         grid1.drawGameBoard();
 
