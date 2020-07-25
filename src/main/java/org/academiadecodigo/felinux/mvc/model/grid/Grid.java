@@ -127,7 +127,6 @@ public class Grid implements Gridable, Valuable {
                 add(bottomBottomRightPart);
                 add(bottomBottomBottomPart);
             }
-
         };
     }
     public void drawGameBoard(){
