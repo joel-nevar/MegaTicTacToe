@@ -14,12 +14,11 @@ public class PlayerStream {
     private Prompt prompt;
     private PrintWriter writer;
 
-    public PlayerStream(Socket socket){
+    public PlayerStream(Socket socket) {
 
         try {
 
-            prompt = new Prompt(socket.getInputStream(), new PrintStream(socket.getOutputStream()));
-            writer = new PrintWriter(new OutputStreamWriter(socket.getOutputStream()),true);
+
 
         } catch (IOException e) {
             e.printStackTrace();
