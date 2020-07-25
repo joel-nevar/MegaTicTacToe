@@ -12,7 +12,14 @@ public class Grid implements Gridable, Valuable {
 
     public Grid() {
         this.cells = new Cell[9];
+        initCell();
         this.cellValue = CellValueType.EMPTY;
+    }
+
+    public void initCell() {
+        for (int i = 0; i < 9; i++) {
+            cells[i] = new Cell();
+        }
     }
 
     @Override
