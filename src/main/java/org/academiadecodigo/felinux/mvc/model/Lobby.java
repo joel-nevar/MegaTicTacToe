@@ -6,6 +6,10 @@ public class Lobby {
 
     private ArrayList <Room> rooms;
 
+    public Lobby(){
+
+        rooms = new ArrayList<>();
+    }
 
     public void addRoom(Room room){
         rooms.add(room);

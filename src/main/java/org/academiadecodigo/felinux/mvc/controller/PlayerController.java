@@ -12,6 +12,25 @@ public class PlayerController implements Controller {
     @Override
     public void init() {
 
+        //todo flag to stop this
+        while (true){
+
+            System.out.println("hm");
+            startGame();
+        }
+    }
+
+    private void startGame() {
+
+        if(player.isYourTurn()){
+
+            receive();
+            player.setYourTurn();
+            return;
+        }
+
+        playerScreen.show();
+        player.setYourTurn();
     }
 
     public void setView(GameView playerScreen) {
@@ -24,14 +43,17 @@ public class PlayerController implements Controller {
         this.player = playerHandler;
     }
 
-    public void receive(String message){
+    public void receive(){
 
+        String message = player.getRoom().removeFromQueue();
+        System.out.println(message);
         playerScreen.setMessage(message);
         playerScreen.show();
     }
 
     public void transmit(String message){
 
-
+        player.getRoom().addToQueue(message);
+        System.out.println(message);
     }
 }

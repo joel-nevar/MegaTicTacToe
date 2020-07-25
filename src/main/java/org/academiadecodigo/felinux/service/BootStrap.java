@@ -48,16 +48,25 @@ public class BootStrap {
     }
 
 
-    public static Controller initPlayer(PlayerHandler playerHandler) {
+    public static PlayerController initPlayer(PlayerHandler playerHandler) {
+
+        System.out.println("broculos grelhados");
 
         PlayerPrompt playerPrompt = new PlayerPrompt(playerHandler.getSocket());
         GameView playerScreen = new GameView();
         playerScreen.setPrompt(playerPrompt);
 
+        System.out.println("gelado de cogumelos");
+
         PlayerController controller = new PlayerController();
         controller.setView(playerScreen);
         controller.setPlayer(playerHandler);
+
+        System.out.println("penino com chocolate");
+
         playerScreen.setController(controller);
+
+        System.out.println("kebab");
 
         return controller;
     }
