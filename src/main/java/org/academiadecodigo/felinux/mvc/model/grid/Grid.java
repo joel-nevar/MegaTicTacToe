@@ -16,8 +16,18 @@ public class Grid implements Gridable, Valuable {
     }
 
     @Override
+    public void setValue(CellValueType playerValue) {
+        this.cellValue = playerValue;
+    }
+
+    @Override
     public CellValueType getCellValue(int index) {
         return this.cells[index].getValue();
+    }
+
+    @Override
+    public void setCellValue(CellValueType playerValue, int index) {
+        this.cells[index].setValue(playerValue);
     }
 
     public Valuable[] getCells() {

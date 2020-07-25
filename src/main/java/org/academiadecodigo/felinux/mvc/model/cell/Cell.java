@@ -21,6 +21,11 @@ public class Cell implements Valuable{
     public CellValueType getValue() {
         return this.cellValue;
     }
+
+    @Override
+    public void setValue(CellValueType playerValue) {
+        this.cellValue = playerValue;
+    }
     //=================BUILDER CLASS ====================\\
 
     public static class CellBuilder {
