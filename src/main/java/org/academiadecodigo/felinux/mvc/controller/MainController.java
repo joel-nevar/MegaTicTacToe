@@ -1,13 +1,14 @@
 package org.academiadecodigo.felinux.mvc.controller;
 
 import org.academiadecodigo.felinux.mvc.view.MenuView;
+import org.academiadecodigo.felinux.mvc.view.textIO.MenuOptions;
 
 public class MainController implements Controller {
 
     private MenuView menuView;
 
     private SinglePlayerController singlePlayerController;
-    //...all other controllers - setters for everyone
+    //all controllers
 
     private int userInput = 0;
 
@@ -23,13 +24,8 @@ public class MainController implements Controller {
 
     private void chooseItem() {
 
-        Me
-        switch (userInput) {
-            case 1:
-                singlePlayerController.init();
-                break;
-                case
-        }
+        MenuOptions menuOption = MenuOptions.values()[userInput - 1];
+        menuOption.init();
     }
 
     public void onMenuSelection(Integer userInput) {
@@ -42,5 +38,6 @@ public class MainController implements Controller {
 
     public void setSinglePlayerController(SinglePlayerController singlePlayerController) {
         this.singlePlayerController = singlePlayerController;
+        MenuOptions.SIMPLE_VS_COM.setController(singlePlayerController);
     }
 }
