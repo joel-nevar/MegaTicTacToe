@@ -1,57 +1,53 @@
 package org.academiadecodigo.felinux.mvc.controller;
 
 import org.academiadecodigo.felinux.mvc.model.PlayerHandler;
+import org.academiadecodigo.felinux.mvc.model.Room;
 import org.academiadecodigo.felinux.mvc.view.GameView;
 
 public class PlayerController implements Controller {
 
-
+    private Room room;
     private GameView view;
     private PlayerHandler player;
 
     @Override
     public void init() {
-
         view.setMessage("Your Play?");
-
-        gameLoop();
+        view.show();
+        System.out.print(room.getRoomService());
+        room.getRoomService().gameLoop();
+      //  gameLoop();
     }
 
     private void gameLoop(){
 
-        while(player.getSocket().isBound()){
+        this.room = player.getRoom();
+        System.out.println(player + " " +player.isYourTurn());
 
-            while (player.isYourTurn()){
-
-                try {
-
-                    wait();
-
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }
-
-            player.changeTurns();
+        if(player.isYourTurn()){
+            System.out.println(Thread.currentThread().getName());
             listenToPlayer();
             notifyAll();
+            room.changeTurns();
+        }else{
+
+       // player.changeTurns();
+        try {
+            wait();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        gameLoop();
         }
     }
 
-    private void listenToPlayer() {
-
+    public void listenToPlayer() {
+        System.out.println(Thread.currentThread().getName());
         view.show();
     }
 
-    public void setView(GameView playerScreen) {
 
-        this.view = playerScreen;
-    }
-
-    public void setPlayer(PlayerHandler playerHandler) {
-
-        this.player = playerHandler;
-    }
 
     public void receive(String message){
 
@@ -62,4 +58,15 @@ public class PlayerController implements Controller {
 
         player.getRoom().broadcast(message);
     }
+    public void setView(GameView playerScreen) {
+
+        this.view = playerScreen;
+    }
+
+    public void setPlayer(PlayerHandler playerHandler) {
+
+        this.player = playerHandler;
+    }
+
+
 }

@@ -2,6 +2,7 @@ package org.academiadecodigo.felinux.mvc.view;
 
 import org.academiadecodigo.bootcamp.scanners.menu.MenuInputScanner;
 import org.academiadecodigo.felinux.mvc.controller.MainController;
+import org.academiadecodigo.felinux.mvc.view.textIO.Messages;
 
 public class MenuView extends AbstactView {
 
