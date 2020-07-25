@@ -24,6 +24,7 @@ public class SinglePlayerController implements Controller {
 
         while (grid.getValue() == CellValueType.EMPTY) {
             singlePlayerView.show();
+            System.out.println(grid.getCellValue(0));
         }
     }
 

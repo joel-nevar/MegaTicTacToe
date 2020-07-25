@@ -131,6 +131,8 @@ public class Grid implements Gridable, Valuable {
     }
     public void drawGameBoard(){
 
+        initGrid();
+
         System.out.println("  " + DrawBoardText.smallHeader);
 
         for (int i = 0; i < cellsInTheGrid.size(); i+=3) {

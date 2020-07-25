@@ -7,8 +7,8 @@ public class Messages {
     public static String MENU_MESSAGE = "Welcome to Mega TicTacToe! Please select:";
     public static String VIEW_MAIN_ERROR = "Item does not exit";
 
-    public static String SELECT_CELL = "Please select a cell";
-    public static String WRONG_CELL_INPUT = "No such cell exists, try again";
+    public static String SELECT_CELL = "Please select a cell: ";
+    public static String WRONG_CELL_INPUT = "No such cell exists, try again.";
 
     public static String UNAVAILABLE_CELL = "This cell is unavailable, choose another";
 
