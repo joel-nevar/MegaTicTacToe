@@ -46,6 +46,6 @@ public class Server {
     public void subtractPlayerCount(){
 
         playerCount--;
-        System.out.println("Player left server. \nPlayers connected" + playerCount);
+        System.out.println("Player left server. \nPlayers connected: " + playerCount);
     }
 }

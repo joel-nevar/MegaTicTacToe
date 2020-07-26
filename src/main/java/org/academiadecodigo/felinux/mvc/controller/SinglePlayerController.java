@@ -28,8 +28,11 @@ public class SinglePlayerController implements Controller {
 
         while (!winner) {
 
+            singlePlayerView.show(); //player move
+
             while (!acceptedPlay) {
-                singlePlayerView.show(); //player move
+
+                singlePlayerView.showRepeat(); //must re-move if cell is chosen
             }
 
             acceptedPlay = false;
@@ -67,6 +70,10 @@ public class SinglePlayerController implements Controller {
     public void getComInput(int comChoice) {
 
         acceptedPlay = GameService.setValue(grid, comChoice, CellValueType.PLAYER_2);
+    }
+
+    public boolean isAcceptedPlay() {
+        return acceptedPlay;
     }
 
     public void setSinglePlayerView(SinglePlayerView singlePlayerView) {

@@ -6,19 +6,20 @@ import org.academiadecodigo.felinux.mvc.model.cell.Cell;
 import org.academiadecodigo.felinux.mvc.model.cell.CellValueType;
 import org.academiadecodigo.felinux.mvc.view.textIO.DrawBoardText;
 import org.academiadecodigo.felinux.mvc.view.textIO.DrawColors;
+import org.academiadecodigo.felinux.mvc.view.textIO.MenuOptions;
 
+import java.awt.*;
 import java.util.LinkedList;
 
 public class Grid implements Gridable, Valuable {
 
     private Cell[] cells;
+
     private CellValueType cellValue;
 
     private int counterForCellNumber = 0;
 
     private LinkedList<String> cellsInTheGrid;
-
-    private String backGroundColor;
 
     public Grid() {
         initCells();
@@ -133,114 +134,210 @@ public class Grid implements Gridable, Valuable {
     public String drawGameBoard(){
 
         initGrid();
-        player1Play();
+        playerPlayPrint();
 
         String returnableString = "\n";
-
-        //System.out.println("  " + DrawBoardText.smallHeader);
 
         returnableString += "  " + DrawBoardText.smallHeader + "\n";
 
         for (int i = 0; i < cellsInTheGrid.size(); i+=3) {
-            //draws full game board
-         /*   System.out.println(
-                    getCellNumber()
-                    .concat(getCellNumber())
-                    .concat(getCellList().get(i)).concat(getCellList().get(i+1)).concat(getCellList().get(i+2))
-            );
-          */
             returnableString += getCellNumber()
                     .concat(getCellNumber())
                     .concat(getCellList().get(i)).concat(getCellList().get(i+1)).concat(getCellList().get(i+2)) + "\n";
         }
-        //System.out.println(returnableString);
         return returnableString;
     }
 
-    public void player1Play(){
+    public void playerPlayPrint(){
+
+        String valueToPaint0 = "";
         String valueToPaint1 = "";
         String valueToPaint2 = "";
         String valueToPaint3 = "";
+        String valueToPaint4 = "";
+        String valueToPaint5 = "";
+        String valueToPaint6 = "";
+        String valueToPaint7 = "";
+        String valueToPaint8 = "";
+        String valueToPaint9 = "";
+        String valueToPaint10 = "";
+        String valueToPaint11 = "";
+        String valueToPaint12 = "";
+        String valueToPaint13 = "";
+        String valueToPaint14 = "";
+        String valueToPaint15 = "";
+        String valueToPaint16 = "";
+        String valueToPaint17 = "";
+        String valueToPaint18 = "";
+        String valueToPaint19 = "";
+        String valueToPaint20 = "";
+        String valueToPaint21 = "";
+        String valueToPaint22 = "";
+        String valueToPaint23 = "";
+        String valueToPaint24 = "";
+        String valueToPaint25 = "";
+        String valueToPaint26 = "";
+
         for (int i = 0; i < cells.length; i++) {
 
             if(!cells[i].getValue().getMoveType().equals(CellValueType.EMPTY.getMoveType())){
                 switch (i){
                     case 0:
-                        valueToPaint1 = DrawColors.RED_BACKGROUND + "      " + DrawColors.RESET + DrawColors.WHITE_BACKGROUND + "|" + DrawColors.RESET;
-                        valueToPaint2 = DrawColors.RED_BACKGROUND + "  " + DrawColors.RESET + DrawColors.WHITE_BACKGROUND + cells[0].getValue().getMoveType() + DrawColors.RESET + DrawColors.RED_BACKGROUND + "   " + DrawColors.RESET + DrawColors.WHITE_BACKGROUND + "|" + DrawColors.RESET;
-                        valueToPaint3 =  DrawColors.RED_BACKGROUND + "______" + DrawColors.RESET + DrawColors.WHITE_BACKGROUND + "|" + DrawColors.RESET;
-                        cellsInTheGrid.set(0,valueToPaint1);
-                        cellsInTheGrid.set(3,valueToPaint2);
-                        cellsInTheGrid.set(6,valueToPaint3);
+                        if(cells[0].getValue().equals(CellValueType.PLAYER_1)) {
+                            valueToPaint0 = DrawColors.GREEN_BACKGROUND + "      " + DrawColors.RESET + DrawColors.WHITE_BACKGROUND + "|" + DrawColors.RESET;
+                            valueToPaint3 = DrawColors.GREEN_BACKGROUND + "  " + DrawColors.RESET + DrawColors.WHITE_BACKGROUND + cells[0].getValue().getMoveType() + DrawColors.RESET + DrawColors.GREEN_BACKGROUND + "   " + DrawColors.RESET + DrawColors.WHITE_BACKGROUND + "|" + DrawColors.RESET;
+                            valueToPaint6 = DrawColors.GREEN_BACKGROUND + "______" + DrawColors.RESET + DrawColors.WHITE_BACKGROUND + "|" + DrawColors.RESET;
+                            cellsInTheGrid.set(0, valueToPaint0);
+                            cellsInTheGrid.set(3, valueToPaint3);
+                            cellsInTheGrid.set(6, valueToPaint6);
+                            continue;
+                        }
+                        valueToPaint0 = DrawColors.RED_BACKGROUND + "      " + DrawColors.RESET + DrawColors.WHITE_BACKGROUND + "|" + DrawColors.RESET;
+                        valueToPaint3 = DrawColors.RED_BACKGROUND + "  " + DrawColors.RESET + DrawColors.WHITE_BACKGROUND + cells[0].getValue().getMoveType() + DrawColors.RESET + DrawColors.RED_BACKGROUND + "   " + DrawColors.RESET + DrawColors.WHITE_BACKGROUND + "|" + DrawColors.RESET;
+                        valueToPaint6 =  DrawColors.RED_BACKGROUND + "______" + DrawColors.RESET + DrawColors.WHITE_BACKGROUND + "|" + DrawColors.RESET;
+                        cellsInTheGrid.set(0,valueToPaint0);
+                        cellsInTheGrid.set(3,valueToPaint3);
+                        cellsInTheGrid.set(6,valueToPaint6);
                         continue;
                     case 1:
+                        if(cells[1].getValue().equals(CellValueType.PLAYER_1)){
+                            valueToPaint1 = DrawColors.GREEN_BACKGROUND + "      " + DrawColors.RESET + DrawColors.WHITE_BACKGROUND + "|" + DrawColors.RESET;
+                            valueToPaint4 = DrawColors.GREEN_BACKGROUND + "  " + DrawColors.RESET + DrawColors.WHITE_BACKGROUND +cells[1].getValue().getMoveType() + DrawColors.RESET + DrawColors.GREEN_BACKGROUND + "   " + DrawColors.RESET + DrawColors.WHITE_BACKGROUND + "|" + DrawColors.RESET;
+                            valueToPaint7 = DrawColors.GREEN_BACKGROUND + "______" + DrawColors.RESET + DrawColors.WHITE_BACKGROUND + "|" + DrawColors.RESET;
+                            cellsInTheGrid.set(1,valueToPaint1);
+                            cellsInTheGrid.set(4,valueToPaint4);
+                            cellsInTheGrid.set(7,valueToPaint7);
+                            continue;
+                        }
                         valueToPaint1 = DrawColors.RED_BACKGROUND + "      " + DrawColors.RESET + DrawColors.WHITE_BACKGROUND + "|" + DrawColors.RESET;
-                        valueToPaint2 = DrawColors.RED_BACKGROUND + "  " + DrawColors.RESET + DrawColors.WHITE_BACKGROUND +cells[1].getValue().getMoveType() + DrawColors.RESET + DrawColors.RED_BACKGROUND + "   " + DrawColors.RESET + DrawColors.WHITE_BACKGROUND + "|" + DrawColors.RESET;
-                        valueToPaint3 = DrawColors.RED_BACKGROUND + "______" + DrawColors.RESET + DrawColors.WHITE_BACKGROUND + "|" + DrawColors.RESET;
+                        valueToPaint4 = DrawColors.RED_BACKGROUND + "  " + DrawColors.RESET + DrawColors.WHITE_BACKGROUND +cells[1].getValue().getMoveType() + DrawColors.RESET + DrawColors.RED_BACKGROUND + "   " + DrawColors.RESET + DrawColors.WHITE_BACKGROUND + "|" + DrawColors.RESET;
+                        valueToPaint7 = DrawColors.RED_BACKGROUND + "______" + DrawColors.RESET + DrawColors.WHITE_BACKGROUND + "|" + DrawColors.RESET;
                         cellsInTheGrid.set(1,valueToPaint1);
-                        cellsInTheGrid.set(4,valueToPaint2);
-                        cellsInTheGrid.set(7,valueToPaint3);
+                        cellsInTheGrid.set(4,valueToPaint4);
+                        cellsInTheGrid.set(7,valueToPaint7);
                         continue;
                     case 2:
-                        valueToPaint1 = DrawColors.RED_BACKGROUND + "      " + DrawColors.RESET + " ";
-                        valueToPaint2 = DrawColors.RED_BACKGROUND + "  " + DrawColors.RESET + DrawColors.WHITE_BACKGROUND +cells[2].getValue().getMoveType()+ DrawColors.RESET + DrawColors.RED_BACKGROUND + "   " + DrawColors.RESET + " ";
-                        valueToPaint3 = DrawColors.RED_BACKGROUND+ "______" + DrawColors.RESET + " ";
-                        cellsInTheGrid.set(2,valueToPaint1);
-                        cellsInTheGrid.set(5,valueToPaint2);
-                        cellsInTheGrid.set(8,valueToPaint3);
+                        if(cells[2].getValue().equals(CellValueType.PLAYER_1)){
+                            valueToPaint2 = DrawColors.GREEN_BACKGROUND + "      " + DrawColors.RESET + " ";
+                            valueToPaint5 = DrawColors.GREEN_BACKGROUND + "  " + DrawColors.RESET + DrawColors.WHITE_BACKGROUND +cells[2].getValue().getMoveType()+ DrawColors.RESET + DrawColors.GREEN_BACKGROUND + "   " + DrawColors.RESET + " ";
+                            valueToPaint8 = DrawColors.GREEN_BACKGROUND+ "______" + DrawColors.RESET + " ";
+                            cellsInTheGrid.set(2,valueToPaint2);
+                            cellsInTheGrid.set(5,valueToPaint5);
+                            cellsInTheGrid.set(8,valueToPaint8);
+                            continue;
+                        }
+                        valueToPaint2 = DrawColors.RED_BACKGROUND + "      " + DrawColors.RESET + " ";
+                        valueToPaint5 = DrawColors.RED_BACKGROUND + "  " + DrawColors.RESET + DrawColors.WHITE_BACKGROUND +cells[2].getValue().getMoveType()+ DrawColors.RESET + DrawColors.RED_BACKGROUND + "   " + DrawColors.RESET + " ";
+                        valueToPaint8 = DrawColors.RED_BACKGROUND+ "______" + DrawColors.RESET + " ";
+                        cellsInTheGrid.set(2,valueToPaint2);
+                        cellsInTheGrid.set(5,valueToPaint5);
+                        cellsInTheGrid.set(8,valueToPaint8);
                         continue;
                     case 3:
-                        valueToPaint1 = DrawColors.RED_BACKGROUND + "      " + DrawColors.RESET + DrawColors.WHITE_BACKGROUND + "|" + DrawColors.RESET;
-                        valueToPaint2 = DrawColors.RED_BACKGROUND + "  " + DrawColors.RESET + DrawColors.WHITE_BACKGROUND +cells[3].getValue().getMoveType()+ DrawColors.RESET + DrawColors.RED_BACKGROUND + "   " + DrawColors.RESET + DrawColors.WHITE_BACKGROUND + "|" + DrawColors.RESET;
-                        valueToPaint3 = DrawColors.RED_BACKGROUND + "______" + DrawColors.RESET + DrawColors.WHITE_BACKGROUND + "|" + DrawColors.RESET;
-                        cellsInTheGrid.set(9,valueToPaint1);
-                        cellsInTheGrid.set(12,valueToPaint2);
-                        cellsInTheGrid.set(15,valueToPaint3);
+                        if(cells[3].getValue().equals(CellValueType.PLAYER_1)){
+                            valueToPaint9 = DrawColors.GREEN_BACKGROUND + "      " + DrawColors.RESET + DrawColors.WHITE_BACKGROUND + "|" + DrawColors.RESET;
+                            valueToPaint12 = DrawColors.GREEN_BACKGROUND + "  " + DrawColors.RESET + DrawColors.WHITE_BACKGROUND +cells[3].getValue().getMoveType()+ DrawColors.RESET + DrawColors.GREEN_BACKGROUND + "   " + DrawColors.RESET + DrawColors.WHITE_BACKGROUND + "|" + DrawColors.RESET;
+                            valueToPaint15 = DrawColors.GREEN_BACKGROUND + "______" + DrawColors.RESET + DrawColors.WHITE_BACKGROUND + "|" + DrawColors.RESET;
+                            cellsInTheGrid.set(9,valueToPaint9);
+                            cellsInTheGrid.set(12,valueToPaint12);
+                            cellsInTheGrid.set(15,valueToPaint15);
+                            continue;
+                        }
+                        valueToPaint9 = DrawColors.RED_BACKGROUND + "      " + DrawColors.RESET + DrawColors.WHITE_BACKGROUND + "|" + DrawColors.RESET;
+                        valueToPaint12 = DrawColors.RED_BACKGROUND + "  " + DrawColors.RESET + DrawColors.WHITE_BACKGROUND +cells[3].getValue().getMoveType()+ DrawColors.RESET + DrawColors.RED_BACKGROUND + "   " + DrawColors.RESET + DrawColors.WHITE_BACKGROUND + "|" + DrawColors.RESET;
+                        valueToPaint15 = DrawColors.RED_BACKGROUND + "______" + DrawColors.RESET + DrawColors.WHITE_BACKGROUND + "|" + DrawColors.RESET;
+                        cellsInTheGrid.set(9,valueToPaint9);
+                        cellsInTheGrid.set(12,valueToPaint12);
+                        cellsInTheGrid.set(15,valueToPaint15);
                         continue;
                     case 4:
-                        valueToPaint1 = DrawColors.RED_BACKGROUND + "      " + DrawColors.RESET + DrawColors.WHITE_BACKGROUND + "|" + DrawColors.RESET;
-                        valueToPaint2 = DrawColors.RED_BACKGROUND + "  " + DrawColors.RESET + DrawColors.WHITE_BACKGROUND +cells[4].getValue().getMoveType()+ DrawColors.RESET + DrawColors.RED_BACKGROUND + "   " + DrawColors.RESET + DrawColors.WHITE_BACKGROUND + "|" + DrawColors.RESET;;
-                        valueToPaint3 = DrawColors.RED_BACKGROUND + "______" + DrawColors.RESET + DrawColors.WHITE_BACKGROUND + "|" + DrawColors.RESET;
-                        cellsInTheGrid.set(10,valueToPaint1);
-                        cellsInTheGrid.set(13,valueToPaint2);
-                        cellsInTheGrid.set(16,valueToPaint3);
+                        if(cells[4].getValue().equals(CellValueType.PLAYER_1)){
+                            valueToPaint10 = DrawColors.GREEN_BACKGROUND + "      " + DrawColors.RESET + DrawColors.WHITE_BACKGROUND + "|" + DrawColors.RESET;
+                            valueToPaint13 = DrawColors.GREEN_BACKGROUND + "  " + DrawColors.RESET + DrawColors.WHITE_BACKGROUND +cells[4].getValue().getMoveType()+ DrawColors.RESET + DrawColors.GREEN_BACKGROUND + "   " + DrawColors.RESET + DrawColors.WHITE_BACKGROUND + "|" + DrawColors.RESET;;
+                            valueToPaint16 = DrawColors.GREEN_BACKGROUND + "______" + DrawColors.RESET + DrawColors.WHITE_BACKGROUND + "|" + DrawColors.RESET;
+                            cellsInTheGrid.set(10,valueToPaint10);
+                            cellsInTheGrid.set(13,valueToPaint13);
+                            cellsInTheGrid.set(16,valueToPaint16);
+                            continue;
+                        }
+                        valueToPaint10 = DrawColors.RED_BACKGROUND + "      " + DrawColors.RESET + DrawColors.WHITE_BACKGROUND + "|" + DrawColors.RESET;
+                        valueToPaint13 = DrawColors.RED_BACKGROUND + "  " + DrawColors.RESET + DrawColors.WHITE_BACKGROUND +cells[4].getValue().getMoveType()+ DrawColors.RESET + DrawColors.RED_BACKGROUND + "   " + DrawColors.RESET + DrawColors.WHITE_BACKGROUND + "|" + DrawColors.RESET;;
+                        valueToPaint16 = DrawColors.RED_BACKGROUND + "______" + DrawColors.RESET + DrawColors.WHITE_BACKGROUND + "|" + DrawColors.RESET;
+                        cellsInTheGrid.set(10,valueToPaint10);
+                        cellsInTheGrid.set(13,valueToPaint13);
+                        cellsInTheGrid.set(16,valueToPaint16);
                         continue;
                     case 5:
-                        valueToPaint1 = DrawColors.RED_BACKGROUND + "      " + DrawColors.RESET + " ";
-                        valueToPaint2 = DrawColors.RED_BACKGROUND + "  " + DrawColors.RESET + DrawColors.WHITE_BACKGROUND +cells[5].getValue().getMoveType()+ DrawColors.RESET + DrawColors.RED_BACKGROUND + "   " + DrawColors.RESET + " ";
-                        valueToPaint3 = DrawColors.RED_BACKGROUND + "______" + DrawColors.RESET + " ";
-                        cellsInTheGrid.set(11,valueToPaint1);
-                        cellsInTheGrid.set(14,valueToPaint2);
-                        cellsInTheGrid.set(17,valueToPaint3);
+                        if(cells[5].getValue().equals(CellValueType.PLAYER_1)){
+                            valueToPaint11 = DrawColors.GREEN_BACKGROUND + "      " + DrawColors.RESET + " ";
+                            valueToPaint14 = DrawColors.GREEN_BACKGROUND + "  " + DrawColors.RESET + DrawColors.WHITE_BACKGROUND +cells[5].getValue().getMoveType()+ DrawColors.RESET + DrawColors.GREEN_BACKGROUND + "   " + DrawColors.RESET + " ";
+                            valueToPaint17 = DrawColors.GREEN_BACKGROUND + "______" + DrawColors.RESET + " ";
+                            cellsInTheGrid.set(11,valueToPaint11);
+                            cellsInTheGrid.set(14,valueToPaint14);
+                            cellsInTheGrid.set(17,valueToPaint17);
+                            continue;
+                        }
+                        valueToPaint11 = DrawColors.RED_BACKGROUND + "      " + DrawColors.RESET + " ";
+                        valueToPaint14 = DrawColors.RED_BACKGROUND + "  " + DrawColors.RESET + DrawColors.WHITE_BACKGROUND +cells[5].getValue().getMoveType()+ DrawColors.RESET + DrawColors.RED_BACKGROUND + "   " + DrawColors.RESET + " ";
+                        valueToPaint17 = DrawColors.RED_BACKGROUND + "______" + DrawColors.RESET + " ";
+                        cellsInTheGrid.set(11,valueToPaint11);
+                        cellsInTheGrid.set(14,valueToPaint14);
+                        cellsInTheGrid.set(17,valueToPaint17);
                         continue;
                     case 6:
-                        valueToPaint1 = DrawColors.RED_BACKGROUND + "      " + DrawColors.RESET + DrawColors.WHITE_BACKGROUND + "|" + DrawColors.RESET;
-                        valueToPaint2 = DrawColors.RED_BACKGROUND + "  " + DrawColors.RESET + DrawColors.WHITE_BACKGROUND +cells[6].getValue().getMoveType()+ DrawColors.RESET + DrawColors.RED_BACKGROUND + "   " + DrawColors.RESET + DrawColors.WHITE_BACKGROUND + "|" + DrawColors.RESET;
-                        valueToPaint3 = DrawColors.RED_BACKGROUND + "      " + DrawColors.RESET + DrawColors.WHITE_BACKGROUND + "|" + DrawColors.RESET;
-                        cellsInTheGrid.set(18,valueToPaint1);
-                        cellsInTheGrid.set(21,valueToPaint2);
-                        cellsInTheGrid.set(24,valueToPaint3);
+                        if(cells[6].getValue().equals(CellValueType.PLAYER_1)){
+                            valueToPaint18 = DrawColors.GREEN_BACKGROUND + "      " + DrawColors.RESET + DrawColors.WHITE_BACKGROUND + "|" + DrawColors.RESET;
+                            valueToPaint21 = DrawColors.GREEN_BACKGROUND + "  " + DrawColors.RESET + DrawColors.WHITE_BACKGROUND +cells[6].getValue().getMoveType()+ DrawColors.RESET + DrawColors.GREEN_BACKGROUND + "   " + DrawColors.RESET + DrawColors.WHITE_BACKGROUND + "|" + DrawColors.RESET;
+                            valueToPaint24 = DrawColors.GREEN_BACKGROUND + "      " + DrawColors.RESET + DrawColors.WHITE_BACKGROUND + "|" + DrawColors.RESET;
+                            cellsInTheGrid.set(18,valueToPaint18);
+                            cellsInTheGrid.set(21,valueToPaint21);
+                            cellsInTheGrid.set(24,valueToPaint24);
+                            continue;
+                        }
+                        valueToPaint18 = DrawColors.RED_BACKGROUND + "      " + DrawColors.RESET + DrawColors.WHITE_BACKGROUND + "|" + DrawColors.RESET;
+                        valueToPaint21 = DrawColors.RED_BACKGROUND + "  " + DrawColors.RESET + DrawColors.WHITE_BACKGROUND +cells[6].getValue().getMoveType()+ DrawColors.RESET + DrawColors.RED_BACKGROUND + "   " + DrawColors.RESET + DrawColors.WHITE_BACKGROUND + "|" + DrawColors.RESET;
+                        valueToPaint24 = DrawColors.RED_BACKGROUND + "      " + DrawColors.RESET + DrawColors.WHITE_BACKGROUND + "|" + DrawColors.RESET;
+                        cellsInTheGrid.set(18,valueToPaint18);
+                        cellsInTheGrid.set(21,valueToPaint21);
+                        cellsInTheGrid.set(24,valueToPaint24);
                         continue;
                     case 7:
-                        valueToPaint1 = DrawColors.RED_BACKGROUND + "      " + DrawColors.RESET + DrawColors.WHITE_BACKGROUND +"|" + DrawColors.RESET;
-                        valueToPaint2 = DrawColors.RED_BACKGROUND + "  " + DrawColors.RESET + DrawColors.WHITE_BACKGROUND +cells[7].getValue().getMoveType()+ DrawColors.RESET + DrawColors.RED_BACKGROUND + "   " + DrawColors.RESET + DrawColors.WHITE_BACKGROUND + "|" + DrawColors.RESET;
-                        valueToPaint3 = DrawColors.RED_BACKGROUND + "      " + DrawColors.RESET + DrawColors.WHITE_BACKGROUND + "|" + DrawColors.RESET;
-                        cellsInTheGrid.set(19,valueToPaint1);
-                        cellsInTheGrid.set(22,valueToPaint2);
-                        cellsInTheGrid.set(25,valueToPaint3);
+                        if(cells[7].getValue().equals(CellValueType.PLAYER_1)){
+                            valueToPaint19 = DrawColors.GREEN_BACKGROUND + "      " + DrawColors.RESET + DrawColors.WHITE_BACKGROUND +"|" + DrawColors.RESET;
+                            valueToPaint22 = DrawColors.GREEN_BACKGROUND + "  " + DrawColors.RESET + DrawColors.WHITE_BACKGROUND +cells[7].getValue().getMoveType()+ DrawColors.RESET + DrawColors.GREEN_BACKGROUND + "   " + DrawColors.RESET + DrawColors.WHITE_BACKGROUND + "|" + DrawColors.RESET;
+                            valueToPaint25 = DrawColors.GREEN_BACKGROUND + "      " + DrawColors.RESET + DrawColors.WHITE_BACKGROUND + "|" + DrawColors.RESET;
+                            cellsInTheGrid.set(19,valueToPaint19);
+                            cellsInTheGrid.set(22,valueToPaint22);
+                            cellsInTheGrid.set(25,valueToPaint25);
+                            continue;
+                        }
+                        valueToPaint19 = DrawColors.RED_BACKGROUND + "      " + DrawColors.RESET + DrawColors.WHITE_BACKGROUND +"|" + DrawColors.RESET;
+                        valueToPaint22 = DrawColors.RED_BACKGROUND + "  " + DrawColors.RESET + DrawColors.WHITE_BACKGROUND +cells[7].getValue().getMoveType()+ DrawColors.RESET + DrawColors.RED_BACKGROUND + "   " + DrawColors.RESET + DrawColors.WHITE_BACKGROUND + "|" + DrawColors.RESET;
+                        valueToPaint25 = DrawColors.RED_BACKGROUND + "      " + DrawColors.RESET + DrawColors.WHITE_BACKGROUND + "|" + DrawColors.RESET;
+                        cellsInTheGrid.set(19,valueToPaint19);
+                        cellsInTheGrid.set(22,valueToPaint22);
+                        cellsInTheGrid.set(25,valueToPaint25);
                         continue;
                     case 8:
-                        valueToPaint1 = DrawColors.RED_BACKGROUND + "      " + DrawColors.RESET + " ";
-                        valueToPaint2 = DrawColors.RED_BACKGROUND + "  " + DrawColors.RESET + DrawColors.WHITE_BACKGROUND +cells[8].getValue().getMoveType()+ DrawColors.RESET + DrawColors.RED_BACKGROUND + "   " + DrawColors.RESET + " ";
-                        valueToPaint3 = DrawColors.RED_BACKGROUND + "      " + DrawColors.RESET + " ";
-                        cellsInTheGrid.set(20,valueToPaint1);
-                        cellsInTheGrid.set(23,valueToPaint2);
-                        cellsInTheGrid.set(26,valueToPaint3);
+                        if(cells[8].getValue().equals(CellValueType.PLAYER_1)){
+                            valueToPaint20 = DrawColors.GREEN_BACKGROUND + "      " + DrawColors.RESET + " ";
+                            valueToPaint23 = DrawColors.GREEN_BACKGROUND + "  " + DrawColors.RESET + DrawColors.WHITE_BACKGROUND +cells[8].getValue().getMoveType()+ DrawColors.RESET + DrawColors.GREEN_BACKGROUND + "   " + DrawColors.RESET + " ";
+                            valueToPaint26 = DrawColors.GREEN_BACKGROUND + "      " + DrawColors.RESET + " ";
+                            cellsInTheGrid.set(20,valueToPaint20);
+                            cellsInTheGrid.set(23,valueToPaint23);
+                            cellsInTheGrid.set(26,valueToPaint26);
+                            continue;
+                        }
+                        valueToPaint20 = DrawColors.RED_BACKGROUND + "      " + DrawColors.RESET + " ";
+                        valueToPaint23 = DrawColors.RED_BACKGROUND + "  " + DrawColors.RESET + DrawColors.WHITE_BACKGROUND +cells[8].getValue().getMoveType()+ DrawColors.RESET + DrawColors.RED_BACKGROUND + "   " + DrawColors.RESET + " ";
+                        valueToPaint26 = DrawColors.RED_BACKGROUND + "      " + DrawColors.RESET + " ";
+                        cellsInTheGrid.set(20,valueToPaint20);
+                        cellsInTheGrid.set(23,valueToPaint23);
+                        cellsInTheGrid.set(26,valueToPaint26);
                         continue;
                 }
             }
         }
-
     }
 
     public LinkedList<String> getCellsInTheGridList() {

@@ -4,8 +4,8 @@ import org.academiadecodigo.felinux.mvc.view.textIO.DrawColors;
 
 public enum CellValueType {
 
-    PLAYER_1(DrawColors.BLACK + DrawColors.GREEN_BACKGROUND + "X" + DrawColors.RESET),
-    PLAYER_2(DrawColors.BLACK + DrawColors.RED_BACKGROUND + "O" + DrawColors.RESET),
+    PLAYER_1(DrawColors.YELLOW + DrawColors.GREEN_BACKGROUND + "X" + DrawColors.RESET),
+    PLAYER_2(DrawColors.YELLOW + DrawColors.RED_BACKGROUND + "O" + DrawColors.RESET),
     EMPTY(DrawColors.BLUE + "-" + DrawColors.RESET);
 
     private String moveType;

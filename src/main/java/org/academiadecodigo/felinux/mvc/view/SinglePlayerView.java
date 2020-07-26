@@ -19,7 +19,17 @@ public class SinglePlayerView extends AbstractView {
 
     @Override
     public void show() {
+
         super.writer.println(grid.drawGameBoard());
+
+        singlePlayerController.getPlayerInput(chooseCell());
+    }
+
+    public void showRepeat() {
+
+        super.writer.println(grid.drawGameBoard());
+
+        super.writer.println(Messages.UNAVAILABLE_CELL);
 
         singlePlayerController.getPlayerInput(chooseCell());
     }
