@@ -4,13 +4,14 @@ import org.academiadecodigo.felinux.mvc.view.textIO.GameInput;
 
 public class ComService {
 
-    public String comInput() {
+    public static String comInput() {
 
+        System.out.println(GameInput.cellCoordinates.toArray()[randomNumberGenerator()]);
         return (String) GameInput.cellCoordinates.toArray()[randomNumberGenerator()];
     }
 
-    private int randomNumberGenerator() {
+    private static int randomNumberGenerator() {
 
-        return (int) Math.floor(Math.random()*10);
+        return (int) Math.floor(Math.random()*9);
     }
 }

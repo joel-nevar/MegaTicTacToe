@@ -28,6 +28,7 @@ public class GameService {
             }
 
             if (win) {
+                grid.setValue(playerValue);
                 break;
             }
         }
