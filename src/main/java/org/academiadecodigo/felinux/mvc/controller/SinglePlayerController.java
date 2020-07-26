@@ -22,7 +22,6 @@ public class SinglePlayerController implements Controller {
 
         grid = new Grid();
         singlePlayerView.setGrid(grid);
-        grid.isSinglePlayer(true);
 
         boolean win = false;
         boolean lose = false;
