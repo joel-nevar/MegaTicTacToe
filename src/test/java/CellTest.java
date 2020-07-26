@@ -31,7 +31,7 @@ public class CellTest {
         GameOverView gameOverView = new GameOverView();
 
         mainController.setMenuView(menuView);
-        mainController.setSinglePlayerController(singlePlayerController);
+       // mainController.setSinglePlayerController(singlePlayerController);
 
         singlePlayerController.setMainController(mainController);
         singlePlayerController.setGameService(gameService);
