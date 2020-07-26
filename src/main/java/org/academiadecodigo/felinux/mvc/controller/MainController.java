@@ -65,6 +65,14 @@ public class MainController implements Controller {
         this.menuView = menuView;
     }
 
+    public void setSinglePlayerController(SinglePlayerController singlePlayerController) {
+        this.singlePlayerController = singlePlayerController;
+    }
+
+    public void setExitController(ExitController exitController) {
+        this.exitController = exitController;
+    }
+
     public void setMultiPlayerController(MultiPlayerController multiPlayerController) {
 
         this.multiPlayerController = multiPlayerController;
