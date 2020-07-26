@@ -17,7 +17,7 @@ public class GameOverView extends AbstractView {
     @Override
     public void show() {
 
-        grid.drawGameBoard();
+        super.writer.println(grid.drawGameBoard());
 
         switch (winner) {
             case PLAYER_1:
@@ -35,7 +35,7 @@ public class GameOverView extends AbstractView {
 
     public String nextGame() {
 
-        System.out.println(resultMessage); //change to an output
+        super.writer.println(resultMessage);
 
         StringSetInputScanner answer = new StringSetInputScanner(GameInput.yesOrNo);
         answer.setMessage(Messages.NEXT_GAME);

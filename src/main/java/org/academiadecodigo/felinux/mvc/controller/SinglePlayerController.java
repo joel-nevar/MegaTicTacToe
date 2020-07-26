@@ -11,6 +11,8 @@ public class SinglePlayerController implements Controller {
     private SinglePlayerView singlePlayerView;
     private Grid grid;
 
+    private boolean acceptedPlay = false;
+
     @Override
     public void init() {
         newGame();
@@ -27,7 +29,11 @@ public class SinglePlayerController implements Controller {
 
         while (grid.getValue() == CellValueType.EMPTY && !tie) {
 
-            singlePlayerView.show();
+            while (!acceptedPlay) {
+                singlePlayerView.show(); //player move
+            }
+
+            acceptedPlay = false;
 
             win = GameService.hasWon(grid, CellValueType.PLAYER_1);
             lose = GameService.hasWon(grid, CellValueType.PLAYER_2);
@@ -40,6 +46,8 @@ public class SinglePlayerController implements Controller {
             if (lose) {
                 grid.setValue(CellValueType.PLAYER_2);
             }
+
+
         }
 
         gameOverController.setGrid(grid);
@@ -47,12 +55,15 @@ public class SinglePlayerController implements Controller {
     }
 
     public void getPlayerInput(String playerChoice) {
+
+        acceptedPlay = GameService.setValue(grid, playerChoice, CellValueType.PLAYER_1);
+    }
+
+    public void getComInput(String comChoice) {
         boolean validChoice = false;
 
-        //TODO re-chamar metodo selectCell
         while (!validChoice) {
-            validChoice = GameService.setValue(grid, playerChoice, CellValueType.PLAYER_1);
-
+            validChoice = GameService.setValue(grid, comChoice, CellValueType.PLAYER_2);
         }
     }
 
