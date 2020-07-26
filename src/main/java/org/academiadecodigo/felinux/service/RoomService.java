@@ -20,53 +20,60 @@ public class RoomService {
     public void gameLoop(){
 
         PlayerHandler player1 = room.getPlayer1();
+
         PlayerHandler player2 = room.getPlayer2();
 
         multiPlayerController1 = player1.getMultiPlayerController();
+        multiPlayerController1.setPlayerNumber(CellValueType.PLAYER_1);
+
         multiPlayerController2 = player2.getMultiPlayerController();
+        multiPlayerController2.setPlayerNumber(CellValueType.PLAYER_2);
 
         MultiPlayerController[] players = new MultiPlayerController[]{multiPlayerController1, multiPlayerController2};
 
         //todo change this loop's condition
 
-        while(player1.getSocket().isBound()&&player2.getSocket().isBound()) {
+        while(playARound(players)) {
 
-            playARound(players);
         }
-
-        room.broadcast("Player Disconnected");
     }
 
-    private void playARound(MultiPlayerController[] players) {
+    private boolean playARound(MultiPlayerController[] players) {
 
         for(MultiPlayerController player: players){
 
             room.broadcast(room.getGrid().drawGameBoard());
+            getPlayerInput(player);
 
+            if(GameService.hasWon(room.getGrid(),player.getPlayerNumber())){
 
-            player.listenToPlayer();
+                room.broadcast(room.getGrid().drawGameBoard());
+                room.broadcast(player.getPlayerNumber() + " has won the game :D");
+                return false;
+            }
 
-            applyMove(player,player.getLastMove()); //todo gameLOGIC HERE
-
-            while(player.getLastMove()!= null){
-                player.resetMove();
+            if(GameService.hasTied(room.getGrid())){
+                room.broadcast(room.getGrid().drawGameBoard());
+                room.broadcast("The game ended in a draw");
+                return false;
             }
         }
+
+        return true;
+    }
+
+    private void getPlayerInput(MultiPlayerController player) {
+
+        player.listenToPlayer();
+        applyMove(player,player.getLastMove());
     }
 
     private void applyMove(MultiPlayerController player, String lastMove) {
 
-        if(player == multiPlayerController1) {
+        if (!GameService.setValue(room.getGrid(), lastMove, player.getPlayerNumber())){
 
-            if (!GameService.setValue(room.getGrid(), lastMove, CellValueType.PLAYER_1)){
-
-
-            }
-            return;
-        }
-
-        if (!GameService.setValue(room.getGrid(), lastMove, CellValueType.PLAYER_2)){
-
+            player.receive("That position is full!\n");
+            getPlayerInput(player);
         }
     }
 }
