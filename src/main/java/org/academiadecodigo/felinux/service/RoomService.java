@@ -3,6 +3,7 @@ package org.academiadecodigo.felinux.service;
 import org.academiadecodigo.felinux.mvc.controller.MultiPlayerController;
 import org.academiadecodigo.felinux.mvc.model.PlayerHandler;
 import org.academiadecodigo.felinux.mvc.model.Room;
+import org.academiadecodigo.felinux.mvc.model.Server;
 import org.academiadecodigo.felinux.mvc.model.cell.CellValueType;
 
 public class RoomService {
@@ -12,10 +13,13 @@ public class RoomService {
     private MultiPlayerController multiPlayerController1;
     private MultiPlayerController multiPlayerController2;
 
-    public RoomService(Room room){
 
+
+
+    public RoomService(Room room){
         this.room =room;
     }
+
 
     public void gameLoop(){
 
@@ -34,6 +38,13 @@ public class RoomService {
         //todo change this loop's condition
 
         while(playARound(players)) { }
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        Server.THREAD_POOL.submit(player1);
+        Server.THREAD_POOL.submit(player2);
     }
 
     private boolean playARound(MultiPlayerController[] players) {
@@ -75,4 +86,6 @@ public class RoomService {
             getPlayerInput(player);
         }
     }
+
+
 }

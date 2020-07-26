@@ -24,6 +24,7 @@ public class PlayerService {
                 if (!room.checkRoomIsFull()) {
                     room.addPlayer(player);
                     multiPlayerController.transmit("Let the game begin!!!");
+
                     return;
                 }
             }

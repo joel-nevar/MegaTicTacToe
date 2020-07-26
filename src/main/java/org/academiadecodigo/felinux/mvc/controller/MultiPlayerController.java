@@ -28,7 +28,6 @@ public class MultiPlayerController implements Controller {
         view.setScanner();
 
         if(room.checkRoomIsFull()){
-
             room.getRoomService().gameLoop();
         }
     }
