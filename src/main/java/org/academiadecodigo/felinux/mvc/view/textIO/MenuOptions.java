@@ -2,8 +2,6 @@ package org.academiadecodigo.felinux.mvc.view.textIO;
 
 public enum  MenuOptions {
 
-
-
         VS_COM("Single Player"),
         VS_PLAYER("Vs Mode"),
         MEGA_VS_PLAYER("Vs Mega Mode"),

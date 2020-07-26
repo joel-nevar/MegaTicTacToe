@@ -3,12 +3,13 @@ package org.academiadecodigo.felinux.mvc.controller;
 import org.academiadecodigo.felinux.mvc.model.AbstractRoom;
 import org.academiadecodigo.felinux.mvc.model.PlayerHandler;
 import org.academiadecodigo.felinux.mvc.model.cell.CellValueType;
+import org.academiadecodigo.felinux.mvc.view.MegaModeView;
 import org.academiadecodigo.felinux.mvc.view.MultiPlayerView;
 
 public class MegaModeController implements  Controller {
 
     private AbstractRoom room;
-    private MultiPlayerView view;
+    private MegaModeView view;
     private PlayerHandler player;
     private String lastMove;
     private CellValueType playerNumber;
@@ -55,7 +56,7 @@ public class MegaModeController implements  Controller {
         return lastMove;
     }
 
-    public void setGameView(MultiPlayerView playerScreen) {
+    public void setMegaView(MegaModeView playerScreen) {
 
         this.view = playerScreen;
     }
