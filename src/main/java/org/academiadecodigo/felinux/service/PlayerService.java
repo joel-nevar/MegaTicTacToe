@@ -12,18 +12,21 @@ public class PlayerService {
 
     public void registerPlayer(PlayerHandler player){
 
-        ArrayList<Room> rooms = lobby.getRooms();
+        synchronized (lobby) {
 
-        for(Room room : rooms){
+            ArrayList<Room> rooms = lobby.getRooms();
 
-            if(!room.checkRoomIsFull()){
-                room.addPlayer(player);
-                return;
+            for (Room room : rooms) {
+
+                if (!room.checkRoomIsFull()) {
+                    room.addPlayer(player);
+                    return;
+                }
             }
-        }
 
-        Room room = new Room(player);
-        lobby.addRoom(room);
+            Room room = new Room(player);
+            lobby.addRoom(room);
+        }
     }
 
 

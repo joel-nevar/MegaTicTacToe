@@ -24,10 +24,11 @@ public class BootStrap {
 
             Prompt serverPrompt = new Prompt(System.in, System.out);
 
-            IntegerRangeInputScanner portScanner = new IntegerRangeInputScanner(0,16000);
+          /*  IntegerRangeInputScanner portScanner = new IntegerRangeInputScanner(0,16000);
             portScanner.setMessage("Insert a port number to initialize the server\n");
             portScanner.setError("A valid one thx\n");
-            int port = serverPrompt.getUserInput(portScanner);
+            int port = serverPrompt.getUserInput(portScanner);*/
+            int port = 9000;
 
             CentralController centralController = new CentralController();
             Lobby lobby = new Lobby();
