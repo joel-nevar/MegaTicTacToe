@@ -21,7 +21,7 @@ public class MegaRoomService extends AbstractRoomService {
     @Override
     protected void applyMove(MultiPlayerController player, String lastMove) {}
 
-    public void currentGrid(Grid grid){
+    public void setCurrentGrid(Grid grid){
         this.currentGrid = grid;
     }
 }
