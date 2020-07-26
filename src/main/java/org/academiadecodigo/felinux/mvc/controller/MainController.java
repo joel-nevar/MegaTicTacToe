@@ -50,7 +50,7 @@ public class MainController implements Controller {
 
             case EXIT: {
 
-                exitController.init(player);
+                exitController.init();
             }
         }
     }

@@ -93,7 +93,7 @@ public class BootStrap {
 
         ExitController exitController = new ExitController();
         exitController.setServer(server);
-
+        exitController.setPlayer(playerHandler);
         mainController.setSinglePlayerController(singlePlayerController);
         mainController.setMultiPlayerController(multiPlayerController);
         mainController.setExitController(exitController);
