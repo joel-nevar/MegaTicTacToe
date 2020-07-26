@@ -35,6 +35,7 @@ public class PlayerHandler implements Runnable{
     }
 
     public void changeTurns() {
+
         yourTurn = !yourTurn;
     }
 

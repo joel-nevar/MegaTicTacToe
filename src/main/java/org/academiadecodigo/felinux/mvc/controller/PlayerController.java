@@ -54,11 +54,12 @@ public class PlayerController implements Controller {
 
 
     public void receive(String message){
-        //System.out.println("PC "+ message);
+
         view.sendMessage(message);
     }
 
     public void transmit(String message){
+
         player.getRoom().broadcast(message);
     }
     public void setView(GameView playerScreen) {
