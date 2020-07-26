@@ -27,4 +27,17 @@ public class GameInput {
             add("c3");
         }
     };
+
+    public static final Set<String> yesOrNo = new HashSet<String>() {
+        {
+            add("y");
+            add("n");
+            add("yes");
+            add("no");
+            add("Yes");
+            add("No");
+            add("YES");
+            add("NO");
+        }
+    };
 }
