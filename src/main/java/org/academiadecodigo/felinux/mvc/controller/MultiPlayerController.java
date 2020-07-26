@@ -52,11 +52,6 @@ public class MultiPlayerController implements Controller {
         this.lastMove = message;
     }
 
-    public synchronized void resetMove(){
-
-        this.lastMove = null;
-    }
-
     public synchronized String getLastMove() {
 
         return lastMove;
