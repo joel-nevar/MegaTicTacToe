@@ -340,10 +340,6 @@ public class Grid implements Gridable, Valuable {
         }
     }
 
-    public LinkedList<String> getCellsInTheGridList() {
-        return cellsInTheGrid;
-    }
-
     public String getCellNumber(){
         //Outputs to the console the "1,2,3" numbers on the left of each left-most grid
         counterForCellNumber++;
