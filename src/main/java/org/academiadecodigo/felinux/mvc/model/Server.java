@@ -44,6 +44,10 @@ public class Server {
         System.out.println("Players connected: " + ++playerCount);
         acceptConnection();
     }
+    public void subtractPlayerCount(){
+        playerCount--;
+        System.out.println("Player left server. \nPlayers connected" + playerCount);
+    }
 
     public void setCentralService(CentralService centralService) {
         this.centralService = centralService;

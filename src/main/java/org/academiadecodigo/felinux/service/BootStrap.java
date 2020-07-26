@@ -15,6 +15,7 @@ import java.io.*;
 public class BootStrap {
 
     public static CentralService centralService;
+    public static Server server;
 
     public static void init(){
 
@@ -40,7 +41,7 @@ public class BootStrap {
             playerService.setLobby(lobby);
 
 
-            Server server = new Server(port);
+            server = new Server(port);
             server.setCentralService(centralService);
             //This says Client Found
             server.start();
@@ -91,6 +92,7 @@ public class BootStrap {
         singlePlayerController.setGameOverController(gameOverController);
 
         ExitController exitController = new ExitController();
+        exitController.setServer(server);
 
         mainController.setSinglePlayerController(singlePlayerController);
         mainController.setMultiPlayerController(multiPlayerController);
