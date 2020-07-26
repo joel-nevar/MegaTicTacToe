@@ -10,8 +10,8 @@ public class SinglePlayerController implements Controller {
 
     private GameOverController gameOverController;
     private SinglePlayerView singlePlayerView;
-    private Grid grid;
 
+    private Grid grid;
     private boolean acceptedPlay = false;
 
     @Override
@@ -24,9 +24,9 @@ public class SinglePlayerController implements Controller {
         grid = new Grid();
         singlePlayerView.setGrid(grid);
 
-        boolean tie = false;
+        boolean winner = false;
 
-        while (grid.getValue() == CellValueType.EMPTY) {
+        while (!winner) {
 
             while (!acceptedPlay) {
                 singlePlayerView.show(); //player move
@@ -34,22 +34,24 @@ public class SinglePlayerController implements Controller {
 
             acceptedPlay = false;
 
-            GameService.hasWon(grid, CellValueType.PLAYER_1);
+            winner = GameService.hasWon(grid, CellValueType.PLAYER_1);
 
-            tie = GameService.hasTied(grid);
-
-            if (tie) {
+            if (winner) {
                 break;
             }
 
-            /*
-            while (!acceptedPlay) {
+            winner = GameService.hasTied(grid);
 
-                String comInput = ComService.comInput();
-                getComInput(comInput);
-            }*/
+            if (winner) {
+                break;
+            }
 
-            GameService.hasWon(grid, CellValueType.PLAYER_2);
+            while (!GameService.setValue(grid, ComService.randomNumberGenerator(), CellValueType.PLAYER_2)) {
+
+                System.out.println("COM playing...");
+            }
+
+            winner = GameService.hasWon(grid, CellValueType.PLAYER_2);
 
         }
 
@@ -62,13 +64,9 @@ public class SinglePlayerController implements Controller {
         acceptedPlay = GameService.setValue(grid, playerChoice, CellValueType.PLAYER_1);
     }
 
-    public void getComInput(String comChoice) {
+    public void getComInput(int comChoice) {
 
-        boolean validChoice = false;
-
-        while (!validChoice) {
-            validChoice = GameService.setValue(grid, comChoice, CellValueType.PLAYER_2);
-        }
+        acceptedPlay = GameService.setValue(grid, comChoice, CellValueType.PLAYER_2);
     }
 
     public void setSinglePlayerView(SinglePlayerView singlePlayerView) {

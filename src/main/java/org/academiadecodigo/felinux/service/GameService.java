@@ -83,4 +83,14 @@ public class GameService {
 
         return false;
     }
+
+    public static boolean setValue(Grid grid, int comInput, CellValueType comValue) {
+
+        if (grid.getCellValue(comInput) == CellValueType.EMPTY) {
+            grid.setCellValue(comValue, comInput);
+            return true;
+        }
+
+        return false;
+    }
 }
