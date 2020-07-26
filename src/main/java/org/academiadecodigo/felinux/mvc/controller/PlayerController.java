@@ -16,8 +16,6 @@ public class PlayerController implements Controller {
     @Override
     public void init() {
 
-        //mainController.init();
-
         gameinit();
     }
 

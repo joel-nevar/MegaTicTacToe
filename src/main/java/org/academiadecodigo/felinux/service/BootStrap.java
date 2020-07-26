@@ -53,7 +53,7 @@ public class BootStrap {
 
     public static void initPlayer(PlayerHandler playerHandler) throws IOException {
 
-        PrintWriter printWriter = new PrintWriter(playerHandler.getSocket().getOutputStream(),true);
+        PrintWriter printWriter = new PrintWriter(playerHandler.getSocket().getOutputStream(), true);
         Prompt prompt = new Prompt(playerHandler.getSocket().getInputStream(),
                 new PrintStream(playerHandler.getSocket().getOutputStream()));
 
@@ -81,14 +81,8 @@ public class BootStrap {
         gameView.setController(playerController);
 
         playerHandler.setController(mainController);
-
-        initMenuControllers();
-    }
-
-    private static void initMenuControllers() {
+        playerHandler.setPlayerController(playerController);
 
 
-
-        //coisar o enum aqui dentro sirvoiple (sim é avec mal escrito)
     }
 }

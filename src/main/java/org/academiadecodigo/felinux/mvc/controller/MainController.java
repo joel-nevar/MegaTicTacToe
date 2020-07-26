@@ -36,6 +36,7 @@ public class MainController implements Controller {
     }
 
     public void onMenuSelection(Integer userInput) {
+
         this.userInput = userInput;
         switch (userInput){
             case 2 :{
@@ -70,5 +71,9 @@ public class MainController implements Controller {
 
     public void setPlayerHandler(PlayerHandler playerHandler) {
         this.player = playerHandler;
+    }
+
+    public PlayerHandler getPlayer() {
+        return player;
     }
 }

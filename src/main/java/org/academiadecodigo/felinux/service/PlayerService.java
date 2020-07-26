@@ -10,13 +10,10 @@ import java.util.ArrayList;
 public class PlayerService {
 
     private Lobby lobby;
-    private PlayerController playerController;
-
-
 
     public void registerPlayer(PlayerHandler player){
 
-        playerController = player.getController();
+        PlayerController playerController = player.getPlayerController();
 
         synchronized (lobby) {
 
@@ -41,6 +38,5 @@ public class PlayerService {
     public void setLobby(Lobby lobby) {
         this.lobby = lobby;
     }
-
 
 }

@@ -22,8 +22,8 @@ public class RoomService {
         PlayerHandler player1 = room.getPlayer1();
         PlayerHandler player2 = room.getPlayer2();
 
-        playerController1 = player1.getController();
-        playerController2 = player2.getController();
+        playerController1 = player1.getPlayerController();
+        playerController2 = player2.getPlayerController();
 
         PlayerController[] players = new PlayerController[]{playerController1,playerController2};
 
