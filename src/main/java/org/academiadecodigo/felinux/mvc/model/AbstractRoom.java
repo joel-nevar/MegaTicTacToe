@@ -8,8 +8,6 @@ public abstract class AbstractRoom {
     private PlayerHandler player1;
     private PlayerHandler player2;
 
-    private AbstractRoom room;
-
     private boolean roomIsFull = false;
 
     public AbstractRoom(PlayerHandler player1){
@@ -44,11 +42,6 @@ public abstract class AbstractRoom {
 
     public PlayerHandler getPlayer2(){
         return player2;
-    }
-
-    public AbstractRoom getRoom(){
-
-        return room;
     }
 
     public abstract AbstractRoomService getRoomService();

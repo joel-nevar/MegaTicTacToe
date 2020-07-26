@@ -19,6 +19,7 @@ public class Room extends AbstractRoom {
         grid = new Grid();
     }
 
+    @Override
     public AbstractRoomService getRoomService() {
         return roomService;
     }
