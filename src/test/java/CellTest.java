@@ -15,7 +15,7 @@ public class CellTest {
         SuperGrid grid = new SuperGrid();
         grid.drawGameBoard();
         Grid grid1 = new Grid();
-        grid1.drawGameBoardForPlayer1();
+        grid1.drawGameBoard();
         //
 
         Prompt prompt = new Prompt(System.in, System.out);

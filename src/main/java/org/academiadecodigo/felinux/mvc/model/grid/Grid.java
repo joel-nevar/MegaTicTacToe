@@ -20,6 +20,8 @@ public class Grid implements Gridable, Valuable {
 
     private String backGroundColor;
 
+    private boolean isPlayer1Playing = true;
+
     public Grid() {
         initCells();
         initGrid();
@@ -130,11 +132,15 @@ public class Grid implements Gridable, Valuable {
             }
         };
     }
-    public String drawGameBoardForPlayer1(){
+    public String drawGameBoard(){
 
         initGrid();
-        player1Play();
 
+        if(isPlayer1Playing) {
+            player1Play();
+        } else{
+            player2Play();
+        }
         String returnableString = "";
 
         //System.out.println("  " + DrawBoardText.smallHeader);
@@ -156,31 +162,7 @@ public class Grid implements Gridable, Valuable {
         //System.out.println(returnableString);
         return returnableString;
     }
-    public String drawGameBoardForPlayer2(){
 
-        initGrid();
-        player2Play();
-
-        String returnableString = "";
-
-        System.out.println("  " + DrawBoardText.smallHeader);
-
-        returnableString += "  " + DrawBoardText.smallHeader + "\n";
-
-        for (int i = 0; i < cellsInTheGrid.size(); i+=3) {
-            //draws full game board
-            System.out.println(
-                    getCellNumber()
-                            .concat(getCellNumber())
-                            .concat(getCellList().get(i)).concat(getCellList().get(i+1)).concat(getCellList().get(i+2))
-            );
-            returnableString += getCellNumber()
-                    .concat(getCellNumber())
-                    .concat(getCellList().get(i)).concat(getCellList().get(i+1)).concat(getCellList().get(i+2)) + "\n";
-        }
-        //System.out.println(returnableString);
-        return returnableString;
-    }
 
     public void player1Play(){
         String valueToPaint1 = "";
