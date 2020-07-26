@@ -30,13 +30,10 @@ public class SuperGrid implements Gridable {
 
         String returnableString = "";
 
-        System.out.println(DrawBoardText.bigHeader);
 
         returnableString += DrawBoardText.bigHeader + "\n";
 
         String drawBeforeHeader = DrawColors.BLUE_BACKGROUND + "     " + DrawColors.RESET;
-
-        System.out.println(drawBeforeHeader.concat(DrawBoardText.smallHeader).concat(DrawBoardText.smallHeader).concat(DrawBoardText.smallHeader));
 
         returnableString += drawBeforeHeader.concat(DrawBoardText.smallHeader).concat(DrawBoardText.smallHeader).concat(DrawBoardText.smallHeader) + "\n";
 
@@ -44,19 +41,7 @@ public class SuperGrid implements Gridable {
             for (int i = 0; i < grids[0].getCellsInTheGridList().size() - 2; i+=3) {
 
                 //draws full game board
-                System.out.println(
-                        getGridNumber()
-                                .concat(getCellNumber())
-                                    .concat(grids[0].getCellList().get(i)).concat(grids[1].getCellList().get(i+1)).concat(grids[2].getCellList().get(i+2))
-                                .concat(DrawBoardText.cellVerticalSeparator)
-                                .concat(getCellNumber()
-                                        .concat(grids[3].getCellList().get(i)).concat(grids[4].getCellList().get(i+1)).concat(grids[5].getCellList().get(i+2))
-                                .concat(DrawBoardText.cellVerticalSeparator)
-                                .concat(getCellNumber()
-                                        .concat(grids[6].getCellList().get(i)).concat(grids[7].getCellList().get(i+1)).concat(grids[8].getCellList().get(i+2))
-                                )));
-                returnableString +=
-                        getGridNumber()
+                returnableString += getGridNumber()
                                 .concat(getCellNumber())
                                 .concat(grids[0].getCellList().get(i)).concat(grids[1].getCellList().get(i+1)).concat(grids[2].getCellList().get(i+2))
                                 .concat(DrawBoardText.cellVerticalSeparator)
@@ -68,7 +53,6 @@ public class SuperGrid implements Gridable {
                                         )) + "\n";
             }
             if (counter != 2) {
-                System.out.println(DrawBoardText.cellHorizontalSeparator);
                 returnableString += DrawBoardText.cellHorizontalSeparator + "\n";
             }
         }
@@ -77,6 +61,7 @@ public class SuperGrid implements Gridable {
 
     //Draws the blue left-most part
     public String getGridNumber(){
+
         counterForGridNumber++;
 
         switch (counterForGridNumber){
