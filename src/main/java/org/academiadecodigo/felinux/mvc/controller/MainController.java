@@ -13,6 +13,7 @@ public class MainController implements Controller {
     private MultiPlayerController multiPlayerController;
     private PlayerHandler player;
     private CentralService centralService;
+    private InstructionController instructionController;
     //all controllers
 
     private int userInput = 0;
@@ -23,11 +24,9 @@ public class MainController implements Controller {
         if (userInput == 0) {
             menuView.show();
         }
-
-        chooseItem();
     }
 
-    private void chooseItem() {
+    public void chooseItem() {
 
         MenuOptions menuOption = MenuOptions.values()[userInput - 1];
         userInput = 0;
@@ -38,14 +37,18 @@ public class MainController implements Controller {
                 singlePlayerController.init();
                 break;
             }
+
             case VS_PLAYER: {
 
                 centralService.registerPlayer(player);
                 multiPlayerController.init();
                 break;
             }
+
             case INSTRUCTIONS: {
 
+                instructionController.init();
+                break;
             }
 
             case EXIT: {
@@ -84,5 +87,9 @@ public class MainController implements Controller {
 
     public void setPlayerHandler(PlayerHandler playerHandler) {
         this.player = playerHandler;
+    }
+
+    public void setInstructionController(InstructionController instructionController) {
+        this.instructionController = instructionController;
     }
 }

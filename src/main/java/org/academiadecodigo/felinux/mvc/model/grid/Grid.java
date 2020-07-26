@@ -136,7 +136,7 @@ public class Grid implements Gridable, Valuable {
         initGrid();
         playerPlayPrint();
 
-        String returnableString = "";
+        String returnableString = "\n";
 
         returnableString += "  " + DrawBoardText.smallHeader + "\n";
 
