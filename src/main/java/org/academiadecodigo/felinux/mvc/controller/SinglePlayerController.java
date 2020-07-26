@@ -51,7 +51,7 @@ public class SinglePlayerController implements Controller {
 
             while (!GameService.setValue(grid, ComService.randomNumberGenerator(), CellValueType.PLAYER_2)) {
 
-                System.out.println("COM playing...");
+                //System.out.println("COM playing...");
             }
 
             winner = GameService.hasWon(grid, CellValueType.PLAYER_2);

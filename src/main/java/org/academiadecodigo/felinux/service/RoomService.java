@@ -13,13 +13,9 @@ public class RoomService {
     private MultiPlayerController multiPlayerController1;
     private MultiPlayerController multiPlayerController2;
 
-
-
-
     public RoomService(Room room){
         this.room =room;
     }
-
 
     public void gameLoop(){
 
@@ -35,14 +31,16 @@ public class RoomService {
 
         MultiPlayerController[] players = new MultiPlayerController[]{multiPlayerController1, multiPlayerController2};
 
-        //todo change this loop's condition
-
         while(playARound(players)) { }
+
         try {
-            Thread.sleep(3000);
+
+            Thread.sleep(5000);
+
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+
         Server.THREAD_POOL.submit(player1);
         Server.THREAD_POOL.submit(player2);
     }

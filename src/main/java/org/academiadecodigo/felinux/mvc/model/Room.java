@@ -10,7 +10,6 @@ public class Room {
     private PlayerHandler player1;
     private PlayerHandler player2;
     private RoomService roomService;
-    private Server server;
 
     private boolean roomIsFull = false;
 
@@ -27,7 +26,6 @@ public class Room {
         superGrid = new SuperGrid();
         //grid.drawGameBoard();
         //superGrid.drawGameBoard();
-
     }
 
     public void addPlayer(PlayerHandler player2) {
@@ -67,9 +65,5 @@ public class Room {
 
     public SuperGrid getSuperGrid() {
         return superGrid;
-    }
-
-    public void setServer(Server server) {
-        this.server = server;
     }
 }

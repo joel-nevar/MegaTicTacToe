@@ -13,7 +13,6 @@ public class Server {
 
     private ServerSocket serverSocket;
     public static final ExecutorService THREAD_POOL = Executors.newCachedThreadPool();
-    private CentralService centralService;
     private int playerCount = 0;
 
 
@@ -47,9 +46,5 @@ public class Server {
     public void subtractPlayerCount(){
         playerCount--;
         System.out.println("Player left server. \nPlayers connected: " + playerCount);
-    }
-
-    public void setCentralService(CentralService centralService) {
-        this.centralService = centralService;
     }
 }
