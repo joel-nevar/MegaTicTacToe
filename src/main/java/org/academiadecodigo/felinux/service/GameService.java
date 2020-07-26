@@ -32,7 +32,7 @@ public class GameService {
                 break;
             }
         }
-        
+
         return win;
     }
 

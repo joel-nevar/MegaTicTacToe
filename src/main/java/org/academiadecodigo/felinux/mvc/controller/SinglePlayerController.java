@@ -24,8 +24,6 @@ public class SinglePlayerController implements Controller {
         grid = new Grid();
         singlePlayerView.setGrid(grid);
 
-        /*boolean win = false;
-        boolean lose = false;*/
         boolean tie = false;
 
         while (grid.getValue() == CellValueType.EMPTY) {
