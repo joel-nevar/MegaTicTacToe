@@ -32,6 +32,8 @@ public class GameInput {
         {
             add("y");
             add("n");
+            add("Y");
+            add("N");
             add("yes");
             add("no");
             add("Yes");

@@ -52,6 +52,7 @@ public class SinglePlayerController implements Controller {
     public void getPlayerInput(String playerChoice) {
         boolean validChoice = false;
 
+        //TODO re-chamar metodo selectCell
         while (!validChoice) {
             validChoice = gameService.setValue(grid, playerChoice, CellValueType.PLAYER_1);
 
