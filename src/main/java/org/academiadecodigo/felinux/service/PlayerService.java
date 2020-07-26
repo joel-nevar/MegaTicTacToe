@@ -44,7 +44,6 @@ public class PlayerService {
         synchronized (lobby){
 
             ArrayList<MegaRoom>megaRooms = lobby.getMegaRooms();
-
             for(MegaRoom megaRoom : megaRooms){
 
                 if(!megaRoom.checkRoomIsFull()){
