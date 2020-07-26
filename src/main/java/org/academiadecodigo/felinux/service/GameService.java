@@ -1,5 +1,6 @@
 package org.academiadecodigo.felinux.service;
 
+import org.academiadecodigo.felinux.mvc.model.Gridable;
 import org.academiadecodigo.felinux.mvc.model.Valuable;
 import org.academiadecodigo.felinux.mvc.model.grid.LineType;
 import org.academiadecodigo.felinux.mvc.model.cell.CellValueType;
@@ -55,7 +56,7 @@ public class GameService {
         return playerInput.toUpperCase().startsWith("Y");
     }
 
-    public static boolean setValue(Grid grid, String playerInput, CellValueType playerValue) {
+    public static boolean setValue(Gridable grid, String playerInput, CellValueType playerValue) {
 
         int index = 0;
 
