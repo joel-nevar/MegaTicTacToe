@@ -28,6 +28,7 @@ public class GameService {
             }
 
             if (win) {
+                grid.setValue(playerValue);
                 break;
             }
         }
@@ -77,6 +78,16 @@ public class GameService {
 
         if (grid.getCellValue(index) == CellValueType.EMPTY) {
             grid.setCellValue(playerValue, index);
+            return true;
+        }
+
+        return false;
+    }
+
+    public static boolean setValue(Grid grid, int comInput, CellValueType comValue) {
+
+        if (grid.getCellValue(comInput) == CellValueType.EMPTY) {
+            grid.setCellValue(comValue, comInput);
             return true;
         }
 

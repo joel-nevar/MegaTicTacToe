@@ -2,6 +2,7 @@ package org.academiadecodigo.felinux.mvc.controller;
 
 import org.academiadecodigo.felinux.mvc.model.PlayerHandler;
 import org.academiadecodigo.felinux.mvc.model.Room;
+import org.academiadecodigo.felinux.mvc.model.cell.CellValueType;
 import org.academiadecodigo.felinux.mvc.view.GameView;
 import org.academiadecodigo.felinux.mvc.view.MenuView;
 
@@ -12,6 +13,7 @@ public class MultiPlayerController implements Controller {
     private PlayerHandler player;
     private String lastMove;
     private MainController mainController;
+    private CellValueType playerNumber;
 
     @Override
     public void init() {
@@ -74,5 +76,13 @@ public class MultiPlayerController implements Controller {
     public void setMainController(MainController mainController) {
 
         this.mainController = mainController;
+    }
+
+    public void setPlayerNumber(CellValueType playerNumber) {
+        this.playerNumber = playerNumber;
+    }
+
+    public CellValueType getPlayerNumber() {
+        return playerNumber;
     }
 }

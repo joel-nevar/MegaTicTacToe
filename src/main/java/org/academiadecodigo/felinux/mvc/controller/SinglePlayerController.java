@@ -3,14 +3,15 @@ package org.academiadecodigo.felinux.mvc.controller;
 import org.academiadecodigo.felinux.mvc.model.cell.CellValueType;
 import org.academiadecodigo.felinux.mvc.model.grid.Grid;
 import org.academiadecodigo.felinux.mvc.view.SinglePlayerView;
+import org.academiadecodigo.felinux.service.ComService;
 import org.academiadecodigo.felinux.service.GameService;
 
 public class SinglePlayerController implements Controller {
 
     private GameOverController gameOverController;
     private SinglePlayerView singlePlayerView;
-    private Grid grid;
 
+    private Grid grid;
     private boolean acceptedPlay = false;
 
     @Override
@@ -23,11 +24,9 @@ public class SinglePlayerController implements Controller {
         grid = new Grid();
         singlePlayerView.setGrid(grid);
 
-        boolean win = false;
-        boolean lose = false;
-        boolean tie = false;
+        boolean winner = false;
 
-        while (grid.getValue() == CellValueType.EMPTY && !tie) {
+        while (!winner) {
 
             while (!acceptedPlay) {
                 singlePlayerView.show(); //player move
@@ -35,18 +34,24 @@ public class SinglePlayerController implements Controller {
 
             acceptedPlay = false;
 
-            win = GameService.hasWon(grid, CellValueType.PLAYER_1);
-            lose = GameService.hasWon(grid, CellValueType.PLAYER_2);
-            tie = GameService.hasTied(grid);
+            winner = GameService.hasWon(grid, CellValueType.PLAYER_1);
 
-            if (win) {
-                grid.setValue(CellValueType.PLAYER_1);
+            if (winner) {
+                break;
             }
 
-            if (lose) {
-                grid.setValue(CellValueType.PLAYER_2);
+            winner = GameService.hasTied(grid);
+
+            if (winner) {
+                break;
             }
 
+            while (!GameService.setValue(grid, ComService.randomNumberGenerator(), CellValueType.PLAYER_2)) {
+
+                System.out.println("COM playing...");
+            }
+
+            winner = GameService.hasWon(grid, CellValueType.PLAYER_2);
 
         }
 
@@ -59,12 +64,9 @@ public class SinglePlayerController implements Controller {
         acceptedPlay = GameService.setValue(grid, playerChoice, CellValueType.PLAYER_1);
     }
 
-    public void getComInput(String comChoice) {
-        boolean validChoice = false;
+    public void getComInput(int comChoice) {
 
-        while (!validChoice) {
-            validChoice = GameService.setValue(grid, comChoice, CellValueType.PLAYER_2);
-        }
+        acceptedPlay = GameService.setValue(grid, comChoice, CellValueType.PLAYER_2);
     }
 
     public void setSinglePlayerView(SinglePlayerView singlePlayerView) {

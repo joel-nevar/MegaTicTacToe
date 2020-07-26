@@ -2,6 +2,7 @@ package org.academiadecodigo.felinux.mvc.model;
 
 import org.academiadecodigo.felinux.mvc.controller.MainController;
 import org.academiadecodigo.felinux.mvc.controller.MultiPlayerController;
+import org.academiadecodigo.felinux.mvc.model.cell.CellValueType;
 
 import java.net.Socket;
 
