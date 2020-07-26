@@ -7,11 +7,8 @@ import org.academiadecodigo.felinux.service.GameService;
 
 public class SinglePlayerController implements Controller {
 
-    private MainController mainController;
     private GameOverController gameOverController;
     private SinglePlayerView singlePlayerView;
-    private GameService gameService;
-
     private Grid grid;
 
     @Override
@@ -32,9 +29,9 @@ public class SinglePlayerController implements Controller {
 
             singlePlayerView.show();
 
-            win = gameService.hasWon(grid, CellValueType.PLAYER_1);
-            lose = gameService.hasWon(grid, CellValueType.PLAYER_2);
-            tie = gameService.hasTied(grid);
+            win = GameService.hasWon(grid, CellValueType.PLAYER_1);
+            lose = GameService.hasWon(grid, CellValueType.PLAYER_2);
+            tie = GameService.hasTied(grid);
 
             if (win) {
                 grid.setValue(CellValueType.PLAYER_1);
@@ -54,21 +51,13 @@ public class SinglePlayerController implements Controller {
 
         //TODO re-chamar metodo selectCell
         while (!validChoice) {
-            validChoice = gameService.setValue(grid, playerChoice, CellValueType.PLAYER_1);
+            validChoice = GameService.setValue(grid, playerChoice, CellValueType.PLAYER_1);
 
         }
     }
 
-    public void setMainController(MainController mainController) {
-        this.mainController = mainController;
-    }
-
     public void setSinglePlayerView(SinglePlayerView singlePlayerView) {
         this.singlePlayerView = singlePlayerView;
-    }
-
-    public void setGameService(GameService gameService) {
-        this.gameService = gameService;
     }
 
     public void setGameOverController(GameOverController gameOverController) {

@@ -3,28 +3,36 @@ package org.academiadecodigo.felinux.mvc.controller;
 import org.academiadecodigo.felinux.mvc.model.PlayerHandler;
 import org.academiadecodigo.felinux.mvc.model.Room;
 import org.academiadecodigo.felinux.mvc.view.GameView;
-import org.w3c.dom.ls.LSOutput;
+import org.academiadecodigo.felinux.mvc.view.MenuView;
 
 public class PlayerController implements Controller {
 
     private Room room;
     private GameView view;
     private PlayerHandler player;
+    private String lastMove;
+    private MainController mainController;
 
     @Override
     public void init() {
+
+        gameinit();
+    }
+
+    private void gameinit() {
+
         this.room = player.getRoom();
 
-        view.setMessage("Your Move?");
+        view.setScanner();
 
-        view.show();
+        if(room.getPlayer2() == this.player){
 
-        room.getRoomService().gameLoop();
-      //gameLoop();
+            room.getRoomService().gameLoop();
+        }
     }
 
     public void listenToPlayer() {
-        System.out.println(Thread.currentThread().getName());
+
         view.show();
     }
 
@@ -37,7 +45,23 @@ public class PlayerController implements Controller {
 
         player.getRoom().broadcast(message);
     }
-    public void setView(GameView playerScreen) {
+
+    public synchronized void saveMove(String message){
+
+        this.lastMove = message;
+    }
+
+    public synchronized void resetMove(){
+
+        this.lastMove = null;
+    }
+
+    public synchronized String getLastMove() {
+
+        return lastMove;
+    }
+
+    public void setGameView(GameView playerScreen) {
 
         this.view = playerScreen;
     }
@@ -47,5 +71,8 @@ public class PlayerController implements Controller {
         this.player = playerHandler;
     }
 
+    public void setMainController(MainController mainController) {
 
+        this.mainController = mainController;
+    }
 }

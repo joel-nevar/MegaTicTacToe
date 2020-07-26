@@ -10,11 +10,10 @@ import java.util.ArrayList;
 public class PlayerService {
 
     private Lobby lobby;
-    private PlayerController playerController;
 
     public void registerPlayer(PlayerHandler player){
 
-        playerController = player.getController();
+        PlayerController playerController = player.getPlayerController();
 
         synchronized (lobby) {
 
@@ -30,7 +29,6 @@ public class PlayerService {
             }
 
             Room room = new Room(player);
-            System.out.println("New Room created by "+Thread.currentThread().getName());
             playerController.transmit("Waiting for contestant...");
             lobby.addRoom(room);
         }
@@ -40,6 +38,5 @@ public class PlayerService {
     public void setLobby(Lobby lobby) {
         this.lobby = lobby;
     }
-
 
 }

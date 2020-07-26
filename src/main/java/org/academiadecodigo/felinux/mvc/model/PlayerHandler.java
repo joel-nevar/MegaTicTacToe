@@ -1,5 +1,6 @@
 package org.academiadecodigo.felinux.mvc.model;
 
+import org.academiadecodigo.felinux.mvc.controller.MainController;
 import org.academiadecodigo.felinux.mvc.controller.PlayerController;
 
 import java.net.Socket;
@@ -8,9 +9,9 @@ public class PlayerHandler implements Runnable{
 
 
     private Socket socket;
-    private PlayerController controller;
+    private MainController controller;
+    private PlayerController playerController;
     private Room room;
-    private boolean yourTurn = false;
 
     public PlayerHandler(Socket socket) {
 
@@ -19,24 +20,12 @@ public class PlayerHandler implements Runnable{
 
     @Override
     public void run() {
-        System.out.println(Thread.currentThread().getName());
-        //System.out.println(controller);
         controller.init();
     }
 
-
-    public boolean isYourTurn() {
-        return yourTurn;
-    }
-
-    public void setController(PlayerController controller) {
+    public void setController(MainController controller) {
 
         this.controller = controller;
-    }
-
-    public void changeTurns() {
-
-        yourTurn = !yourTurn;
     }
 
     public void setRoom(Room room) {
@@ -46,15 +35,20 @@ public class PlayerHandler implements Runnable{
     public Room getRoom() {
         return room;
     }
+
     public Socket getSocket() {
         return socket;
     }
 
-    public PlayerController getController() {
+    public MainController getController() {
         return controller;
     }
 
-    public void setYourTurn(boolean yourTurn) {
-        this.yourTurn = yourTurn;
+    public PlayerController getPlayerController() {
+        return playerController;
+    }
+
+    public void setPlayerController(PlayerController playerController) {
+        this.playerController = playerController;
     }
 }

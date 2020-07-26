@@ -1,20 +1,20 @@
 package org.academiadecodigo.felinux.service;
 
 import org.academiadecodigo.bootcamp.Prompt;
-import org.academiadecodigo.bootcamp.scanners.integer.IntegerRangeInputScanner;
 import org.academiadecodigo.felinux.mvc.controller.CentralController;
+import org.academiadecodigo.felinux.mvc.controller.MainController;
 import org.academiadecodigo.felinux.mvc.controller.PlayerController;
 import org.academiadecodigo.felinux.mvc.model.Lobby;
 import org.academiadecodigo.felinux.mvc.model.PlayerHandler;
 import org.academiadecodigo.felinux.mvc.model.Server;
 import org.academiadecodigo.felinux.mvc.view.GameView;
+import org.academiadecodigo.felinux.mvc.view.MenuView;
 
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
-import java.io.PrintWriter;
+import java.io.*;
 
 public class BootStrap {
+
+    public static CentralController centralController;
 
     public static void init(){
 
@@ -30,7 +30,7 @@ public class BootStrap {
             int port = serverPrompt.getUserInput(portScanner);*/
             int port = 9000;
 
-            CentralController centralController = new CentralController();
+            centralController = new CentralController();
             Lobby lobby = new Lobby();
             PlayerService playerService = new PlayerService();
 
@@ -53,21 +53,36 @@ public class BootStrap {
 
     public static void initPlayer(PlayerHandler playerHandler) throws IOException {
 
-        InputStreamReader streamReader = new InputStreamReader(playerHandler.getSocket().getInputStream());
-        OutputStreamWriter streamWriter = new OutputStreamWriter(playerHandler.getSocket().getOutputStream());
-        PrintWriter printWriter = new PrintWriter(playerHandler.getSocket().getOutputStream(),true);
-        Prompt prompt = new Prompt(playerHandler.getSocket().getInputStream(), System.out);
+        PrintWriter printWriter = new PrintWriter(playerHandler.getSocket().getOutputStream(), true);
+        Prompt prompt = new Prompt(playerHandler.getSocket().getInputStream(),
+                new PrintStream(playerHandler.getSocket().getOutputStream()));
+
+        MenuView menuView = new MenuView();
+        menuView.setPrompt(prompt);
+        menuView.setWriter(printWriter);
+
+        MainController mainController = new MainController();
+        mainController.setMenuView(menuView);
+        menuView.setMainController(mainController);
 
         GameView gameView = new GameView();
         gameView.setPrompt(prompt);
         gameView.setWriter(printWriter);
 
         PlayerController playerController = new PlayerController();
-        playerController.setView(gameView);
+        playerController.setGameView(gameView);
         playerController.setPlayer(playerHandler);
+        playerController.setMainController(mainController);
+
+        mainController.setPlayerController(playerController);
+        mainController.setPlayerHandler(playerHandler);
+        mainController.setCentralController(centralController);
 
         gameView.setController(playerController);
 
-        playerHandler.setController(playerController);
+        playerHandler.setController(mainController);
+        playerHandler.setPlayerController(playerController);
+
+
     }
 }

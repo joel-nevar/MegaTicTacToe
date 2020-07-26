@@ -6,12 +6,14 @@ import org.academiadecodigo.felinux.mvc.model.Room;
 import org.academiadecodigo.felinux.mvc.view.GameView;
 
 public class RoomService {
+
+
     private Room room;
     private PlayerController playerController1;
     private PlayerController playerController2;
 
-
     public RoomService(Room room){
+
         this.room =room;
     }
 
@@ -20,23 +22,32 @@ public class RoomService {
         PlayerHandler player1 = room.getPlayer1();
         PlayerHandler player2 = room.getPlayer2();
 
-        playerController1 = player1.getController();
-        playerController2 = player2.getController();
+        playerController1 = player1.getPlayerController();
+        playerController2 = player2.getPlayerController();
 
+        PlayerController[] players = new PlayerController[]{playerController1,playerController2};
 
-        while(true) {
+        //todo change this loop's condition
 
-            if(player1.isYourTurn()) {
-                playerController1.listenToPlayer();
-                player1.setYourTurn(false);
-                player2.setYourTurn(true);
+        while(player1.getSocket().isBound()&&player2.getSocket().isBound()) {
+
+            playARound(players);
+        }
+
+        room.broadcast("Player Disconnected");
+    }
+
+    private void playARound(PlayerController[] players) {
+
+        for(PlayerController player: players){
+
+            room.broadcast(room.getGrid().drawGameBoard());
+            player.listenToPlayer();
+            room.broadcast(player.getLastMove()); //todo gameLOGIC HERE
+
+            while(player.getLastMove()!= null){
+                player.resetMove();
             }
-
-           if(player2.isYourTurn()) {
-               playerController2.listenToPlayer();
-               player2.setYourTurn(false);
-               player1.setYourTurn(true);
-           }
         }
     }
 }
