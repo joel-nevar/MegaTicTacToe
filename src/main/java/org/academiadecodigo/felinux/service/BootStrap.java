@@ -87,13 +87,16 @@ public class BootStrap {
         gameOverController.setGameOverView(gameOverView);
         gameOverController.setMainController(mainController);
 
+
         SinglePlayerController singlePlayerController = new SinglePlayerController();
         singlePlayerController.setSinglePlayerView(singlePlayerView);
         singlePlayerController.setGameOverController(gameOverController);
+        gameOverController.setSinglePlayerController(singlePlayerController);
 
         ExitController exitController = new ExitController();
         exitController.setServer(server);
         exitController.setPlayer(playerHandler);
+
         mainController.setSinglePlayerController(singlePlayerController);
         mainController.setMultiPlayerController(multiPlayerController);
         mainController.setExitController(exitController);
