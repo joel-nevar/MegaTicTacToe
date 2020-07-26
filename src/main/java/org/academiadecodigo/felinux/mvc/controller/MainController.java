@@ -45,6 +45,15 @@ public class MainController implements Controller {
                 break;
             }
 
+
+
+            case MEGA_VS_PLAYER:{
+
+                centralService.registerMegaPlayer(player);
+                multiPlayerController.init();
+                break;
+            }
+
             case INSTRUCTIONS: {
 
                 instructionController.init();
