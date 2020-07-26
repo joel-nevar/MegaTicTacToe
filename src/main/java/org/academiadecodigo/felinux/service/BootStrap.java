@@ -23,7 +23,7 @@ public class BootStrap {
 
             IntegerRangeInputScanner portScanner = new IntegerRangeInputScanner(0,16000);
             portScanner.setMessage("Insert a port number to initialize the server\n");
-            portScanner.setError("A valid one thx\n");
+            portScanner.setError("A valid one\n");
             int port = serverPrompt.getUserInput(portScanner);
             //int port = 9000;
 
@@ -35,7 +35,6 @@ public class BootStrap {
             centralService.setPlayerService(playerService);
 
             playerService.setLobby(lobby);
-
 
             server = new Server(port);
             //This says Client Found
@@ -61,9 +60,9 @@ public class BootStrap {
         mainController.setMenuView(menuView);
         menuView.setMainController(mainController);
 
-        GameView gameView = new GameView();
-        gameView.setPrompt(prompt);
-        gameView.setWriter(printWriter);
+        MultiPlayerView multiPlayerView = new MultiPlayerView();
+        multiPlayerView.setPrompt(prompt);
+        multiPlayerView.setWriter(printWriter);
 
         GameOverView gameOverView = new GameOverView();
         gameOverView.setPrompt(prompt);
@@ -78,8 +77,13 @@ public class BootStrap {
         instructionView.setPrompt(prompt);
 
         MultiPlayerController multiPlayerController = new MultiPlayerController();
-        multiPlayerController.setGameView(gameView);
+        multiPlayerController.setGameView(multiPlayerView);
         multiPlayerController.setPlayer(playerHandler);
+
+        //Megamode
+        MegaModeController megaModeController = new MegaModeController();
+        megaModeController.setGameView(multiPlayerView);
+        megaModeController.setPlayer(playerHandler);
 
         GameOverController gameOverController = new GameOverController();
         gameOverController.setGameOverView(gameOverView);
@@ -100,12 +104,13 @@ public class BootStrap {
 
         mainController.setSinglePlayerController(singlePlayerController);
         mainController.setMultiPlayerController(multiPlayerController);
+        mainController.setMegaModeController(megaModeController);
         mainController.setExitController(exitController);
         mainController.setPlayerHandler(playerHandler);
         mainController.setCentralService(centralService);
         mainController.setInstructionController(instructionController);
 
-        gameView.setController(multiPlayerController);
+        multiPlayerView.setController(multiPlayerController);
         singlePlayerView.setSinglePlayerController(singlePlayerController);
         gameOverView.setGameOverController(gameOverController);
 

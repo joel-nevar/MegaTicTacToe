@@ -36,6 +36,7 @@ public class GameService {
 
         return false;
     }
+
     public static boolean hasWon(Grid grid, CellValueType playerValue) {
 
         boolean win = false;
@@ -99,7 +100,6 @@ public class GameService {
                 break;
             default:
                 break;
-
         }
 
         index += (row * 3);
@@ -110,6 +110,31 @@ public class GameService {
         }
 
         return false;
+    }
+
+    public static Grid changeGrid(SuperGrid superGrid, String mapName){
+
+        int index = 0;
+
+        char col = mapName.toUpperCase().charAt(0);
+        int row = Integer.parseInt(String.valueOf(mapName.charAt(1))) - 1;
+
+        switch (col) {
+            case 'B':
+                index++;
+                break;
+            case 'C':
+                index += 2;
+                break;
+            default:
+                break;
+        }
+        index += (row * 3);
+
+        if(superGrid.getCellValue(index) == CellValueType.EMPTY){
+            return (Grid) superGrid.getGrids()[index];
+        }
+        return null;
     }
 
     public static boolean setValue(Grid grid, int comInput, CellValueType comValue) {

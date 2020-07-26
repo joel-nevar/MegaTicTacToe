@@ -9,15 +9,13 @@ import org.academiadecodigo.felinux.mvc.view.textIO.Messages;
 import java.io.PrintWriter;
 import java.util.Set;
 
-public class GameView extends AbstractView {
-
+public class MultiPlayerView extends AbstractView {
 
     private MultiPlayerController controller;
     private StringSetInputScanner scanner;
 
     @Override
     public void show() {
-
         showGame();
     }
 

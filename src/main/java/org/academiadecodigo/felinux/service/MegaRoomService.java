@@ -2,9 +2,11 @@ package org.academiadecodigo.felinux.service;
 
 import org.academiadecodigo.felinux.mvc.controller.MultiPlayerController;
 import org.academiadecodigo.felinux.mvc.model.AbstractRoom;
+import org.academiadecodigo.felinux.mvc.model.grid.Grid;
 
 public class MegaRoomService extends AbstractRoomService {
 
+    private Grid currentGrid;
 
     public MegaRoomService(AbstractRoom room) {
 
@@ -17,7 +19,9 @@ public class MegaRoomService extends AbstractRoomService {
     }
 
     @Override
-    protected void applyMove(MultiPlayerController player, String lastMove) {
+    protected void applyMove(MultiPlayerController player, String lastMove) {}
 
+    public void setCurrentGrid(Grid grid){
+        this.currentGrid = grid;
     }
 }

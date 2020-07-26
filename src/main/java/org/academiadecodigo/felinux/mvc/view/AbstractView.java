@@ -26,7 +26,4 @@ public abstract class AbstractView implements View {
         this.writer = writer;
     }
 
-    //prompt = new Prompt(socket.getInputStream(), new PrintStream(socket.getOutputStream()));
-    //writer = new PrintWriter(new OutputStreamWriter(socket.getOutputStream()),true);
-
 }
