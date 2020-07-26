@@ -5,8 +5,11 @@ import java.util.HashSet;
 
 public class Lobby {
 
+    private ArrayList<MegaRoom>megaRooms;
     private ArrayList <Room> rooms;
     private HashSet<PlayerHandler> players;
+
+
 
     public Lobby(){
 
@@ -14,11 +17,18 @@ public class Lobby {
         players = new HashSet<>();
     }
 
+    public void addMegaRoom(MegaRoom megaRoom){
+        megaRooms.add(megaRoom);
+    }
     public void addRoom(Room room){
         rooms.add(room);
     }
 
     public ArrayList<Room>getRooms(){
         return rooms;
+    }
+
+    public ArrayList<MegaRoom> getMegaRooms() {
+       return megaRooms;
     }
 }

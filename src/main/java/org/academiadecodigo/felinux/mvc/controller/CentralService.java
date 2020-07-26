@@ -19,6 +19,10 @@ public class CentralService {
         playerService.registerPlayer(player);
     }
 
+    public void registerMegaPlayer(PlayerHandler player){
+        playerService.registerMegaPlayer(player);
+    }
+
     public void setLobby(Lobby lobby) {
         this.lobby = lobby;
     }
