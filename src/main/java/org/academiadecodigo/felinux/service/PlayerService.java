@@ -17,7 +17,6 @@ public class PlayerService {
         for(Room room : rooms){
 
             if(!room.checkRoomIsFull()){
-
                 room.addPlayer(player);
                 return;
             }

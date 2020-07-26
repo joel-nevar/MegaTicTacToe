@@ -3,6 +3,8 @@ package org.academiadecodigo.felinux.mvc.model;
 import org.academiadecodigo.felinux.mvc.model.grid.Grid;
 import org.academiadecodigo.felinux.service.RoomService;
 
+import java.util.function.DoubleToIntFunction;
+
 public class Room {
 
 
@@ -37,7 +39,7 @@ public class Room {
     }
 
     public void broadcast(String message){
-
+        //System.out.println(this +" wants to broadcast "+ message);
         player1.getController().receive(message);
         player2.getController().receive(message);
     }

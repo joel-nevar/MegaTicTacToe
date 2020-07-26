@@ -13,14 +13,18 @@ public class PlayerController implements Controller {
 
     @Override
     public void init() {
-        view.setMessage("Your Play?");
+        this.room = player.getRoom();
+       // System.out.println(view);
+        //System.out.println(room);
+        view.setMessage("Your Move?");
+
         view.show();
-        System.out.print(room.getRoomService());
+       // System.out.print(room.getRoomService()+"HHHHHEEEELLLLPPPPPP");
         room.getRoomService().gameLoop();
-      //  gameLoop();
+      //gameLoop();
     }
 
-    private void gameLoop(){
+   /* private void gameLoop(){
         this.room = player.getRoom();
         System.out.println(player + " " +player.isYourTurn());
 
@@ -40,7 +44,7 @@ public class PlayerController implements Controller {
 
         gameLoop();
         }
-    }
+    }*/
 
     public void listenToPlayer() {
         System.out.println(Thread.currentThread().getName());
@@ -50,12 +54,11 @@ public class PlayerController implements Controller {
 
 
     public void receive(String message){
-
+        //System.out.println("PC "+ message);
         view.sendMessage(message);
     }
 
     public void transmit(String message){
-
         player.getRoom().broadcast(message);
     }
     public void setView(GameView playerScreen) {
