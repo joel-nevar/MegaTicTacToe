@@ -1,6 +1,6 @@
 package org.academiadecodigo.felinux.service;
 
-import org.academiadecodigo.felinux.mvc.controller.MultiPlayerController;
+import org.academiadecodigo.felinux.mvc.controller.MultiAbstractController;
 import org.academiadecodigo.felinux.mvc.model.AbstractRoom;
 import org.academiadecodigo.felinux.mvc.model.Room;
 
@@ -16,9 +16,9 @@ public class RoomService extends AbstractRoomService{
     }
 
     @Override
-    protected boolean playARound(MultiPlayerController[] players) {
+    protected boolean playARound(MultiAbstractController[] players) {
 
-        for(MultiPlayerController player: players){
+        for(MultiAbstractController player: players){
 
             room.broadcast(room.getGrid().drawGameBoard());
             getPlayerInput(player);
@@ -41,7 +41,7 @@ public class RoomService extends AbstractRoomService{
         return true;
     }
 
-    protected void applyMove(MultiPlayerController player, String lastMove) {
+    protected void applyMove(MultiAbstractController player, String lastMove) {
 
         if (!GameService.setValue(room.getGrid(), lastMove, player.getPlayerNumber())){
 

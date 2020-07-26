@@ -1,5 +1,6 @@
 package org.academiadecodigo.felinux.service;
 
+import org.academiadecodigo.felinux.mvc.controller.MultiAbstractController;
 import org.academiadecodigo.felinux.mvc.controller.MultiPlayerController;
 import org.academiadecodigo.felinux.mvc.model.AbstractRoom;
 import org.academiadecodigo.felinux.mvc.model.PlayerHandler;
@@ -45,14 +46,14 @@ public abstract class AbstractRoomService {
         Server.THREAD_POOL.submit(player2);
     }
 
-    protected abstract boolean playARound(MultiPlayerController[] players);
+    protected abstract boolean playARound(MultiAbstractController[] players);
 
-    protected void getPlayerInput(MultiPlayerController player) {
+    protected void getPlayerInput(MultiAbstractController player) {
 
         player.listenToPlayer();
         applyMove(player,player.getLastMove());
     }
 
-    protected abstract void applyMove(MultiPlayerController player, String lastMove);
+    protected abstract void applyMove(MultiAbstractController player, String lastMove);
 }
 

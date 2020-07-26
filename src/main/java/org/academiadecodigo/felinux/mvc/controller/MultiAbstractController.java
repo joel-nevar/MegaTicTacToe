@@ -1,10 +1,21 @@
 package org.academiadecodigo.felinux.mvc.controller;
 
-public class MultiAbstractController implements Controller{
+import org.academiadecodigo.felinux.mvc.model.cell.CellValueType;
+
+public abstract class MultiAbstractController implements Controller{
 
 
     @Override
     public void init() {
 
     }
+
+    public abstract void listenToPlayer();
+
+    public abstract String getLastMove();
+
+    public abstract void receive(String message);
+
+    public abstract CellValueType getPlayerNumber();
+
 }

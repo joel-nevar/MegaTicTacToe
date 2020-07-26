@@ -21,6 +21,7 @@ public class MegaModeView extends AbstractView {
     }
 
     private void showGame(){
+
         String userInput = super.prompt.getUserInput(scanner);
         controller.saveMove(userInput);
     }

@@ -23,6 +23,7 @@ public class MegaModeController extends MultiAbstractController {
     private void gameInit() {
 
         this.room = player.getRoom();
+
         view.setScanner();
 
         if(room.checkRoomIsFull()){

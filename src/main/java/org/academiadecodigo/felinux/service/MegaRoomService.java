@@ -1,7 +1,6 @@
 package org.academiadecodigo.felinux.service;
 
-import org.academiadecodigo.felinux.mvc.controller.MegaModeController;
-import org.academiadecodigo.felinux.mvc.controller.MultiPlayerController;
+import org.academiadecodigo.felinux.mvc.controller.MultiAbstractController;
 import org.academiadecodigo.felinux.mvc.model.AbstractRoom;
 import org.academiadecodigo.felinux.mvc.model.MegaRoom;
 import org.academiadecodigo.felinux.mvc.model.cell.CellValueType;
@@ -12,7 +11,9 @@ public class MegaRoomService extends AbstractRoomService {
 
     private Grid currentPlayableGrid;
     private boolean completedGrid;
+    private boolean validGrid;
     private MegaRoom room;
+    private Grid currentTarget;
 
     public MegaRoomService(AbstractRoom room) {
 
@@ -22,9 +23,9 @@ public class MegaRoomService extends AbstractRoomService {
     }
 
     @Override
-    protected boolean playARound(MultiPlayerController[] players) {
+    protected boolean playARound(MultiAbstractController[] players) {
 
-        for(MultiPlayerController player: players){
+        for(MultiAbstractController player: players){
 
             room.broadcast(room.getSuperGrid().drawGameBoard());
             getPlayerInput(player);
@@ -33,21 +34,31 @@ public class MegaRoomService extends AbstractRoomService {
         return true;
     }
 
-    protected void applyMove(MultiPlayerController player, String lastMove) {
+    protected void applyMove(MultiAbstractController player, String lastMove) {
 
-        Grid currentTarget = GameService.changeGrid(room.getSuperGrid(),lastMove);
 
-        if(!checkValidGrid(currentTarget,player,lastMove)){
+        if(!validGrid){
 
+            currentTarget = GameService.changeGrid(room.getSuperGrid(),lastMove);
+            validGrid = checkValidGrid(currentTarget,player);
             getPlayerInput(player);
+            return;
         }
 
         completedGrid = false;
+        //gridcheck ends here
+
+        //now its the cells of the grid
 
         if (!GameService.setValue(currentTarget, lastMove, player.getPlayerNumber())){
 
             player.receive("That position is full!\n");
             getPlayerInput(player);
+            return;
+        }
+
+        if(playOnGrid(player,currentTarget)){
+
         }
     }
 
@@ -56,24 +67,23 @@ public class MegaRoomService extends AbstractRoomService {
         this.currentPlayableGrid = grid;
     }
 
-    protected boolean PlayOnGrid(){
+    protected boolean playOnGrid(MultiAbstractController player, Grid currentTarget){
 
         if(GameService.hasWon(room.getSuperGrid(),player.getPlayerNumber())){
 
-            room.broadcast(room.getGrid().drawGameBoard());
-            player.receive("You won!");
-            room.broadcast(player.getPlayerNumber() + " has won the game!");
-            return false;
+            room.broadcast(room.getSuperGrid().drawGameBoard());
+            return true;
         }
 
-        if(GameService.hasTied(room.getGrid())){
+        if(GameService.hasTied(currentTarget)){
             room.broadcast(room.getSuperGrid().drawGameBoard());
-            room.broadcast("The game ended in a draw");
-            return false;
+            return true;
         }
+
+        return true;
     }
 
-    protected boolean checkValidGrid(Grid currentTarget, MegaModeController player, String lastMove){
+    protected boolean checkValidGrid(Grid currentTarget, MultiAbstractController player){
 
         if(currentTarget.getValue() != CellValueType.EMPTY){
 
