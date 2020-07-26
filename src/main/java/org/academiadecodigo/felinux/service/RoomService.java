@@ -33,9 +33,7 @@ public class RoomService {
 
         //todo change this loop's condition
 
-        while(playARound(players)) {
-
-        }
+        while(playARound(players)) { }
     }
 
     private boolean playARound(MultiPlayerController[] players) {
@@ -49,7 +47,7 @@ public class RoomService {
 
                 room.broadcast(room.getGrid().drawGameBoard());
                 player.receive("You won!");
-                room.broadcast(player.getPlayerNumber() + " has won the game :D");
+                room.broadcast(player.getPlayerNumber() + " has won the game!");
                 return false;
             }
 
