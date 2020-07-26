@@ -81,8 +81,12 @@ public class BootStrap {
         multiPlayerController.setPlayer(playerHandler);
 
         //Megamode
+        MegaModeView megaModeView = new MegaModeView();
+        megaModeView.setPrompt(prompt);
+        megaModeView.setWriter(printWriter);
+
         MegaModeController megaModeController = new MegaModeController();
-        megaModeController.setGameView(multiPlayerView);
+        megaModeController.setMegaView(megaModeView);
         megaModeController.setPlayer(playerHandler);
 
         GameOverController gameOverController = new GameOverController();
@@ -116,5 +120,6 @@ public class BootStrap {
 
         playerHandler.setController(mainController);
         playerHandler.setMultiPlayerController(multiPlayerController);
+        playerHandler.setMegaModeController(megaModeController);
     }
 }

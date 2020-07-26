@@ -9,6 +9,34 @@ import org.academiadecodigo.felinux.mvc.model.grid.SuperGrid;
 
 public class GameService {
 
+
+    public static boolean hasWon(SuperGrid grid, CellValueType playerValue) {
+
+        boolean win;
+
+        for (LineType winCombination : LineType.values()) {
+
+            win = true;
+
+            CellValueType[] lineValues = winCombination.getCells(grid);
+
+            for (CellValueType cellValue : lineValues) {
+
+                if (cellValue == playerValue) {
+                    continue;
+                }
+
+                win = false;
+            }
+
+            if (win) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
     public static boolean hasWon(Grid grid, CellValueType playerValue) {
 
         boolean win = false;

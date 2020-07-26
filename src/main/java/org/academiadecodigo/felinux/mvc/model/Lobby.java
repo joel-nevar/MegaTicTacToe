@@ -15,6 +15,7 @@ public class Lobby {
 
         rooms = new ArrayList<>();
         players = new HashSet<>();
+        megaRooms = new ArrayList<>();
     }
 
     public void addMegaRoom(MegaRoom megaRoom){

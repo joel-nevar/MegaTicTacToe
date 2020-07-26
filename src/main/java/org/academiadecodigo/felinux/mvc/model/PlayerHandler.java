@@ -1,6 +1,7 @@
 package org.academiadecodigo.felinux.mvc.model;
 
 import org.academiadecodigo.felinux.mvc.controller.MainController;
+import org.academiadecodigo.felinux.mvc.controller.MegaModeController;
 import org.academiadecodigo.felinux.mvc.controller.MultiPlayerController;
 
 import java.net.Socket;
@@ -11,6 +12,7 @@ public class PlayerHandler implements Runnable{
     private Socket socket;
     private MainController controller;
     private MultiPlayerController multiPlayerController;
+    private MegaModeController megaModeController;
     private AbstractRoom room;
 
     public PlayerHandler(Socket socket) {
@@ -47,6 +49,14 @@ public class PlayerHandler implements Runnable{
 
     public MultiPlayerController getMultiPlayerController() {
         return multiPlayerController;
+    }
+
+    public void setMegaModeController(MegaModeController megaModeController) {
+        this.megaModeController = megaModeController;
+    }
+
+    public MegaModeController getMegaModeController() {
+        return megaModeController;
     }
 
     public void setMultiPlayerController(MultiPlayerController multiPlayerController) {
