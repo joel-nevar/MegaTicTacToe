@@ -71,8 +71,18 @@ public class BootStrap {
         playerController.setPlayer(playerHandler);
         playerController.setMainController(mainController);
 
+        mainController.setPlayerController(playerController);
+
         gameView.setController(playerController);
 
         playerHandler.setController(playerController);
+
+        initMenuControllers();
+    }
+
+    private static void initMenuControllers() {
+
+
+        //coisar o enum aqui dentro sirvoiple (sim é avec mal escrito)
     }
 }

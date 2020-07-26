@@ -9,6 +9,7 @@ public class MainController implements Controller {
 
     private SinglePlayerController singlePlayerController;
     private ExitController exitController;
+    private PlayerController playerController;
     //all controllers
 
     private int userInput = 0;
@@ -47,5 +48,10 @@ public class MainController implements Controller {
     public void setExitController(ExitController exitController) {
         this.exitController = exitController;
         MenuOptions.EXIT.setController(exitController);
+    }
+
+    public void setPlayerController(PlayerController playerController) {
+
+        this.playerController = playerController;
     }
 }
