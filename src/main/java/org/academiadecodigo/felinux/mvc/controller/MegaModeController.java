@@ -6,7 +6,7 @@ import org.academiadecodigo.felinux.mvc.model.cell.CellValueType;
 import org.academiadecodigo.felinux.mvc.view.MegaModeView;
 import org.academiadecodigo.felinux.mvc.view.MultiPlayerView;
 
-public class MegaModeController implements  Controller {
+public class MegaModeController extends MultiAbstractController {
 
     private AbstractRoom room;
     private MegaModeView view;
@@ -23,7 +23,6 @@ public class MegaModeController implements  Controller {
     private void gameInit() {
 
         this.room = player.getRoom();
-
         view.setScanner();
 
         if(room.checkRoomIsFull()){
