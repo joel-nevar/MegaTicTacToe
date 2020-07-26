@@ -48,6 +48,7 @@ public class RoomService {
             if(GameService.hasWon(room.getGrid(),player.getPlayerNumber())){
 
                 room.broadcast(room.getGrid().drawGameBoard());
+                player.receive("You won!");
                 room.broadcast(player.getPlayerNumber() + " has won the game :D");
                 return false;
             }
