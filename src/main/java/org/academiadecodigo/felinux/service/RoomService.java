@@ -6,10 +6,11 @@ import org.academiadecodigo.felinux.mvc.model.Room;
 import org.academiadecodigo.felinux.mvc.view.GameView;
 
 public class RoomService {
+
+
     private Room room;
     private PlayerController playerController1;
     private PlayerController playerController2;
-
 
     public RoomService(Room room){
         this.room =room;
@@ -23,20 +24,23 @@ public class RoomService {
         playerController1 = player1.getController();
         playerController2 = player2.getController();
 
+        PlayerController[] players = new PlayerController[]{playerController1,playerController2};
+
+        //todo change this loop's condition
 
         while(true) {
 
-            if(player1.isYourTurn()) {
-                playerController1.listenToPlayer();
-                player1.setYourTurn(false);
-                player2.setYourTurn(true);
-            }
+            playARound(players);
+        }
+    }
 
-           if(player2.isYourTurn()) {
-               playerController2.listenToPlayer();
-               player2.setYourTurn(false);
-               player1.setYourTurn(true);
-           }
+    private void playARound(PlayerController[] players) {
+
+        for(PlayerController player: players){
+
+            player.resetMove();
+            player.listenToPlayer();
+            room.broadcast(player.getLastMove());
         }
     }
 }

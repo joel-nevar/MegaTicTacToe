@@ -9,10 +9,7 @@ import org.academiadecodigo.felinux.mvc.model.PlayerHandler;
 import org.academiadecodigo.felinux.mvc.model.Server;
 import org.academiadecodigo.felinux.mvc.view.GameView;
 
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
-import java.io.PrintWriter;
+import java.io.*;
 
 public class BootStrap {
 
@@ -53,10 +50,9 @@ public class BootStrap {
 
     public static void initPlayer(PlayerHandler playerHandler) throws IOException {
 
-        InputStreamReader streamReader = new InputStreamReader(playerHandler.getSocket().getInputStream());
-        OutputStreamWriter streamWriter = new OutputStreamWriter(playerHandler.getSocket().getOutputStream());
         PrintWriter printWriter = new PrintWriter(playerHandler.getSocket().getOutputStream(),true);
-        Prompt prompt = new Prompt(playerHandler.getSocket().getInputStream(), System.out);
+        Prompt prompt = new Prompt(playerHandler.getSocket().getInputStream(),
+                new PrintStream(playerHandler.getSocket().getOutputStream()));
 
         GameView gameView = new GameView();
         gameView.setPrompt(prompt);

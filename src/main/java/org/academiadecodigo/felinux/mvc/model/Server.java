@@ -33,8 +33,6 @@ public class Server {
 
     private void acceptConnection() throws IOException {
 
-
-
         if(threadPool.isShutdown() || threadPool.isTerminated()){
             System.out.println("Players connected: " + --playerCount + "/2");
         }

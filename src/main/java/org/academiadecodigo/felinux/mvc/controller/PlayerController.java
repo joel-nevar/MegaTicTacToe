@@ -10,21 +10,23 @@ public class PlayerController implements Controller {
     private Room room;
     private GameView view;
     private PlayerHandler player;
+    private String lastMove;
 
     @Override
     public void init() {
+
         this.room = player.getRoom();
 
         view.setMessage("Your Move?");
 
-        view.show();
+        if(room.getPlayer2() == this.player){
 
-        room.getRoomService().gameLoop();
-      //gameLoop();
+            room.getRoomService().gameLoop();
+        }
     }
 
     public void listenToPlayer() {
-        System.out.println(Thread.currentThread().getName());
+
         view.show();
     }
 
@@ -37,6 +39,22 @@ public class PlayerController implements Controller {
 
         player.getRoom().broadcast(message);
     }
+
+    public synchronized void saveMove(String message){
+
+        this.lastMove = message;
+    }
+
+    public synchronized void resetMove(){
+
+        this.lastMove = null;
+    }
+
+    public synchronized String getLastMove() {
+
+        return lastMove;
+    }
+
     public void setView(GameView playerScreen) {
 
         this.view = playerScreen;
@@ -46,6 +64,4 @@ public class PlayerController implements Controller {
 
         this.player = playerHandler;
     }
-
-
 }

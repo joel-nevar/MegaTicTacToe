@@ -30,10 +30,12 @@ public class Room {
         player2.setRoom(this);
         roomIsFull = true;
     }
+
     public void changeTurns(){
         player1.changeTurns();
         player2.changeTurns();
     }
+
     public boolean checkRoomIsFull(){
         return roomIsFull;
     }

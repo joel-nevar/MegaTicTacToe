@@ -19,7 +19,6 @@ public class PlayerHandler implements Runnable{
 
     @Override
     public void run() {
-        System.out.println(Thread.currentThread().getName());
         //System.out.println(controller);
         controller.init();
     }
@@ -46,6 +45,7 @@ public class PlayerHandler implements Runnable{
     public Room getRoom() {
         return room;
     }
+
     public Socket getSocket() {
         return socket;
     }
