@@ -20,6 +20,7 @@ public class CellTest {
 
         Prompt prompt = new Prompt(System.in, System.out);
         MenuView menuView = new MenuView();
+
         MainController mainController = new MainController();
         SinglePlayerController singlePlayerController = new SinglePlayerController();
         SinglePlayerView singlePlayerView = new SinglePlayerView();
@@ -28,10 +29,8 @@ public class CellTest {
         GameOverView gameOverView = new GameOverView();
 
         mainController.setMenuView(menuView);
-        mainController.setSinglePlayerController(singlePlayerController);
+       // mainController.setSinglePlayerController(singlePlayerController);
 
-        singlePlayerController.setMainController(mainController);
-        singlePlayerController.setGameService(gameService);
         singlePlayerController.setSinglePlayerView(singlePlayerView);
         singlePlayerController.setGameOverController(gameOverController);
 
@@ -39,7 +38,6 @@ public class CellTest {
         singlePlayerView.setPrompt(prompt);
 
         gameOverController.setGameOverView(gameOverView);
-        gameOverController.setGameService(gameService);
         gameOverController.setMainController(mainController);
         gameOverController.setSinglePlayerController(singlePlayerController);
 

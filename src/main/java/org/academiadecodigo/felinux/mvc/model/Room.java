@@ -1,9 +1,8 @@
 package org.academiadecodigo.felinux.mvc.model;
 
 import org.academiadecodigo.felinux.mvc.model.grid.Grid;
+import org.academiadecodigo.felinux.mvc.model.grid.SuperGrid;
 import org.academiadecodigo.felinux.service.RoomService;
-
-import java.util.function.DoubleToIntFunction;
 
 public class Room {
 
@@ -15,13 +14,19 @@ public class Room {
     private boolean roomIsFull = false;
 
     private Grid grid;
+    private SuperGrid superGrid;
 
     public Room(PlayerHandler player1){
+
         this.roomService = new RoomService(this);
         this.player1 = player1;
-        grid = new Grid();
-        player1.changeTurns();
         player1.setRoom(this);
+
+        grid = new Grid();
+        superGrid = new SuperGrid();
+        //grid.drawGameBoard();
+        //superGrid.drawGameBoard();
+
     }
 
     public void addPlayer(PlayerHandler player2) {
@@ -30,19 +35,16 @@ public class Room {
         player2.setRoom(this);
         roomIsFull = true;
     }
-    public void changeTurns(){
-        player1.changeTurns();
-        player2.changeTurns();
-    }
+
     public boolean checkRoomIsFull(){
         return roomIsFull;
     }
 
     public void broadcast(String message){
 
-        player1.getController().receive(message);
+        player1.getMultiPlayerController().receive(message);
         if(!(player2 == null)) {
-            player2.getController().receive(message);
+            player2.getMultiPlayerController().receive(message);
         }
     }
 
@@ -56,5 +58,13 @@ public class Room {
 
     public PlayerHandler getPlayer2(){
         return player2;
+    }
+
+    public Grid getGrid(){
+        return grid;
+    }
+
+    public SuperGrid getSuperGrid() {
+        return superGrid;
     }
 }

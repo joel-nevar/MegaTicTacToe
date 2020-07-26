@@ -137,17 +137,18 @@ public class Grid implements Gridable, Valuable {
 
         String returnableString = "";
 
-        System.out.println("  " + DrawBoardText.smallHeader);
+        //System.out.println("  " + DrawBoardText.smallHeader);
 
         returnableString += "  " + DrawBoardText.smallHeader + "\n";
 
         for (int i = 0; i < cellsInTheGrid.size(); i+=3) {
             //draws full game board
-            System.out.println(
+         /*   System.out.println(
                     getCellNumber()
                     .concat(getCellNumber())
                     .concat(getCellList().get(i)).concat(getCellList().get(i+1)).concat(getCellList().get(i+2))
             );
+          */
             returnableString += getCellNumber()
                     .concat(getCellNumber())
                     .concat(getCellList().get(i)).concat(getCellList().get(i+1)).concat(getCellList().get(i+2)) + "\n";

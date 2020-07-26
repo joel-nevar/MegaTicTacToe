@@ -1,19 +1,30 @@
 package org.academiadecodigo.felinux.mvc.view;
 
 import org.academiadecodigo.bootcamp.Prompt;
-import org.academiadecodigo.bootcamp.scanners.string.StringInputScanner;
-import org.academiadecodigo.felinux.mvc.controller.PlayerController;
+import org.academiadecodigo.bootcamp.scanners.string.StringSetInputScanner;
+import org.academiadecodigo.felinux.mvc.controller.MultiPlayerController;
+import org.academiadecodigo.felinux.mvc.view.textIO.GameInput;
+import org.academiadecodigo.felinux.mvc.view.textIO.Messages;
+
+import java.io.PrintWriter;
+import java.util.Set;
 
 public class GameView extends AbstractView {
 
-    private PlayerController controller;
-    private StringInputScanner scanner;
+
+    private MultiPlayerController controller;
+    private StringSetInputScanner scanner;
 
     @Override
     public void show() {
 
+        showGame();
+    }
+
+    private void showGame(){
+
         String userInput = super.prompt.getUserInput(scanner);
-        controller.transmit(userInput);
+        controller.saveMove(userInput);
     }
 
     public void setPrompt(Prompt prompt) {
@@ -21,22 +32,37 @@ public class GameView extends AbstractView {
         super.setPrompt(prompt);
     }
 
-    public void setController(PlayerController controller) {
+    public void setController(MultiPlayerController controller) {
 
         this.controller = controller;
     }
 
-    public void setMessage(String message) {
+    public void setScanner() {
 
         if(scanner == null){
-            scanner = new StringInputScanner();
-            scanner.setError("That's not valid");
+
+            Set<String> cellOptions = GameInput.cellCoordinates;
+
+            scanner = new StringSetInputScanner(cellOptions);
+            scanner.setMessage(Messages.SELECT_CELL);
+            scanner.setError(Messages.WRONG_CELL_INPUT);
         }
-        scanner.setMessage(message + "\n");
     }
 
     public void sendMessage(String message) {
 
         super.getWriter().println(message);
+    }
+
+    @Override
+    public PrintWriter getWriter() {
+
+        return super.getWriter();
+    }
+
+    @Override
+    public Prompt getPrompt() {
+
+        return super.getPrompt();
     }
 }

@@ -10,7 +10,6 @@ public class GameOverController implements Controller {
     private MainController mainController;
     private SinglePlayerController singlePlayerController;
     private GameOverView gameOverView;
-    private GameService gameService;
 
     private Grid grid;
 
@@ -28,7 +27,7 @@ public class GameOverController implements Controller {
 
     public void restartGame(String playerAnswer) {
 
-        boolean hasNextGame = gameService.hasNextGame(playerAnswer);
+        boolean hasNextGame = GameService.hasNextGame(playerAnswer);
 
         if (hasNextGame) {
             singlePlayerController.init();
@@ -48,10 +47,6 @@ public class GameOverController implements Controller {
 
     public void setGameOverView(GameOverView gameOverView) {
         this.gameOverView = gameOverView;
-    }
-
-    public void setGameService(GameService gameService) {
-        this.gameService = gameService;
     }
 
     public void setGrid(Grid grid) {

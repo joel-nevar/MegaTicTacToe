@@ -1,20 +1,21 @@
 package org.academiadecodigo.felinux.service;
 
 import org.academiadecodigo.bootcamp.Prompt;
-import org.academiadecodigo.bootcamp.scanners.integer.IntegerRangeInputScanner;
-import org.academiadecodigo.felinux.mvc.controller.CentralController;
-import org.academiadecodigo.felinux.mvc.controller.PlayerController;
+import org.academiadecodigo.felinux.mvc.controller.*;
 import org.academiadecodigo.felinux.mvc.model.Lobby;
 import org.academiadecodigo.felinux.mvc.model.PlayerHandler;
 import org.academiadecodigo.felinux.mvc.model.Server;
+import org.academiadecodigo.felinux.mvc.view.GameOverView;
 import org.academiadecodigo.felinux.mvc.view.GameView;
+import org.academiadecodigo.felinux.mvc.view.MenuView;
+import org.academiadecodigo.felinux.mvc.view.SinglePlayerView;
 
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
-import java.io.PrintWriter;
+import java.io.*;
 
 public class BootStrap {
+
+    public static CentralService centralService;
+    public static Server server;
 
     public static void init(){
 
@@ -30,18 +31,18 @@ public class BootStrap {
             int port = serverPrompt.getUserInput(portScanner);*/
             int port = 9000;
 
-            CentralController centralController = new CentralController();
+            centralService = new CentralService();
             Lobby lobby = new Lobby();
             PlayerService playerService = new PlayerService();
 
-            centralController.setLobby(lobby);
-            centralController.setPlayerService(playerService);
+            centralService.setLobby(lobby);
+            centralService.setPlayerService(playerService);
 
             playerService.setLobby(lobby);
 
 
-            Server server = new Server(port);
-            server.setCentralController(centralController);
+            server = new Server(port);
+            server.setCentralService(centralService);
             //This says Client Found
             server.start();
 
@@ -53,21 +54,57 @@ public class BootStrap {
 
     public static void initPlayer(PlayerHandler playerHandler) throws IOException {
 
-        InputStreamReader streamReader = new InputStreamReader(playerHandler.getSocket().getInputStream());
-        OutputStreamWriter streamWriter = new OutputStreamWriter(playerHandler.getSocket().getOutputStream());
-        PrintWriter printWriter = new PrintWriter(playerHandler.getSocket().getOutputStream(),true);
-        Prompt prompt = new Prompt(playerHandler.getSocket().getInputStream(), System.out);
+        PrintWriter printWriter = new PrintWriter(playerHandler.getSocket().getOutputStream(), true);
+        Prompt prompt = new Prompt(playerHandler.getSocket().getInputStream(),
+                new PrintStream(playerHandler.getSocket().getOutputStream()));
+
+        MenuView menuView = new MenuView();
+        menuView.setPrompt(prompt);
+        menuView.setWriter(printWriter);
+
+        MainController mainController = new MainController();
+        mainController.setMenuView(menuView);
+        menuView.setMainController(mainController);
 
         GameView gameView = new GameView();
         gameView.setPrompt(prompt);
         gameView.setWriter(printWriter);
 
-        PlayerController playerController = new PlayerController();
-        playerController.setView(gameView);
-        playerController.setPlayer(playerHandler);
+        GameOverView gameOverView = new GameOverView();
+        gameOverView.setPrompt(prompt);
+        gameOverView.setWriter(printWriter);
 
-        gameView.setController(playerController);
+        SinglePlayerView singlePlayerView = new SinglePlayerView();
+        singlePlayerView.setPrompt(prompt);
+        singlePlayerView.setWriter(printWriter);
 
-        playerHandler.setController(playerController);
+        MultiPlayerController multiPlayerController = new MultiPlayerController();
+        multiPlayerController.setGameView(gameView);
+        multiPlayerController.setPlayer(playerHandler);
+        multiPlayerController.setMainController(mainController);
+
+        GameOverController gameOverController = new GameOverController();
+        gameOverController.setGameOverView(gameOverView);
+        gameOverController.setMainController(mainController);
+
+        SinglePlayerController singlePlayerController = new SinglePlayerController();
+        singlePlayerController.setSinglePlayerView(singlePlayerView);
+        singlePlayerController.setGameOverController(gameOverController);
+
+        ExitController exitController = new ExitController();
+        exitController.setServer(server);
+        exitController.setPlayer(playerHandler);
+        mainController.setSinglePlayerController(singlePlayerController);
+        mainController.setMultiPlayerController(multiPlayerController);
+        mainController.setExitController(exitController);
+        mainController.setPlayerHandler(playerHandler);
+        mainController.setCentralService(centralService);
+
+        gameView.setController(multiPlayerController);
+        singlePlayerView.setSinglePlayerController(singlePlayerController);
+        gameOverView.setGameOverController(gameOverController);
+
+        playerHandler.setController(mainController);
+        playerHandler.setMultiPlayerController(multiPlayerController);
     }
 }

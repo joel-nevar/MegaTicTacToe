@@ -1,11 +1,9 @@
 package org.academiadecodigo.felinux.mvc.model;
 
-import org.academiadecodigo.felinux.mvc.controller.CentralController;
-import org.academiadecodigo.felinux.mvc.controller.PlayerController;
+import org.academiadecodigo.felinux.mvc.controller.CentralService;
 import org.academiadecodigo.felinux.service.BootStrap;
 
 import java.io.IOException;
-import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -15,7 +13,7 @@ public class Server {
 
     private ServerSocket serverSocket;
     private ExecutorService threadPool;
-    private CentralController centralController;
+    private CentralService centralService;
     private int playerCount = 0;
 
 
@@ -33,8 +31,6 @@ public class Server {
 
     private void acceptConnection() throws IOException {
 
-
-
         if(threadPool.isShutdown() || threadPool.isTerminated()){
             System.out.println("Players connected: " + --playerCount + "/2");
         }
@@ -42,13 +38,18 @@ public class Server {
         //serverLoop
         PlayerHandler playerHandler = new PlayerHandler(serverSocket.accept());
         BootStrap.initPlayer(playerHandler);
-        centralController.registerPlayer(playerHandler);
+        //centralController.registerPlayer(playerHandler);
+
         threadPool.submit(playerHandler);
         System.out.println("Players connected: " + ++playerCount);
         acceptConnection();
     }
+    public void subtractPlayerCount(){
+        playerCount--;
+        System.out.println("Player left server. \nPlayers connected" + playerCount);
+    }
 
-    public void setCentralController(CentralController centralController) {
-        this.centralController = centralController;
+    public void setCentralService(CentralService centralService) {
+        this.centralService = centralService;
     }
 }
