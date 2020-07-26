@@ -14,7 +14,7 @@ public class MenuView extends AbstractView {
     }
 
     private void showMenu() {
-
+        System.out.println(mainController);
         super.writer.println(Messages.CLEAN_SCREEN);
         MenuInputScanner scanner = new MenuInputScanner(Messages.getMenuMessages());
         scanner.setError(Messages.CLEAN_SCREEN + Messages.VIEW_MAIN_ERROR);

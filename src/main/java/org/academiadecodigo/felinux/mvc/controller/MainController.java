@@ -1,5 +1,6 @@
 package org.academiadecodigo.felinux.mvc.controller;
 
+import org.academiadecodigo.felinux.mvc.model.PlayerHandler;
 import org.academiadecodigo.felinux.mvc.view.MenuView;
 import org.academiadecodigo.felinux.mvc.view.textIO.MenuOptions;
 
@@ -10,6 +11,8 @@ public class MainController implements Controller {
     private SinglePlayerController singlePlayerController;
     private ExitController exitController;
     private PlayerController playerController;
+    private PlayerHandler player;
+    private CentralController centralController;
     //all controllers
 
     private int userInput = 0;
@@ -34,16 +37,22 @@ public class MainController implements Controller {
 
     public void onMenuSelection(Integer userInput) {
         this.userInput = userInput;
+        switch (userInput){
+            case 2 :{
+                centralController.registerPlayer(player);
+                break;
+            }
+        }
     }
 
     public void setMenuView(MenuView menuView) {
         this.menuView = menuView;
     }
 
-    public void setSinglePlayerController(SinglePlayerController singlePlayerController) {
+   /* public void setSinglePlayerController(SinglePlayerController singlePlayerController) {
         this.singlePlayerController = singlePlayerController;
         MenuOptions.SIMPLE_VS_COM.setController(singlePlayerController);
-    }
+    }*/
 
     public void setExitController(ExitController exitController) {
         this.exitController = exitController;
@@ -53,5 +62,13 @@ public class MainController implements Controller {
     public void setPlayerController(PlayerController playerController) {
 
         this.playerController = playerController;
+    }
+
+    public void setCentralController(CentralController centralController) {
+        this.centralController = centralController;
+    }
+
+    public void setPlayerHandler(PlayerHandler playerHandler) {
+        this.player = playerHandler;
     }
 }

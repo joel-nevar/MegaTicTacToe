@@ -40,7 +40,8 @@ public class Server {
         //serverLoop
         PlayerHandler playerHandler = new PlayerHandler(serverSocket.accept());
         BootStrap.initPlayer(playerHandler);
-        centralController.registerPlayer(playerHandler);
+        //centralController.registerPlayer(playerHandler);
+
         threadPool.submit(playerHandler);
         System.out.println("Players connected: " + ++playerCount);
         acceptConnection();

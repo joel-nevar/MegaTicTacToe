@@ -12,6 +12,8 @@ public class PlayerService {
     private Lobby lobby;
     private PlayerController playerController;
 
+
+
     public void registerPlayer(PlayerHandler player){
 
         playerController = player.getController();

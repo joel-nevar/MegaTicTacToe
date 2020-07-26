@@ -14,6 +14,8 @@ import java.io.*;
 
 public class BootStrap {
 
+    public static CentralController centralController;
+
     public static void init(){
 
         try {
@@ -28,7 +30,7 @@ public class BootStrap {
             int port = serverPrompt.getUserInput(portScanner);*/
             int port = 9000;
 
-            CentralController centralController = new CentralController();
+            centralController = new CentralController();
             Lobby lobby = new Lobby();
             PlayerService playerService = new PlayerService();
 
@@ -61,6 +63,7 @@ public class BootStrap {
 
         MainController mainController = new MainController();
         mainController.setMenuView(menuView);
+        menuView.setMainController(mainController);
 
         GameView gameView = new GameView();
         gameView.setPrompt(prompt);
@@ -72,6 +75,8 @@ public class BootStrap {
         playerController.setMainController(mainController);
 
         mainController.setPlayerController(playerController);
+        mainController.setPlayerHandler(playerHandler);
+        mainController.setCentralController(centralController);
 
         gameView.setController(playerController);
 
