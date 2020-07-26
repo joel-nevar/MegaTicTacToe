@@ -19,9 +19,11 @@ public class PlayerHandler implements Runnable{
 
     @Override
     public void run() {
-        System.out.println("Está no playerHandler " + controller);
+        System.out.println(Thread.currentThread().getName());
+        //System.out.println(controller);
         controller.init();
     }
+
 
     public boolean isYourTurn() {
         return yourTurn;
@@ -44,7 +46,6 @@ public class PlayerHandler implements Runnable{
     public Room getRoom() {
         return room;
     }
-
     public Socket getSocket() {
         return socket;
     }
@@ -53,4 +54,7 @@ public class PlayerHandler implements Runnable{
         return controller;
     }
 
+    public void setYourTurn(boolean yourTurn) {
+        this.yourTurn = yourTurn;
+    }
 }
