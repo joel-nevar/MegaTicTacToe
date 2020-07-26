@@ -30,7 +30,6 @@ public class PlayerService {
             }
 
             Room room = new Room(player);
-            System.out.println("New Room created by "+Thread.currentThread().getName());
             playerController.transmit("Waiting for contestant...");
             lobby.addRoom(room);
         }

@@ -18,12 +18,10 @@ public class Room {
     private Grid grid;
     private SuperGrid superGrid;
 
-
-
     public Room(PlayerHandler player1){
+
         this.roomService = new RoomService(this);
         this.player1 = player1;
-        player1.changeTurns();
         player1.setRoom(this);
 
         grid = new Grid();
@@ -38,11 +36,6 @@ public class Room {
         this.player2 = player2;
         player2.setRoom(this);
         roomIsFull = true;
-    }
-
-    public void changeTurns(){
-        player1.changeTurns();
-        player2.changeTurns();
     }
 
     public boolean checkRoomIsFull(){

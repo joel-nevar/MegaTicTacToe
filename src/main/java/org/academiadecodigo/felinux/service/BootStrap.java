@@ -75,12 +75,13 @@ public class BootStrap {
 
         gameView.setController(playerController);
 
-        playerHandler.setController(playerController);
+        playerHandler.setController(mainController);
 
         initMenuControllers();
     }
 
     private static void initMenuControllers() {
+
 
 
         //coisar o enum aqui dentro sirvoiple (sim é avec mal escrito)

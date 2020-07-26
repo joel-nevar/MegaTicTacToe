@@ -8,7 +8,7 @@ import org.academiadecodigo.felinux.mvc.model.grid.Grid;
 public class GameService {
 
 
-    public boolean hasWon(Grid grid, CellValueType playerValue) {
+    public static boolean hasWon(Grid grid, CellValueType playerValue) {
 
         boolean win = false;
 
@@ -35,7 +35,7 @@ public class GameService {
         return win;
     }
 
-    public boolean hasTied(Grid grid) {
+    public static boolean hasTied(Grid grid) {
 
         boolean tie = true;
 
@@ -49,12 +49,12 @@ public class GameService {
         return tie;
     }
 
-    public boolean hasNextGame(String playerInput) {
+    public static boolean hasNextGame(String playerInput) {
 
         return playerInput.toUpperCase().startsWith("Y");
     }
 
-    public boolean setValue(Grid grid, String playerInput, CellValueType playerValue) {
+    public static boolean setValue(Grid grid, String playerInput, CellValueType playerValue) {
 
         int index = 0;
 

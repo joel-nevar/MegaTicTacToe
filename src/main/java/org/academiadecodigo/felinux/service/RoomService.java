@@ -13,6 +13,7 @@ public class RoomService {
     private PlayerController playerController2;
 
     public RoomService(Room room){
+
         this.room =room;
     }
 
@@ -28,19 +29,25 @@ public class RoomService {
 
         //todo change this loop's condition
 
-        while(true) {
+        while(player1.getSocket().isBound()&&player2.getSocket().isBound()) {
 
             playARound(players);
         }
+
+        room.broadcast("Player Disconnected");
     }
 
     private void playARound(PlayerController[] players) {
 
         for(PlayerController player: players){
 
-            player.resetMove();
+            room.broadcast(room.getGrid().drawGameBoard());
             player.listenToPlayer();
-            room.broadcast(player.getLastMove());
+            room.broadcast(player.getLastMove()); //todo gameLOGIC HERE
+
+            while(player.getLastMove()!= null){
+                player.resetMove();
+            }
         }
     }
 }

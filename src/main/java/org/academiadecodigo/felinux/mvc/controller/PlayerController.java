@@ -16,7 +16,7 @@ public class PlayerController implements Controller {
     @Override
     public void init() {
 
-        mainController.init();
+        //mainController.init();
 
         gameinit();
     }
@@ -25,7 +25,7 @@ public class PlayerController implements Controller {
 
         this.room = player.getRoom();
 
-        view.setScanner("Your Move?");
+        view.setScanner();
 
         if(room.getPlayer2() == this.player){
 

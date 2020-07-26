@@ -4,15 +4,18 @@ import org.academiadecodigo.bootcamp.Prompt;
 import org.academiadecodigo.bootcamp.scanners.string.StringInputScanner;
 import org.academiadecodigo.bootcamp.scanners.string.StringSetInputScanner;
 import org.academiadecodigo.felinux.mvc.controller.PlayerController;
+import org.academiadecodigo.felinux.mvc.view.textIO.GameInput;
+import org.academiadecodigo.felinux.mvc.view.textIO.Messages;
 
 import java.io.PrintWriter;
 import java.util.HashSet;
+import java.util.Set;
 
 public class GameView extends AbstractView {
 
 
     private PlayerController controller;
-    private StringInputScanner scanner;
+    private StringSetInputScanner scanner;
 
     @Override
     public void show() {
@@ -22,11 +25,8 @@ public class GameView extends AbstractView {
 
     private void showGame(){
 
-        if (controller.getLastMove()==null){
-
-            String userInput = super.prompt.getUserInput(scanner);
-            controller.saveMove(userInput);
-        }
+        String userInput = super.prompt.getUserInput(scanner);
+        controller.saveMove(userInput);
     }
 
     public void setPrompt(Prompt prompt) {
@@ -39,13 +39,16 @@ public class GameView extends AbstractView {
         this.controller = controller;
     }
 
-    public void setScanner(String message) {
+    public void setScanner() {
 
         if(scanner == null){
-            scanner = new StringInputScanner();
-            scanner.setError("That's not valid");
+
+            Set<String> cellOptions = GameInput.cellCoordinates;
+
+            scanner = new StringSetInputScanner(cellOptions);
+            scanner.setMessage(Messages.SELECT_CELL);
+            scanner.setError(Messages.WRONG_CELL_INPUT);
         }
-        scanner.setMessage(message + "\n");
     }
 
     public void sendMessage(String message) {
