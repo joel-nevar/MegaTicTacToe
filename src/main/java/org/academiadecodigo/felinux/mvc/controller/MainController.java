@@ -32,32 +32,37 @@ public class MainController implements Controller {
         MenuOptions menuOption = MenuOptions.values()[userInput - 1];
         userInput = 0;
 
-        menuOption.init();
+        switch (menuOption){
+
+            case VS_COM: {
+                singlePlayerController.init();
+                break;
+            }
+            case VS_PLAYER: {
+
+                centralController.registerPlayer(player);
+                playerController.init();
+                break;
+            }
+            case INSTRUCTIONS: {
+
+            }
+
+            case EXIT: {
+
+                exitController.init();
+            }
+        }
     }
 
     public void onMenuSelection(Integer userInput) {
 
         this.userInput = userInput;
-        switch (userInput){
-            case 2 :{
-                centralController.registerPlayer(player);
-                break;
-            }
-        }
+
     }
 
     public void setMenuView(MenuView menuView) {
         this.menuView = menuView;
-    }
-
-   /* public void setSinglePlayerController(SinglePlayerController singlePlayerController) {
-        this.singlePlayerController = singlePlayerController;
-        MenuOptions.SIMPLE_VS_COM.setController(singlePlayerController);
-    }*/
-
-    public void setExitController(ExitController exitController) {
-        this.exitController = exitController;
-        MenuOptions.EXIT.setController(exitController);
     }
 
     public void setPlayerController(PlayerController playerController) {
@@ -71,9 +76,5 @@ public class MainController implements Controller {
 
     public void setPlayerHandler(PlayerHandler playerHandler) {
         this.player = playerHandler;
-    }
-
-    public PlayerHandler getPlayer() {
-        return player;
     }
 }

@@ -1,14 +1,14 @@
 package org.academiadecodigo.felinux.service;
 
 import org.academiadecodigo.bootcamp.Prompt;
-import org.academiadecodigo.felinux.mvc.controller.CentralController;
-import org.academiadecodigo.felinux.mvc.controller.MainController;
-import org.academiadecodigo.felinux.mvc.controller.PlayerController;
+import org.academiadecodigo.felinux.mvc.controller.*;
 import org.academiadecodigo.felinux.mvc.model.Lobby;
 import org.academiadecodigo.felinux.mvc.model.PlayerHandler;
 import org.academiadecodigo.felinux.mvc.model.Server;
+import org.academiadecodigo.felinux.mvc.view.GameOverView;
 import org.academiadecodigo.felinux.mvc.view.GameView;
 import org.academiadecodigo.felinux.mvc.view.MenuView;
+import org.academiadecodigo.felinux.mvc.view.SinglePlayerView;
 
 import java.io.*;
 
@@ -69,16 +69,34 @@ public class BootStrap {
         gameView.setPrompt(prompt);
         gameView.setWriter(printWriter);
 
+        GameOverView gameOverView = new GameOverView();
+        gameOverView.setPrompt(prompt);
+        gameOverView.setWriter(printWriter);
+
+        SinglePlayerView singlePlayerView = new SinglePlayerView();
+        singlePlayerView.setPrompt(prompt);
+        singlePlayerView.setWriter(printWriter);
+
         PlayerController playerController = new PlayerController();
         playerController.setGameView(gameView);
         playerController.setPlayer(playerHandler);
         playerController.setMainController(mainController);
+
+        GameOverController gameOverController = new GameOverController();
+        gameOverController.setGameOverView(gameOverView);
+        gameOverController.setMainController(mainController);
+
+        SinglePlayerController singlePlayerController = new SinglePlayerController();
+        singlePlayerController.setSinglePlayerView(singlePlayerView);
+        singlePlayerController.setGameOverController(gameOverController);
 
         mainController.setPlayerController(playerController);
         mainController.setPlayerHandler(playerHandler);
         mainController.setCentralController(centralController);
 
         gameView.setController(playerController);
+        singlePlayerView.setSinglePlayerController(singlePlayerController);
+        gameOverView.setGameOverController(gameOverController);
 
         playerHandler.setController(mainController);
         playerHandler.setPlayerController(playerController);

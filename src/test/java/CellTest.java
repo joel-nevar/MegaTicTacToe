@@ -41,7 +41,6 @@ public class CellTest {
         singlePlayerView.setPrompt(prompt);
 
         gameOverController.setGameOverView(gameOverView);
-        gameOverController.setGameService(gameService);
         gameOverController.setMainController(mainController);
         gameOverController.setSinglePlayerController(singlePlayerController);
 

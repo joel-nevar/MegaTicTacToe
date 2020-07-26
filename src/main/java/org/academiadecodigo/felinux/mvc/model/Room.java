@@ -44,9 +44,9 @@ public class Room {
 
     public void broadcast(String message){
 
-        player1.getController().receive(message);
+        player1.getPlayerController().receive(message);
         if(!(player2 == null)) {
-            player2.getController().receive(message);
+            player2.getPlayerController().receive(message);
         }
     }
 
