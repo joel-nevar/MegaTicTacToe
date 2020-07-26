@@ -2,12 +2,9 @@ import org.academiadecodigo.bootcamp.Prompt;
 import org.academiadecodigo.felinux.mvc.controller.GameOverController;
 import org.academiadecodigo.felinux.mvc.controller.MainController;
 import org.academiadecodigo.felinux.mvc.controller.SinglePlayerController;
-import org.academiadecodigo.felinux.mvc.model.cell.Cell;
-import org.academiadecodigo.felinux.mvc.model.cell.CellValueType;
 import org.academiadecodigo.felinux.mvc.model.grid.Grid;
 import org.academiadecodigo.felinux.mvc.model.grid.SuperGrid;
 import org.academiadecodigo.felinux.mvc.view.GameOverView;
-import org.academiadecodigo.felinux.mvc.view.GameView;
 import org.academiadecodigo.felinux.mvc.view.MenuView;
 import org.academiadecodigo.felinux.mvc.view.SinglePlayerView;
 import org.academiadecodigo.felinux.service.GameService;
@@ -18,7 +15,7 @@ public class CellTest {
         SuperGrid grid = new SuperGrid();
         grid.drawGameBoard();
         Grid grid1 = new Grid();
-        grid1.drawGameBoard();
+        grid1.drawGameBoardForPlayer1();
         //
 
         Prompt prompt = new Prompt(System.in, System.out);

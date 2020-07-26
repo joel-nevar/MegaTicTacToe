@@ -17,7 +17,7 @@ public class GameOverView extends AbstractView {
     @Override
     public void show() {
 
-        grid.drawGameBoard();
+        grid.drawGameBoardForPlayer1();
 
         switch (winner) {
             case PLAYER_1:
