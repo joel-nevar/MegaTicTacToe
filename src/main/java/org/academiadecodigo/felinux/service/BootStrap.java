@@ -1,6 +1,7 @@
 package org.academiadecodigo.felinux.service;
 
 import org.academiadecodigo.bootcamp.Prompt;
+import org.academiadecodigo.bootcamp.scanners.integer.IntegerRangeInputScanner;
 import org.academiadecodigo.felinux.mvc.controller.*;
 import org.academiadecodigo.felinux.mvc.model.Lobby;
 import org.academiadecodigo.felinux.mvc.model.PlayerHandler;
@@ -18,15 +19,13 @@ public class BootStrap {
 
         try {
 
-            //Todo passar isto pra ServerStartService ou merda assim
-
             Prompt serverPrompt = new Prompt(System.in, System.out);
 
-          /*  IntegerRangeInputScanner portScanner = new IntegerRangeInputScanner(0,16000);
+            IntegerRangeInputScanner portScanner = new IntegerRangeInputScanner(0,16000);
             portScanner.setMessage("Insert a port number to initialize the server\n");
             portScanner.setError("A valid one thx\n");
-            int port = serverPrompt.getUserInput(portScanner);*/
-            int port = 9000;
+            int port = serverPrompt.getUserInput(portScanner);
+            //int port = 9000;
 
             centralService = new CentralService();
             Lobby lobby = new Lobby();
@@ -39,7 +38,6 @@ public class BootStrap {
 
 
             server = new Server(port);
-            server.setCentralService(centralService);
             //This says Client Found
             server.start();
 
@@ -82,7 +80,6 @@ public class BootStrap {
         MultiPlayerController multiPlayerController = new MultiPlayerController();
         multiPlayerController.setGameView(gameView);
         multiPlayerController.setPlayer(playerHandler);
-        multiPlayerController.setMainController(mainController);
 
         GameOverController gameOverController = new GameOverController();
         gameOverController.setGameOverView(gameOverView);
