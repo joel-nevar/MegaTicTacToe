@@ -3,6 +3,7 @@ package org.academiadecodigo.felinux.mvc.controller;
 import org.academiadecodigo.felinux.mvc.model.cell.CellValueType;
 import org.academiadecodigo.felinux.mvc.model.grid.Grid;
 import org.academiadecodigo.felinux.mvc.view.SinglePlayerView;
+import org.academiadecodigo.felinux.service.ComService;
 import org.academiadecodigo.felinux.service.GameService;
 
 public class SinglePlayerController implements Controller {
@@ -23,11 +24,11 @@ public class SinglePlayerController implements Controller {
         grid = new Grid();
         singlePlayerView.setGrid(grid);
 
-        boolean win = false;
-        boolean lose = false;
+        /*boolean win = false;
+        boolean lose = false;*/
         boolean tie = false;
 
-        while (grid.getValue() == CellValueType.EMPTY && !tie) {
+        while (grid.getValue() == CellValueType.EMPTY) {
 
             while (!acceptedPlay) {
                 singlePlayerView.show(); //player move
@@ -35,18 +36,22 @@ public class SinglePlayerController implements Controller {
 
             acceptedPlay = false;
 
-            win = GameService.hasWon(grid, CellValueType.PLAYER_1);
-            lose = GameService.hasWon(grid, CellValueType.PLAYER_2);
+            GameService.hasWon(grid, CellValueType.PLAYER_1);
+
             tie = GameService.hasTied(grid);
 
-            if (win) {
-                grid.setValue(CellValueType.PLAYER_1);
+            if (tie) {
+                break;
             }
 
-            if (lose) {
-                grid.setValue(CellValueType.PLAYER_2);
-            }
+            /*
+            while (!acceptedPlay) {
 
+                String comInput = ComService.comInput();
+                getComInput(comInput);
+            }*/
+
+            GameService.hasWon(grid, CellValueType.PLAYER_2);
 
         }
 
@@ -60,6 +65,7 @@ public class SinglePlayerController implements Controller {
     }
 
     public void getComInput(String comChoice) {
+
         boolean validChoice = false;
 
         while (!validChoice) {
