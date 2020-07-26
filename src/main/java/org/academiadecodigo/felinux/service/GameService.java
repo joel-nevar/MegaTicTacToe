@@ -1,12 +1,13 @@
 package org.academiadecodigo.felinux.service;
 
+import org.academiadecodigo.felinux.mvc.model.Gridable;
 import org.academiadecodigo.felinux.mvc.model.Valuable;
 import org.academiadecodigo.felinux.mvc.model.grid.LineType;
 import org.academiadecodigo.felinux.mvc.model.cell.CellValueType;
 import org.academiadecodigo.felinux.mvc.model.grid.Grid;
+import org.academiadecodigo.felinux.mvc.model.grid.SuperGrid;
 
 public class GameService {
-
 
     public static boolean hasWon(Grid grid, CellValueType playerValue) {
 
@@ -55,7 +56,7 @@ public class GameService {
         return playerInput.toUpperCase().startsWith("Y");
     }
 
-    public static boolean setValue(Grid grid, String playerInput, CellValueType playerValue) {
+    public static boolean setValue(Gridable grid, String playerInput, CellValueType playerValue) {
 
         int index = 0;
 
@@ -71,7 +72,6 @@ public class GameService {
                 break;
             default:
                 break;
-
         }
 
         index += (row * 3);
@@ -82,6 +82,30 @@ public class GameService {
         }
 
         return false;
+    }
+    public static Grid changeGrid(SuperGrid superGrid, String mapName, CellValueType cellValueType){
+
+        int index = 0;
+
+        char col = mapName.toUpperCase().charAt(0);
+        int row = Integer.parseInt(String.valueOf(mapName.charAt(1))) - 1;
+
+        switch (col) {
+            case 'B':
+                index++;
+                break;
+            case 'C':
+                index += 2;
+                break;
+            default:
+                break;
+        }
+        index += (row * 3);
+
+        if(superGrid.getCellValue(index) == CellValueType.EMPTY){
+            return (Grid) superGrid.getGrids()[index];
+        }
+        return null;
     }
 
     public static boolean setValue(Grid grid, int comInput, CellValueType comValue) {

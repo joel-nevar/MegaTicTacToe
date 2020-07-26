@@ -8,7 +8,7 @@ import org.academiadecodigo.felinux.mvc.view.textIO.DrawColors;
 
 public class SuperGrid implements Gridable {
 
-    Grid[] grids;
+    private Grid[] grids;
 
     private int counterForGridNumber = 0;
     private int counterForCellNumber = 0;
@@ -29,7 +29,6 @@ public class SuperGrid implements Gridable {
     public String drawGameBoard(){
 
         String returnableString = "";
-
 
         returnableString += DrawBoardText.bigHeader + "\n";
 
