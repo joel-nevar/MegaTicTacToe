@@ -15,7 +15,6 @@ public class Server {
 
     private ServerSocket serverSocket;
     private ExecutorService threadPool;
-    private final int THREAD_COUNT = 5;
     private CentralController centralController;
     private int playerCount = 0;
 
@@ -45,7 +44,7 @@ public class Server {
         BootStrap.initPlayer(playerHandler);
         centralController.registerPlayer(playerHandler);
         threadPool.submit(playerHandler);
-        System.out.println("Players connected: " + ++playerCount + "/2");
+        System.out.println("Players connected: " + ++playerCount);
         acceptConnection();
     }
 

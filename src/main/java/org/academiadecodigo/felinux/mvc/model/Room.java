@@ -39,7 +39,7 @@ public class Room {
     }
 
     public void broadcast(String message){
-        //System.out.println(this +" wants to broadcast "+ message);
+
         player1.getController().receive(message);
         if(!(player2 == null)) {
             player2.getController().receive(message);

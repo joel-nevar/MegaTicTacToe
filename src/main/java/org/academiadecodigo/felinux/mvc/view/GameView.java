@@ -13,7 +13,6 @@ public class GameView extends AbstractView {
     public void show() {
 
         String userInput = super.prompt.getUserInput(scanner);
-        //System.out.println(userInput);
         controller.transmit(userInput);
     }
 
@@ -37,8 +36,7 @@ public class GameView extends AbstractView {
     }
 
     public void sendMessage(String message) {
-        //System.out.println("GameView "+ message);
-        //System.out.println(super.getWriter().toString());
+
         super.getWriter().println(message);
     }
 }
