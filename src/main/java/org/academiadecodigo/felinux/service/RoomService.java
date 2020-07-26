@@ -3,6 +3,7 @@ package org.academiadecodigo.felinux.service;
 import org.academiadecodigo.felinux.mvc.controller.MultiPlayerController;
 import org.academiadecodigo.felinux.mvc.model.PlayerHandler;
 import org.academiadecodigo.felinux.mvc.model.Room;
+import org.academiadecodigo.felinux.mvc.model.cell.CellValueType;
 
 public class RoomService {
 
@@ -41,12 +42,31 @@ public class RoomService {
         for(MultiPlayerController player: players){
 
             room.broadcast(room.getGrid().drawGameBoard());
+
+
             player.listenToPlayer();
-            room.broadcast(player.getLastMove()); //todo gameLOGIC HERE
+
+            applyMove(player,player.getLastMove()); //todo gameLOGIC HERE
 
             while(player.getLastMove()!= null){
                 player.resetMove();
             }
+        }
+    }
+
+    private void applyMove(MultiPlayerController player, String lastMove) {
+
+        if(player == multiPlayerController1) {
+
+            if (!GameService.setValue(room.getGrid(), lastMove, CellValueType.PLAYER_1)){
+
+
+            }
+            return;
+        }
+
+        if (!GameService.setValue(room.getGrid(), lastMove, CellValueType.PLAYER_2)){
+
         }
     }
 }
