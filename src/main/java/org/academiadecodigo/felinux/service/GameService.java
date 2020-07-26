@@ -49,6 +49,11 @@ public class GameService {
         return tie;
     }
 
+    public boolean hasNextGame(String playerInput) {
+
+        return playerInput.toUpperCase().startsWith("Y");
+    }
+
     public boolean setValue(Grid grid, String playerInput, CellValueType playerValue) {
 
         int index = 0;

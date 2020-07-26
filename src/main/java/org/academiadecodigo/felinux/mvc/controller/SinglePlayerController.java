@@ -8,6 +8,7 @@ import org.academiadecodigo.felinux.service.GameService;
 public class SinglePlayerController implements Controller {
 
     private MainController mainController;
+    private GameOverController gameOverController;
     private SinglePlayerView singlePlayerView;
     private GameService gameService;
 
@@ -44,7 +45,8 @@ public class SinglePlayerController implements Controller {
             }
         }
 
-        grid.drawGameBoard();
+        gameOverController.setGrid(grid);
+        gameOverController.init();
     }
 
     public void getPlayerInput(String playerChoice) {
@@ -66,5 +68,9 @@ public class SinglePlayerController implements Controller {
 
     public void setGameService(GameService gameService) {
         this.gameService = gameService;
+    }
+
+    public void setGameOverController(GameOverController gameOverController) {
+        this.gameOverController = gameOverController;
     }
 }

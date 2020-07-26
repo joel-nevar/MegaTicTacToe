@@ -25,6 +25,8 @@ public class MainController implements Controller {
     private void chooseItem() {
 
         MenuOptions menuOption = MenuOptions.values()[userInput - 1];
+        userInput = 0;
+
         menuOption.init();
     }
 

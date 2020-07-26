@@ -15,7 +15,9 @@ public class Messages {
     public static String WIN_GAME = "Congratulations, you won!";
     public static String LOST_GAME = "Sorry, you have lost!";
     public static String TIED_GAME = "It's a tie!";
-    public static String NEXT_GAME = "New game?";
+    public static String NEXT_GAME = "New game? (Y/N)\n";
+
+    public static String WRONG_INPUT = "Wrong input.";
 
     public static String[] getMenuMessages() {
 
