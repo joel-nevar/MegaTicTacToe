@@ -8,7 +8,7 @@ import java.io.PrintWriter;
 public abstract class AbstractView implements View {
 
     protected Prompt prompt;
-    private PrintWriter writer;
+    protected PrintWriter writer;
 
     public Prompt getPrompt() {
         return prompt;

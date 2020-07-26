@@ -3,7 +3,7 @@ package org.academiadecodigo.felinux.mvc.controller;
 import org.academiadecodigo.felinux.mvc.model.PlayerHandler;
 import org.academiadecodigo.felinux.mvc.model.Room;
 import org.academiadecodigo.felinux.mvc.view.GameView;
-import org.w3c.dom.ls.LSOutput;
+import org.academiadecodigo.felinux.mvc.view.MenuView;
 
 public class PlayerController implements Controller {
 
@@ -11,13 +11,21 @@ public class PlayerController implements Controller {
     private GameView view;
     private PlayerHandler player;
     private String lastMove;
+    private MainController mainController;
 
     @Override
     public void init() {
 
+        mainController.init();
+
+        gameinit();
+    }
+
+    private void gameinit() {
+
         this.room = player.getRoom();
 
-        view.setMessage("Your Move?");
+        view.setScanner("Your Move?");
 
         if(room.getPlayer2() == this.player){
 
@@ -55,7 +63,7 @@ public class PlayerController implements Controller {
         return lastMove;
     }
 
-    public void setView(GameView playerScreen) {
+    public void setGameView(GameView playerScreen) {
 
         this.view = playerScreen;
     }
@@ -63,5 +71,10 @@ public class PlayerController implements Controller {
     public void setPlayer(PlayerHandler playerHandler) {
 
         this.player = playerHandler;
+    }
+
+    public void setMainController(MainController mainController) {
+
+        this.mainController = mainController;
     }
 }

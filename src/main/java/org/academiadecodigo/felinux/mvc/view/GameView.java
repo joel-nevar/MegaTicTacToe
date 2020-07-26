@@ -2,9 +2,14 @@ package org.academiadecodigo.felinux.mvc.view;
 
 import org.academiadecodigo.bootcamp.Prompt;
 import org.academiadecodigo.bootcamp.scanners.string.StringInputScanner;
+import org.academiadecodigo.bootcamp.scanners.string.StringSetInputScanner;
 import org.academiadecodigo.felinux.mvc.controller.PlayerController;
 
+import java.io.PrintWriter;
+import java.util.HashSet;
+
 public class GameView extends AbstractView {
+
 
     private PlayerController controller;
     private StringInputScanner scanner;
@@ -12,8 +17,16 @@ public class GameView extends AbstractView {
     @Override
     public void show() {
 
-        String userInput = super.prompt.getUserInput(scanner);
-        controller.saveMove(userInput);
+        showGame();
+    }
+
+    private void showGame(){
+
+        if (controller.getLastMove()==null){
+
+            String userInput = super.prompt.getUserInput(scanner);
+            controller.saveMove(userInput);
+        }
     }
 
     public void setPrompt(Prompt prompt) {
@@ -26,7 +39,7 @@ public class GameView extends AbstractView {
         this.controller = controller;
     }
 
-    public void setMessage(String message) {
+    public void setScanner(String message) {
 
         if(scanner == null){
             scanner = new StringInputScanner();
@@ -38,5 +51,17 @@ public class GameView extends AbstractView {
     public void sendMessage(String message) {
 
         super.getWriter().println(message);
+    }
+
+    @Override
+    public PrintWriter getWriter() {
+
+        return super.getWriter();
+    }
+
+    @Override
+    public Prompt getPrompt() {
+
+        return super.getPrompt();
     }
 }
