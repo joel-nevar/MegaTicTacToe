@@ -8,9 +8,11 @@ import org.academiadecodigo.felinux.mvc.model.Lobby;
 import org.academiadecodigo.felinux.mvc.model.PlayerHandler;
 import org.academiadecodigo.felinux.mvc.model.Server;
 import org.academiadecodigo.felinux.mvc.view.GameView;
-import org.academiadecodigo.felinux.mvc.view.PlayerStream;
 
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
 
 public class BootStrap {
 
@@ -22,10 +24,11 @@ public class BootStrap {
 
             Prompt serverPrompt = new Prompt(System.in, System.out);
 
-            IntegerRangeInputScanner portScanner = new IntegerRangeInputScanner(0,16000);
+          /*  IntegerRangeInputScanner portScanner = new IntegerRangeInputScanner(0,16000);
             portScanner.setMessage("Insert a port number to initialize the server\n");
             portScanner.setError("A valid one thx\n");
-            int port = serverPrompt.getUserInput(portScanner);
+            int port = serverPrompt.getUserInput(portScanner);*/
+            int port = 9000;
 
             CentralController centralController = new CentralController();
             Lobby lobby = new Lobby();
@@ -48,18 +51,23 @@ public class BootStrap {
     }
 
 
-    public static void initPlayer(PlayerHandler playerHandler) {
+    public static void initPlayer(PlayerHandler playerHandler) throws IOException {
 
-        PlayerStream playerPrompt = new PlayerStream(playerHandler.getSocket());
-        GameView playerScreen = new GameView();
-        playerScreen.setPrompt(playerPrompt);
+        InputStreamReader streamReader = new InputStreamReader(playerHandler.getSocket().getInputStream());
+        OutputStreamWriter streamWriter = new OutputStreamWriter(playerHandler.getSocket().getOutputStream());
+        PrintWriter printWriter = new PrintWriter(playerHandler.getSocket().getOutputStream(),true);
+        Prompt prompt = new Prompt(playerHandler.getSocket().getInputStream(), System.out);
 
-        PlayerController controller = new PlayerController();
-        controller.setView(playerScreen);
-        controller.setPlayer(playerHandler);
+        GameView gameView = new GameView();
+        gameView.setPrompt(prompt);
+        gameView.setWriter(printWriter);
 
-        playerScreen.setController(controller);
+        PlayerController playerController = new PlayerController();
+        playerController.setView(gameView);
+        playerController.setPlayer(playerHandler);
 
-        playerHandler.setController(controller);
+        gameView.setController(playerController);
+
+        playerHandler.setController(playerController);
     }
 }

@@ -1,23 +1,24 @@
 package org.academiadecodigo.felinux.mvc.view;
 
+import org.academiadecodigo.bootcamp.Prompt;
 import org.academiadecodigo.bootcamp.scanners.string.StringInputScanner;
 import org.academiadecodigo.felinux.mvc.controller.PlayerController;
 
 public class GameView extends AbstractView {
 
-    private PlayerStream stream;
     private PlayerController controller;
     private StringInputScanner scanner;
 
     @Override
     public void show() {
 
-        controller.transmit(stream.getPrompt().getUserInput(scanner));
+        String userInput = super.prompt.getUserInput(scanner);
+        controller.transmit(userInput);
     }
 
-    public void setPrompt(PlayerStream playerPrompt) {
+    public void setPrompt(Prompt prompt) {
 
-        this.stream = playerPrompt;
+        super.setPrompt(prompt);
     }
 
     public void setController(PlayerController controller) {
@@ -31,12 +32,11 @@ public class GameView extends AbstractView {
             scanner = new StringInputScanner();
             scanner.setError("That's not valid");
         }
-
         scanner.setMessage(message + "\n");
     }
 
     public void sendMessage(String message) {
 
-        stream.getWriter().println(message);
+        super.getWriter().println(message);
     }
 }

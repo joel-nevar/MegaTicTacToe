@@ -16,7 +16,7 @@ public class RoomService {
     }
 
     public void gameLoop(){
-        System.out.println("Before loopfgggggggggggggggggggggggggggggggg");
+
         PlayerHandler player1 = room.getPlayer1();
         PlayerHandler player2 = room.getPlayer2();
 
@@ -25,10 +25,18 @@ public class RoomService {
 
 
         while(true) {
-            System.out.println(Thread.currentThread().getName());
-            playerController1.listenToPlayer();
-            //notifyAll();
-            playerController2.listenToPlayer();
+
+            if(player1.isYourTurn()) {
+                playerController1.listenToPlayer();
+                player1.setYourTurn(false);
+                player2.setYourTurn(true);
+            }
+
+           if(player2.isYourTurn()) {
+               playerController2.listenToPlayer();
+               player2.setYourTurn(false);
+               player1.setYourTurn(true);
+           }
         }
     }
 }

@@ -7,7 +7,17 @@ public class Messages {
     public static String MENU_MESSAGE = "Welcome to Mega TicTacToe! Please select:";
     public static String VIEW_MAIN_ERROR = "Item does not exit";
 
-    public static String WRONG_COORDINATE = "No such cell exists, try again";
+    public static String SELECT_CELL = "Please select a cell: ";
+    public static String WRONG_CELL_INPUT = "No such cell exists, try again.";
+
+    public static String UNAVAILABLE_CELL = "This cell is unavailable, choose another";
+
+    public static String WIN_GAME = "Congratulations, you won!";
+    public static String LOST_GAME = "Sorry, you have lost!";
+    public static String TIED_GAME = "It's a tie!";
+    public static String NEXT_GAME = "New game? (Y/N)\n";
+
+    public static String WRONG_INPUT = "Wrong input.";
 
     public static String[] getMenuMessages() {
 
@@ -19,24 +29,5 @@ public class Messages {
         }
 
         return menuStrings;
-    }
-
-    public enum MenuOptions {
-        SIMPLE_VS_COM("Single Player"),
-        SIMPLE_VS_PLAYER("1 vs 1"),
-        MEGA_VS_COM("Mega Single Player"),
-        MEGA_VS_PLAYER("Mega 1 vs 1"),
-        INSTRUCTIONS("Instructions"),
-        EXIT("Exit");
-
-        private String menuMessage;
-
-        MenuOptions(String menuMessage) {
-            this.menuMessage = menuMessage;
-        }
-
-        protected String getMenuMessage() {
-            return this.menuMessage;
-        }
     }
 }

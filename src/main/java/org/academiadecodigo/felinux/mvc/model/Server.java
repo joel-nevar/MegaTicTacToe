@@ -5,6 +5,7 @@ import org.academiadecodigo.felinux.mvc.controller.PlayerController;
 import org.academiadecodigo.felinux.service.BootStrap;
 
 import java.io.IOException;
+import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -14,7 +15,6 @@ public class Server {
 
     private ServerSocket serverSocket;
     private ExecutorService threadPool;
-    private final int THREAD_COUNT = 5;
     private CentralController centralController;
     private int playerCount = 0;
 
@@ -22,7 +22,7 @@ public class Server {
     public Server(int port) throws IOException {
 
         this.serverSocket = new ServerSocket(port);
-        threadPool = Executors.newFixedThreadPool(THREAD_COUNT);
+        threadPool = Executors.newCachedThreadPool();
     }
 
     public void start() throws IOException{
@@ -33,9 +33,10 @@ public class Server {
 
     private void acceptConnection() throws IOException {
 
-        if(playerCount == 2){
-            System.out.println("Max players reached");
-            return;
+
+
+        if(threadPool.isShutdown() || threadPool.isTerminated()){
+            System.out.println("Players connected: " + --playerCount + "/2");
         }
 
         //serverLoop
@@ -43,9 +44,7 @@ public class Server {
         BootStrap.initPlayer(playerHandler);
         centralController.registerPlayer(playerHandler);
         threadPool.submit(playerHandler);
-
-        System.out.println("Players connected: " + ++playerCount + "/2");
-
+        System.out.println("Players connected: " + ++playerCount);
         acceptConnection();
     }
 

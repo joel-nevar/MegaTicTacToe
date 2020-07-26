@@ -19,7 +19,8 @@ public class PlayerHandler implements Runnable{
 
     @Override
     public void run() {
-        System.out.println(controller);
+        System.out.println(Thread.currentThread().getName());
+        //System.out.println(controller);
         controller.init();
     }
 
@@ -53,4 +54,7 @@ public class PlayerHandler implements Runnable{
         return controller;
     }
 
+    public void setYourTurn(boolean yourTurn) {
+        this.yourTurn = yourTurn;
+    }
 }
