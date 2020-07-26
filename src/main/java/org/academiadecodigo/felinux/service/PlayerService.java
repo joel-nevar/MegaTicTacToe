@@ -2,6 +2,7 @@ package org.academiadecodigo.felinux.service;
 
 import org.academiadecodigo.felinux.mvc.controller.MultiPlayerController;
 import org.academiadecodigo.felinux.mvc.model.Lobby;
+import org.academiadecodigo.felinux.mvc.model.MegaRoom;
 import org.academiadecodigo.felinux.mvc.model.PlayerHandler;
 import org.academiadecodigo.felinux.mvc.model.Room;
 
@@ -35,6 +36,28 @@ public class PlayerService {
         }
     }
 
+    public void registerMegaPlayer(PlayerHandler player){
+
+        MultiPlayerController multiPlayerController = player.getMultiPlayerController();
+
+
+        synchronized (lobby){
+
+            ArrayList<MegaRoom>megaRooms = lobby.getMegaRooms();
+
+            for(MegaRoom megaRoom : megaRooms){
+
+                if(!megaRoom.checkRoomIsFull()){
+                    megaRoom.addPlayer(player);
+                    multiPlayerController.transmit("Let the game begin!!!");
+                    return;
+                }
+            }
+            MegaRoom megaRoom = new MegaRoom(player);
+            multiPlayerController.transmit("Waiting for contestant...");
+            lobby.addMegaRoom(megaRoom);
+        }
+    }
 
     public void setLobby(Lobby lobby) {
         this.lobby = lobby;
