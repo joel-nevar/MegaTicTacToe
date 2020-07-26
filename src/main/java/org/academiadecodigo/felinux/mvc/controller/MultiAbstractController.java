@@ -18,4 +18,5 @@ public abstract class MultiAbstractController implements Controller{
 
     public abstract CellValueType getPlayerNumber();
 
+    public abstract void setPlayerNumber(CellValueType player1);
 }

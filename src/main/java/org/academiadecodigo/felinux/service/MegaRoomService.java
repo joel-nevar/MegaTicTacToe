@@ -29,11 +29,13 @@ public class MegaRoomService extends AbstractRoomService {
 
             room.broadcast(room.getSuperGrid().drawGameBoard());
             getPlayerInput(player);
+            System.out.println("MMS");
         }
 
         return true;
     }
 
+    @Override
     protected void applyMove(MultiAbstractController player, String lastMove) {
 
 

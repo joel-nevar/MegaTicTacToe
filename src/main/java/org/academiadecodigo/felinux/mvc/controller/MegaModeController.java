@@ -31,11 +31,13 @@ public class MegaModeController extends MultiAbstractController {
         }
     }
 
+    @Override
     public void listenToPlayer() {
 
         view.show();
     }
 
+    @Override
     public void receive(String message){
 
         view.sendMessage(message);
@@ -51,6 +53,7 @@ public class MegaModeController extends MultiAbstractController {
         this.lastMove = message;
     }
 
+    @Override
     public synchronized String getLastMove() {
 
         return lastMove;

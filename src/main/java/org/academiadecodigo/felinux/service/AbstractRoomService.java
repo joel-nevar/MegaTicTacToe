@@ -1,7 +1,6 @@
 package org.academiadecodigo.felinux.service;
 
 import org.academiadecodigo.felinux.mvc.controller.MultiAbstractController;
-import org.academiadecodigo.felinux.mvc.controller.MultiPlayerController;
 import org.academiadecodigo.felinux.mvc.model.AbstractRoom;
 import org.academiadecodigo.felinux.mvc.model.PlayerHandler;
 import org.academiadecodigo.felinux.mvc.model.Server;
@@ -11,8 +10,8 @@ public abstract class AbstractRoomService {
 
 
     protected AbstractRoom room;
-    protected MultiPlayerController multiPlayerController1;
-    protected MultiPlayerController multiPlayerController2;
+    protected MultiAbstractController playerController1;
+    protected MultiAbstractController playerController2;
 
     public AbstractRoomService(AbstractRoom room){
         this.room =room;
@@ -24,13 +23,13 @@ public abstract class AbstractRoomService {
 
         PlayerHandler player2 = room.getPlayer2();
 
-        multiPlayerController1 = player1.getMultiPlayerController();
-        multiPlayerController1.setPlayerNumber(CellValueType.PLAYER_1);
+        playerController1 = player1.getMultiPlayerController();
+        playerController1.setPlayerNumber(CellValueType.PLAYER_1);
 
-        multiPlayerController2 = player2.getMultiPlayerController();
-        multiPlayerController2.setPlayerNumber(CellValueType.PLAYER_2);
+        playerController2 = player2.getMultiPlayerController();
+        playerController2.setPlayerNumber(CellValueType.PLAYER_2);
 
-        MultiPlayerController[] players = new MultiPlayerController[]{multiPlayerController1, multiPlayerController2};
+        MultiAbstractController[] players = new MultiAbstractController[]{playerController1, playerController2};
 
         while(playARound(players)) { }
 
@@ -48,7 +47,7 @@ public abstract class AbstractRoomService {
 
     protected abstract boolean playARound(MultiAbstractController[] players);
 
-    protected void getPlayerInput(MultiAbstractController player) {
+    public void getPlayerInput(MultiAbstractController player) {
 
         player.listenToPlayer();
         applyMove(player,player.getLastMove());
