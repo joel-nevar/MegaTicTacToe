@@ -7,8 +7,8 @@ public enum  MenuOptions {
 
        // SIMPLE_VS_COM("Single Player", null),
         //SIMPLE_VS_PLAYER("1 vs 1", null),
-        //MEGA_VS_COM("Mega Single Player", null),
-        MEGA_VS_PLAYER("Start", null),
+        MEGA_VS_COM("Single Player", null),
+        MEGA_VS_PLAYER("Vs Mode", null),
         INSTRUCTIONS("Instructions", null),
         EXIT("Exit", null);
 

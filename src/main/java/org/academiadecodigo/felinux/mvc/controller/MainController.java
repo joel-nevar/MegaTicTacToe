@@ -38,7 +38,7 @@ public class MainController implements Controller {
     public void onMenuSelection(Integer userInput) {
         this.userInput = userInput;
         switch (userInput){
-            case 1 :{
+            case 2 :{
                 centralController.registerPlayer(player);
                 break;
             }
