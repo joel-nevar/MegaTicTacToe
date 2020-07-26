@@ -11,7 +11,7 @@ public class PlayerHandler implements Runnable{
     private Socket socket;
     private MainController controller;
     private MultiPlayerController multiPlayerController;
-    private Room room;
+    private AbstractRoom room;
 
     public PlayerHandler(Socket socket) {
 
@@ -29,11 +29,11 @@ public class PlayerHandler implements Runnable{
         this.controller = controller;
     }
 
-    public void setRoom(Room room) {
+    public void setRoom(AbstractRoom room) {
         this.room = room;
     }
 
-    public Room getRoom() {
+    public AbstractRoom getRoom() {
         return room;
     }
 

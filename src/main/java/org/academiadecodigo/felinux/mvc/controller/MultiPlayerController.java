@@ -1,13 +1,13 @@
 package org.academiadecodigo.felinux.mvc.controller;
 
+import org.academiadecodigo.felinux.mvc.model.AbstractRoom;
 import org.academiadecodigo.felinux.mvc.model.PlayerHandler;
-import org.academiadecodigo.felinux.mvc.model.Room;
 import org.academiadecodigo.felinux.mvc.model.cell.CellValueType;
 import org.academiadecodigo.felinux.mvc.view.GameView;
 
 public class MultiPlayerController implements Controller {
 
-    private Room room;
+    private AbstractRoom room;
     private GameView view;
     private PlayerHandler player;
     private String lastMove;

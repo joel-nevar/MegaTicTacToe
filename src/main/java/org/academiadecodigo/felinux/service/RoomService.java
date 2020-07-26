@@ -1,51 +1,22 @@
 package org.academiadecodigo.felinux.service;
 
 import org.academiadecodigo.felinux.mvc.controller.MultiPlayerController;
-import org.academiadecodigo.felinux.mvc.model.PlayerHandler;
+import org.academiadecodigo.felinux.mvc.model.AbstractRoom;
 import org.academiadecodigo.felinux.mvc.model.Room;
-import org.academiadecodigo.felinux.mvc.model.Server;
-import org.academiadecodigo.felinux.mvc.model.cell.CellValueType;
 
-public class RoomService {
+public class RoomService extends AbstractRoomService{
 
 
     private Room room;
-    private MultiPlayerController multiPlayerController1;
-    private MultiPlayerController multiPlayerController2;
 
-    public RoomService(Room room){
-        this.room =room;
+    public RoomService(AbstractRoom room){
+
+        super(room);
+        this.room = (Room) room;
     }
 
-    public void gameLoop(){
-
-        PlayerHandler player1 = room.getPlayer1();
-
-        PlayerHandler player2 = room.getPlayer2();
-
-        multiPlayerController1 = player1.getMultiPlayerController();
-        multiPlayerController1.setPlayerNumber(CellValueType.PLAYER_1);
-
-        multiPlayerController2 = player2.getMultiPlayerController();
-        multiPlayerController2.setPlayerNumber(CellValueType.PLAYER_2);
-
-        MultiPlayerController[] players = new MultiPlayerController[]{multiPlayerController1, multiPlayerController2};
-
-        while(playARound(players)) { }
-
-        try {
-
-            Thread.sleep(5000);
-
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
-        Server.THREAD_POOL.submit(player1);
-        Server.THREAD_POOL.submit(player2);
-    }
-
-    private boolean playARound(MultiPlayerController[] players) {
+    @Override
+    protected boolean playARound(MultiPlayerController[] players) {
 
         for(MultiPlayerController player: players){
 
@@ -70,13 +41,7 @@ public class RoomService {
         return true;
     }
 
-    private void getPlayerInput(MultiPlayerController player) {
-
-        player.listenToPlayer();
-        applyMove(player,player.getLastMove());
-    }
-
-    private void applyMove(MultiPlayerController player, String lastMove) {
+    protected void applyMove(MultiPlayerController player, String lastMove) {
 
         if (!GameService.setValue(room.getGrid(), lastMove, player.getPlayerNumber())){
 
@@ -84,6 +49,4 @@ public class RoomService {
             getPlayerInput(player);
         }
     }
-
-
 }

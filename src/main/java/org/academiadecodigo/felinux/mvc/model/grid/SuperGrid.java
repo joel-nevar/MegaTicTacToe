@@ -41,7 +41,7 @@ public class SuperGrid implements Gridable {
         returnableString += drawBeforeHeader.concat(DrawBoardText.smallHeader).concat(DrawBoardText.smallHeader).concat(DrawBoardText.smallHeader) + "\n";
 
         for (int counter = 0; counter < 3; counter++) {
-            for (int i = 0; i < grids[0].getCellsInTheGridList().size() - 2; i+=3) {
+            for (int i = 0; i < grids[0].getCellList().size() - 2; i+=3) {
 
                 //draws full game board
                 System.out.println(
