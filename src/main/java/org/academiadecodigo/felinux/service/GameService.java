@@ -1,13 +1,41 @@
 package org.academiadecodigo.felinux.service;
 
+import org.academiadecodigo.felinux.mvc.model.Gridable;
 import org.academiadecodigo.felinux.mvc.model.Valuable;
 import org.academiadecodigo.felinux.mvc.model.grid.LineType;
 import org.academiadecodigo.felinux.mvc.model.cell.CellValueType;
 import org.academiadecodigo.felinux.mvc.model.grid.Grid;
+import org.academiadecodigo.felinux.mvc.model.grid.SuperGrid;
 
 public class GameService {
 
 
+    public static boolean hasWon(SuperGrid grid, CellValueType playerValue) {
+
+        boolean win;
+
+        for (LineType winCombination : LineType.values()) {
+
+            win = true;
+
+            CellValueType[] lineValues = winCombination.getCells(grid);
+
+            for (CellValueType cellValue : lineValues) {
+
+                if (cellValue == playerValue) {
+                    continue;
+                }
+
+                win = false;
+            }
+
+            if (win) {
+                return true;
+            }
+        }
+
+        return false;
+    }
     public static boolean hasWon(Grid grid, CellValueType playerValue) {
 
         boolean win = false;
@@ -55,7 +83,7 @@ public class GameService {
         return playerInput.toUpperCase().startsWith("Y");
     }
 
-    public static boolean setValue(Grid grid, String playerInput, CellValueType playerValue) {
+    public static boolean setValue(Gridable grid, String playerInput, CellValueType playerValue) {
 
         int index = 0;
 
