@@ -1,11 +1,9 @@
 package org.academiadecodigo.felinux.mvc.model;
 
-import org.academiadecodigo.felinux.mvc.controller.CentralController;
-import org.academiadecodigo.felinux.mvc.controller.PlayerController;
+import org.academiadecodigo.felinux.mvc.controller.CentralService;
 import org.academiadecodigo.felinux.service.BootStrap;
 
 import java.io.IOException;
-import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -15,7 +13,7 @@ public class Server {
 
     private ServerSocket serverSocket;
     private ExecutorService threadPool;
-    private CentralController centralController;
+    private CentralService centralService;
     private int playerCount = 0;
 
 
@@ -47,7 +45,7 @@ public class Server {
         acceptConnection();
     }
 
-    public void setCentralController(CentralController centralController) {
-        this.centralController = centralController;
+    public void setCentralService(CentralService centralService) {
+        this.centralService = centralService;
     }
 }

@@ -1,7 +1,5 @@
 package org.academiadecodigo.felinux.mvc.view.textIO;
 
-import org.academiadecodigo.felinux.mvc.controller.MainController;
-
 public enum  MenuOptions {
 
         VS_COM("Single Player"),

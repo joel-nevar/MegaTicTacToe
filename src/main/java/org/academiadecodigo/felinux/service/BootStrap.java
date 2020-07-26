@@ -14,7 +14,7 @@ import java.io.*;
 
 public class BootStrap {
 
-    public static CentralController centralController;
+    public static CentralService centralService;
 
     public static void init(){
 
@@ -30,18 +30,18 @@ public class BootStrap {
             int port = serverPrompt.getUserInput(portScanner);*/
             int port = 9000;
 
-            centralController = new CentralController();
+            centralService = new CentralService();
             Lobby lobby = new Lobby();
             PlayerService playerService = new PlayerService();
 
-            centralController.setLobby(lobby);
-            centralController.setPlayerService(playerService);
+            centralService.setLobby(lobby);
+            centralService.setPlayerService(playerService);
 
             playerService.setLobby(lobby);
 
 
             Server server = new Server(port);
-            server.setCentralController(centralController);
+            server.setCentralService(centralService);
             //This says Client Found
             server.start();
 
@@ -77,10 +77,10 @@ public class BootStrap {
         singlePlayerView.setPrompt(prompt);
         singlePlayerView.setWriter(printWriter);
 
-        PlayerController playerController = new PlayerController();
-        playerController.setGameView(gameView);
-        playerController.setPlayer(playerHandler);
-        playerController.setMainController(mainController);
+        MultiPlayerController multiPlayerController = new MultiPlayerController();
+        multiPlayerController.setGameView(gameView);
+        multiPlayerController.setPlayer(playerHandler);
+        multiPlayerController.setMainController(mainController);
 
         GameOverController gameOverController = new GameOverController();
         gameOverController.setGameOverView(gameOverView);
@@ -90,17 +90,15 @@ public class BootStrap {
         singlePlayerController.setSinglePlayerView(singlePlayerView);
         singlePlayerController.setGameOverController(gameOverController);
 
-        mainController.setPlayerController(playerController);
+        mainController.setMultiPlayerController(multiPlayerController);
         mainController.setPlayerHandler(playerHandler);
-        mainController.setCentralController(centralController);
+        mainController.setCentralService(centralService);
 
-        gameView.setController(playerController);
+        gameView.setController(multiPlayerController);
         singlePlayerView.setSinglePlayerController(singlePlayerController);
         gameOverView.setGameOverController(gameOverController);
 
         playerHandler.setController(mainController);
-        playerHandler.setPlayerController(playerController);
-
-
+        playerHandler.setMultiPlayerController(multiPlayerController);
     }
 }

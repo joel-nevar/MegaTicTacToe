@@ -10,9 +10,9 @@ public class MainController implements Controller {
 
     private SinglePlayerController singlePlayerController;
     private ExitController exitController;
-    private PlayerController playerController;
+    private MultiPlayerController multiPlayerController;
     private PlayerHandler player;
-    private CentralController centralController;
+    private CentralService centralService;
     //all controllers
 
     private int userInput = 0;
@@ -40,8 +40,8 @@ public class MainController implements Controller {
             }
             case VS_PLAYER: {
 
-                centralController.registerPlayer(player);
-                playerController.init();
+                centralService.registerPlayer(player);
+                multiPlayerController.init();
                 break;
             }
             case INSTRUCTIONS: {
@@ -65,13 +65,13 @@ public class MainController implements Controller {
         this.menuView = menuView;
     }
 
-    public void setPlayerController(PlayerController playerController) {
+    public void setMultiPlayerController(MultiPlayerController multiPlayerController) {
 
-        this.playerController = playerController;
+        this.multiPlayerController = multiPlayerController;
     }
 
-    public void setCentralController(CentralController centralController) {
-        this.centralController = centralController;
+    public void setCentralService(CentralService centralService) {
+        this.centralService = centralService;
     }
 
     public void setPlayerHandler(PlayerHandler playerHandler) {

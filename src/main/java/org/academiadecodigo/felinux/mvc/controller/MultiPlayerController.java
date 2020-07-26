@@ -5,7 +5,7 @@ import org.academiadecodigo.felinux.mvc.model.Room;
 import org.academiadecodigo.felinux.mvc.view.GameView;
 import org.academiadecodigo.felinux.mvc.view.MenuView;
 
-public class PlayerController implements Controller {
+public class MultiPlayerController implements Controller {
 
     private Room room;
     private GameView view;

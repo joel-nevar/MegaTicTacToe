@@ -1,16 +1,15 @@
 package org.academiadecodigo.felinux.service;
 
-import org.academiadecodigo.felinux.mvc.controller.PlayerController;
+import org.academiadecodigo.felinux.mvc.controller.MultiPlayerController;
 import org.academiadecodigo.felinux.mvc.model.PlayerHandler;
 import org.academiadecodigo.felinux.mvc.model.Room;
-import org.academiadecodigo.felinux.mvc.view.GameView;
 
 public class RoomService {
 
 
     private Room room;
-    private PlayerController playerController1;
-    private PlayerController playerController2;
+    private MultiPlayerController multiPlayerController1;
+    private MultiPlayerController multiPlayerController2;
 
     public RoomService(Room room){
 
@@ -22,10 +21,10 @@ public class RoomService {
         PlayerHandler player1 = room.getPlayer1();
         PlayerHandler player2 = room.getPlayer2();
 
-        playerController1 = player1.getPlayerController();
-        playerController2 = player2.getPlayerController();
+        multiPlayerController1 = player1.getMultiPlayerController();
+        multiPlayerController2 = player2.getMultiPlayerController();
 
-        PlayerController[] players = new PlayerController[]{playerController1,playerController2};
+        MultiPlayerController[] players = new MultiPlayerController[]{multiPlayerController1, multiPlayerController2};
 
         //todo change this loop's condition
 
@@ -37,9 +36,9 @@ public class RoomService {
         room.broadcast("Player Disconnected");
     }
 
-    private void playARound(PlayerController[] players) {
+    private void playARound(MultiPlayerController[] players) {
 
-        for(PlayerController player: players){
+        for(MultiPlayerController player: players){
 
             room.broadcast(room.getGrid().drawGameBoard());
             player.listenToPlayer();

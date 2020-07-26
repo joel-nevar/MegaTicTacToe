@@ -1,6 +1,6 @@
 package org.academiadecodigo.felinux.service;
 
-import org.academiadecodigo.felinux.mvc.controller.PlayerController;
+import org.academiadecodigo.felinux.mvc.controller.MultiPlayerController;
 import org.academiadecodigo.felinux.mvc.model.Lobby;
 import org.academiadecodigo.felinux.mvc.model.PlayerHandler;
 import org.academiadecodigo.felinux.mvc.model.Room;
@@ -13,7 +13,7 @@ public class PlayerService {
 
     public void registerPlayer(PlayerHandler player){
 
-        PlayerController playerController = player.getPlayerController();
+        MultiPlayerController multiPlayerController = player.getMultiPlayerController();
 
         synchronized (lobby) {
 
@@ -23,13 +23,13 @@ public class PlayerService {
 
                 if (!room.checkRoomIsFull()) {
                     room.addPlayer(player);
-                    playerController.transmit("Let the game begin!!!");
+                    multiPlayerController.transmit("Let the game begin!!!");
                     return;
                 }
             }
 
             Room room = new Room(player);
-            playerController.transmit("Waiting for contestant...");
+            multiPlayerController.transmit("Waiting for contestant...");
             lobby.addRoom(room);
         }
     }

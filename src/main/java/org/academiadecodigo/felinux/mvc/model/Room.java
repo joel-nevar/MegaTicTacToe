@@ -4,8 +4,6 @@ import org.academiadecodigo.felinux.mvc.model.grid.Grid;
 import org.academiadecodigo.felinux.mvc.model.grid.SuperGrid;
 import org.academiadecodigo.felinux.service.RoomService;
 
-import java.util.function.DoubleToIntFunction;
-
 public class Room {
 
 
@@ -44,9 +42,9 @@ public class Room {
 
     public void broadcast(String message){
 
-        player1.getPlayerController().receive(message);
+        player1.getMultiPlayerController().receive(message);
         if(!(player2 == null)) {
-            player2.getPlayerController().receive(message);
+            player2.getMultiPlayerController().receive(message);
         }
     }
 

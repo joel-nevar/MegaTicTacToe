@@ -4,20 +4,15 @@ import org.academiadecodigo.felinux.mvc.model.Lobby;
 import org.academiadecodigo.felinux.mvc.model.PlayerHandler;
 import org.academiadecodigo.felinux.service.PlayerService;
 
-public class CentralController implements Controller{
+public class CentralService {
 
 
     private Lobby lobby;
     private PlayerService playerService;
 
-    public CentralController (){
+    public CentralService(){
 
         this.lobby = new Lobby();
-    }
-
-    @Override
-    public void init() {
-
     }
 
     public void registerPlayer(PlayerHandler player){
