@@ -2,6 +2,11 @@ package org.academiadecodigo.felinux.mvc.view.textIO;
 
 public class Messages {
 
+    public static String INSTRUCTIONS = "The game is played on a grid that's 3 squares by 3 squares.\n\n" +
+            "You are X, your friend (or the computer in Single Player) is O. Players take turns putting their marks in empty squares.\n\n" +
+            "The first player to get 3 of her marks in a row (up, down, across, or diagonally) is the winner.\n\n" +
+            "When all 9 squares are full, the game is over.\n\n" +
+            "You place a mark by typiyng the coordinates, as shown in the grid.\n\n";
     public static String CLEAN_SCREEN = "\033[H\033[2J";
 
     public static String MENU_MESSAGE = "Yb        dP 888888 88      dP\"\"b8  dP\"Yb  8b    d8 888888     888888  dP\"Yb      8b    d8 888888  dP\"\"b8    db    888888 88  dP\"\"b8 888888    db     dP\"\"b8 888888  dP\"Yb  888888 d8b \n" +

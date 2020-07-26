@@ -2,7 +2,6 @@ package org.academiadecodigo.felinux.mvc.model;
 
 import org.academiadecodigo.felinux.mvc.controller.MainController;
 import org.academiadecodigo.felinux.mvc.controller.MultiPlayerController;
-import org.academiadecodigo.felinux.mvc.model.cell.CellValueType;
 
 import java.net.Socket;
 
@@ -22,6 +21,7 @@ public class PlayerHandler implements Runnable{
     @Override
     public void run() {
         controller.init();
+        System.out.println(Thread.currentThread().getName());
     }
 
     public void setController(MainController controller) {
