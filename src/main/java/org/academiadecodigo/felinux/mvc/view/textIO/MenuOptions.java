@@ -13,7 +13,7 @@ public enum  MenuOptions {
             this.menuMessage = menuMessage;
         }
 
-        protected String getMenuMessage() {
+        public String getMenuMessage() {
             return this.menuMessage;
         }
 
