@@ -26,7 +26,6 @@ public class RoomService {
 
         while(true) {
 
-            System.out.println(Thread.currentThread().getName());
             playerController1.listenToPlayer();
             //notifyAll();
             playerController2.listenToPlayer();
