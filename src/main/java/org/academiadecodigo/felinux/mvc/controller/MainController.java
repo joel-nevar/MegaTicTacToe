@@ -11,6 +11,7 @@ public class MainController implements Controller {
     private SinglePlayerController singlePlayerController;
     private ExitController exitController;
     private MultiPlayerController multiPlayerController;
+    private MegaModeController megaModeController;
     private PlayerHandler player;
     private CentralService centralService;
     private InstructionController instructionController;
@@ -45,12 +46,10 @@ public class MainController implements Controller {
                 break;
             }
 
-
-
             case MEGA_VS_PLAYER:{
 
                 centralService.registerMegaPlayer(player);
-                multiPlayerController.init();
+                megaModeController.init();
                 break;
             }
 
@@ -100,5 +99,9 @@ public class MainController implements Controller {
 
     public void setInstructionController(InstructionController instructionController) {
         this.instructionController = instructionController;
+    }
+
+    public void setMegaModeController(MegaModeController megaModeController) {
+        this.megaModeController = megaModeController;
     }
 }

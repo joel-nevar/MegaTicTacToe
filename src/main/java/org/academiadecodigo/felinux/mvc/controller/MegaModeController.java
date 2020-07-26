@@ -5,7 +5,7 @@ import org.academiadecodigo.felinux.mvc.model.PlayerHandler;
 import org.academiadecodigo.felinux.mvc.model.cell.CellValueType;
 import org.academiadecodigo.felinux.mvc.view.MultiPlayerView;
 
-public class MultiPlayerController implements Controller {
+public class MegaModeController implements  Controller {
 
     private AbstractRoom room;
     private MultiPlayerView view;

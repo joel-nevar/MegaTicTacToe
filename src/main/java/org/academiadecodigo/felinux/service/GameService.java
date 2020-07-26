@@ -83,7 +83,8 @@ public class GameService {
 
         return false;
     }
-    public static Grid changeGrid(SuperGrid superGrid, String mapName, CellValueType cellValueType){
+
+    public static Grid changeGrid(SuperGrid superGrid, String mapName){
 
         int index = 0;
 
