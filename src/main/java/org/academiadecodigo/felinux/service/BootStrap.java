@@ -5,10 +5,7 @@ import org.academiadecodigo.felinux.mvc.controller.*;
 import org.academiadecodigo.felinux.mvc.model.Lobby;
 import org.academiadecodigo.felinux.mvc.model.PlayerHandler;
 import org.academiadecodigo.felinux.mvc.model.Server;
-import org.academiadecodigo.felinux.mvc.view.GameOverView;
-import org.academiadecodigo.felinux.mvc.view.GameView;
-import org.academiadecodigo.felinux.mvc.view.MenuView;
-import org.academiadecodigo.felinux.mvc.view.SinglePlayerView;
+import org.academiadecodigo.felinux.mvc.view.*;
 
 import java.io.*;
 
@@ -78,6 +75,10 @@ public class BootStrap {
         singlePlayerView.setPrompt(prompt);
         singlePlayerView.setWriter(printWriter);
 
+        InstructionView instructionView = new InstructionView();
+        instructionView.setWriter(printWriter);
+        instructionView.setPrompt(prompt);
+
         MultiPlayerController multiPlayerController = new MultiPlayerController();
         multiPlayerController.setGameView(gameView);
         multiPlayerController.setPlayer(playerHandler);
@@ -87,6 +88,9 @@ public class BootStrap {
         gameOverController.setGameOverView(gameOverView);
         gameOverController.setMainController(mainController);
 
+        InstructionController instructionController = new InstructionController();
+        instructionController.setView(instructionView);
+        instructionController.setMenuView(menuView);
 
         SinglePlayerController singlePlayerController = new SinglePlayerController();
         singlePlayerController.setSinglePlayerView(singlePlayerView);
@@ -102,6 +106,7 @@ public class BootStrap {
         mainController.setExitController(exitController);
         mainController.setPlayerHandler(playerHandler);
         mainController.setCentralService(centralService);
+        mainController.setInstructionController(instructionController);
 
         gameView.setController(multiPlayerController);
         singlePlayerView.setSinglePlayerController(singlePlayerController);

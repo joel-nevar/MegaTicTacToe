@@ -12,7 +12,7 @@ public class Server {
 
 
     private ServerSocket serverSocket;
-    private ExecutorService threadPool;
+    public static final ExecutorService THREAD_POOL = Executors.newCachedThreadPool();
     private CentralService centralService;
     private int playerCount = 0;
 
@@ -20,7 +20,7 @@ public class Server {
     public Server(int port) throws IOException {
 
         this.serverSocket = new ServerSocket(port);
-        threadPool = Executors.newCachedThreadPool();
+        //threadPool = Executors.newCachedThreadPool();
     }
 
     public void start() throws IOException{
@@ -31,7 +31,7 @@ public class Server {
 
     private void acceptConnection() throws IOException {
 
-        if(threadPool.isShutdown() || threadPool.isTerminated()){
+        if(THREAD_POOL.isShutdown() || THREAD_POOL.isTerminated()){
             System.out.println("Players connected: " + --playerCount + "/2");
         }
 
@@ -40,7 +40,7 @@ public class Server {
         BootStrap.initPlayer(playerHandler);
         //centralController.registerPlayer(playerHandler);
 
-        threadPool.submit(playerHandler);
+        THREAD_POOL.submit(playerHandler);
         System.out.println("Players connected: " + ++playerCount);
         acceptConnection();
     }
