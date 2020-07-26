@@ -158,7 +158,7 @@ public class Grid implements Gridable, Valuable {
             if(!cells[i].getValue().getMoveType().equals(CellValueType.EMPTY.getMoveType())){
                 switch (i){
                     case 0:
-                        if(cells[0].getValue().getMoveType().equals(DrawColors.YELLOW + DrawColors.GREEN_BACKGROUND + "X" + DrawColors.RESET)){
+                        if(cells[0].getValue().equals(CellValueType.PLAYER_1)){
                             valueToPaint1 = DrawColors.GREEN_BACKGROUND + "      " + DrawColors.RESET + DrawColors.WHITE_BACKGROUND + "|" + DrawColors.RESET;
                             valueToPaint2 = DrawColors.GREEN_BACKGROUND + "  " + DrawColors.RESET + DrawColors.WHITE_BACKGROUND + cells[0].getValue().getMoveType() + DrawColors.RESET + DrawColors.GREEN_BACKGROUND + "   " + DrawColors.RESET + DrawColors.WHITE_BACKGROUND + "|" + DrawColors.RESET;
                             valueToPaint3 =  DrawColors.GREEN_BACKGROUND + "______" + DrawColors.RESET + DrawColors.WHITE_BACKGROUND + "|" + DrawColors.RESET;
@@ -175,7 +175,7 @@ public class Grid implements Gridable, Valuable {
                         cellsInTheGrid.set(6,valueToPaint3);
                         continue;
                     case 1:
-                        if(cells[1].getValue().getMoveType().equals(DrawColors.YELLOW + DrawColors.GREEN_BACKGROUND + "X" + DrawColors.RESET){
+                        if(cells[1].getValue().equals(CellValueType.PLAYER_1)){
                             valueToPaint1 = DrawColors.GREEN_BACKGROUND + "      " + DrawColors.RESET + DrawColors.WHITE_BACKGROUND + "|" + DrawColors.RESET;
                             valueToPaint2 = DrawColors.GREEN_BACKGROUND + "  " + DrawColors.RESET + DrawColors.WHITE_BACKGROUND +cells[1].getValue().getMoveType() + DrawColors.RESET + DrawColors.GREEN_BACKGROUND + "   " + DrawColors.RESET + DrawColors.WHITE_BACKGROUND + "|" + DrawColors.RESET;
                             valueToPaint3 = DrawColors.GREEN_BACKGROUND + "______" + DrawColors.RESET + DrawColors.WHITE_BACKGROUND + "|" + DrawColors.RESET;
@@ -192,7 +192,7 @@ public class Grid implements Gridable, Valuable {
                         cellsInTheGrid.set(7,valueToPaint3);
                         continue;
                     case 2:
-                        if(cells[2].getValue().getMoveType().equals(DrawColors.YELLOW + DrawColors.GREEN_BACKGROUND + "X" + DrawColors.RESET){
+                        if(cells[2].getValue().equals(CellValueType.PLAYER_1)){
                             valueToPaint1 = DrawColors.GREEN_BACKGROUND + "      " + DrawColors.RESET + " ";
                             valueToPaint2 = DrawColors.GREEN_BACKGROUND + "  " + DrawColors.RESET + DrawColors.WHITE_BACKGROUND +cells[2].getValue().getMoveType()+ DrawColors.RESET + DrawColors.GREEN_BACKGROUND + "   " + DrawColors.RESET + " ";
                             valueToPaint3 = DrawColors.GREEN_BACKGROUND+ "______" + DrawColors.RESET + " ";
@@ -209,7 +209,7 @@ public class Grid implements Gridable, Valuable {
                         cellsInTheGrid.set(8,valueToPaint3);
                         continue;
                     case 3:
-                        if(cells[3].getValue().getMoveType().equals(DrawColors.YELLOW + DrawColors.GREEN_BACKGROUND + "X" + DrawColors.RESET){
+                        if(cells[3].getValue().equals(CellValueType.PLAYER_1)){
                             valueToPaint1 = DrawColors.GREEN_BACKGROUND + "      " + DrawColors.RESET + DrawColors.WHITE_BACKGROUND + "|" + DrawColors.RESET;
                             valueToPaint2 = DrawColors.GREEN_BACKGROUND + "  " + DrawColors.RESET + DrawColors.WHITE_BACKGROUND +cells[3].getValue().getMoveType()+ DrawColors.RESET + DrawColors.GREEN_BACKGROUND + "   " + DrawColors.RESET + DrawColors.WHITE_BACKGROUND + "|" + DrawColors.RESET;
                             valueToPaint3 = DrawColors.GREEN_BACKGROUND + "______" + DrawColors.RESET + DrawColors.WHITE_BACKGROUND + "|" + DrawColors.RESET;
@@ -226,7 +226,7 @@ public class Grid implements Gridable, Valuable {
                         cellsInTheGrid.set(15,valueToPaint3);
                         continue;
                     case 4:
-                        if(cells[4].getValue().getMoveType().equals(DrawColors.YELLOW + DrawColors.GREEN_BACKGROUND + "X" + DrawColors.RESET){
+                        if(cells[4].getValue().equals(CellValueType.PLAYER_1)){
                             valueToPaint1 = DrawColors.GREEN_BACKGROUND + "      " + DrawColors.RESET + DrawColors.WHITE_BACKGROUND + "|" + DrawColors.RESET;
                             valueToPaint2 = DrawColors.GREEN_BACKGROUND + "  " + DrawColors.RESET + DrawColors.WHITE_BACKGROUND +cells[4].getValue().getMoveType()+ DrawColors.RESET + DrawColors.GREEN_BACKGROUND + "   " + DrawColors.RESET + DrawColors.WHITE_BACKGROUND + "|" + DrawColors.RESET;;
                             valueToPaint3 = DrawColors.GREEN_BACKGROUND + "______" + DrawColors.RESET + DrawColors.WHITE_BACKGROUND + "|" + DrawColors.RESET;
@@ -243,7 +243,7 @@ public class Grid implements Gridable, Valuable {
                         cellsInTheGrid.set(16,valueToPaint3);
                         continue;
                     case 5:
-                        if(cells[5].getValue().getMoveType().equals(DrawColors.YELLOW + DrawColors.GREEN_BACKGROUND + "X" + DrawColors.RESET){
+                        if(cells[5].getValue().equals(CellValueType.PLAYER_1)){
                             valueToPaint1 = DrawColors.GREEN_BACKGROUND + "      " + DrawColors.RESET + " ";
                             valueToPaint2 = DrawColors.GREEN_BACKGROUND + "  " + DrawColors.RESET + DrawColors.WHITE_BACKGROUND +cells[5].getValue().getMoveType()+ DrawColors.RESET + DrawColors.GREEN_BACKGROUND + "   " + DrawColors.RESET + " ";
                             valueToPaint3 = DrawColors.GREEN_BACKGROUND + "______" + DrawColors.RESET + " ";
@@ -260,7 +260,7 @@ public class Grid implements Gridable, Valuable {
                         cellsInTheGrid.set(17,valueToPaint3);
                         continue;
                     case 6:
-                        if(cells[6].getValue().getMoveType().equals(DrawColors.YELLOW + DrawColors.GREEN_BACKGROUND + "X" + DrawColors.RESET){
+                        if(cells[6].getValue().equals(CellValueType.PLAYER_1)){
                             valueToPaint1 = DrawColors.GREEN_BACKGROUND + "      " + DrawColors.RESET + DrawColors.WHITE_BACKGROUND + "|" + DrawColors.RESET;
                             valueToPaint2 = DrawColors.GREEN_BACKGROUND + "  " + DrawColors.RESET + DrawColors.WHITE_BACKGROUND +cells[6].getValue().getMoveType()+ DrawColors.RESET + DrawColors.GREEN_BACKGROUND + "   " + DrawColors.RESET + DrawColors.WHITE_BACKGROUND + "|" + DrawColors.RESET;
                             valueToPaint3 = DrawColors.GREEN_BACKGROUND + "      " + DrawColors.RESET + DrawColors.WHITE_BACKGROUND + "|" + DrawColors.RESET;
@@ -277,7 +277,7 @@ public class Grid implements Gridable, Valuable {
                         cellsInTheGrid.set(24,valueToPaint3);
                         continue;
                     case 7:
-                        if(cells[7].getValue().getMoveType().equals(DrawColors.YELLOW + DrawColors.GREEN_BACKGROUND + "X" + DrawColors.RESET){
+                        if(cells[7].getValue().equals(CellValueType.PLAYER_1)){
                             valueToPaint1 = DrawColors.GREEN_BACKGROUND + "      " + DrawColors.RESET + DrawColors.WHITE_BACKGROUND +"|" + DrawColors.RESET;
                             valueToPaint2 = DrawColors.GREEN_BACKGROUND + "  " + DrawColors.RESET + DrawColors.WHITE_BACKGROUND +cells[7].getValue().getMoveType()+ DrawColors.RESET + DrawColors.GREEN_BACKGROUND + "   " + DrawColors.RESET + DrawColors.WHITE_BACKGROUND + "|" + DrawColors.RESET;
                             valueToPaint3 = DrawColors.GREEN_BACKGROUND + "      " + DrawColors.RESET + DrawColors.WHITE_BACKGROUND + "|" + DrawColors.RESET;
@@ -294,7 +294,7 @@ public class Grid implements Gridable, Valuable {
                         cellsInTheGrid.set(25,valueToPaint3);
                         continue;
                     case 8:
-                        if(cells[8].getValue().getMoveType().equals(DrawColors.YELLOW + DrawColors.GREEN_BACKGROUND + "X" + DrawColors.RESET){
+                        if(cells[8].getValue().equals(CellValueType.PLAYER_1)){
                             valueToPaint1 = DrawColors.GREEN_BACKGROUND + "      " + DrawColors.RESET + " ";
                             valueToPaint2 = DrawColors.GREEN_BACKGROUND + "  " + DrawColors.RESET + DrawColors.WHITE_BACKGROUND +cells[8].getValue().getMoveType()+ DrawColors.RESET + DrawColors.GREEN_BACKGROUND + "   " + DrawColors.RESET + " ";
                             valueToPaint3 = DrawColors.GREEN_BACKGROUND + "      " + DrawColors.RESET + " ";
