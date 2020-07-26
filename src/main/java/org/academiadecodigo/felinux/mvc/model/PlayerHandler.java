@@ -21,7 +21,7 @@ public class PlayerHandler implements Runnable{
     @Override
     public void run() {
         controller.init();
-        System.out.println(Thread.currentThread().getName());
+
     }
 
     public void setController(MainController controller) {
