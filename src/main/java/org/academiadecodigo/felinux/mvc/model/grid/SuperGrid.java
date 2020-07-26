@@ -26,10 +26,19 @@ public class SuperGrid implements Gridable {
         }
     }
 
-    public void drawGameBoard(){
+    public String drawGameBoard(){
+
+        String returnableString = "";
+
         System.out.println(DrawBoardText.bigHeader);
+
+        returnableString += DrawBoardText.bigHeader + "\n";
+
         String drawBeforeHeader = DrawColors.BLUE_BACKGROUND + "     " + DrawColors.RESET;
+
         System.out.println(drawBeforeHeader.concat(DrawBoardText.smallHeader).concat(DrawBoardText.smallHeader).concat(DrawBoardText.smallHeader));
+
+        returnableString += drawBeforeHeader.concat(DrawBoardText.smallHeader).concat(DrawBoardText.smallHeader).concat(DrawBoardText.smallHeader) + "\n";
 
         for (int counter = 0; counter < 3; counter++) {
             for (int i = 0; i < grids[0].getCellsInTheGridList().size() - 2; i+=3) {
@@ -46,11 +55,24 @@ public class SuperGrid implements Gridable {
                                 .concat(getCellNumber()
                                         .concat(grids[6].getCellList().get(i)).concat(grids[7].getCellList().get(i+1)).concat(grids[8].getCellList().get(i+2))
                                 )));
+                returnableString +=
+                        getGridNumber()
+                                .concat(getCellNumber())
+                                .concat(grids[0].getCellList().get(i)).concat(grids[1].getCellList().get(i+1)).concat(grids[2].getCellList().get(i+2))
+                                .concat(DrawBoardText.cellVerticalSeparator)
+                                .concat(getCellNumber()
+                                        .concat(grids[3].getCellList().get(i)).concat(grids[4].getCellList().get(i+1)).concat(grids[5].getCellList().get(i+2))
+                                        .concat(DrawBoardText.cellVerticalSeparator)
+                                        .concat(getCellNumber()
+                                                .concat(grids[6].getCellList().get(i)).concat(grids[7].getCellList().get(i+1)).concat(grids[8].getCellList().get(i+2))
+                                        )) + "\n";
             }
             if (counter != 2) {
                 System.out.println(DrawBoardText.cellHorizontalSeparator);
+                returnableString += DrawBoardText.cellHorizontalSeparator + "\n";
             }
         }
+        return returnableString;
     }
 
     //Draws the blue left-most part

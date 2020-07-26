@@ -42,9 +42,9 @@ public class Grid implements Gridable, Valuable {
         String topTopMiddlePart = DrawColors.WHITE_BACKGROUND + "      |" + DrawColors.RESET;
         String topTopRightPart = DrawColors.WHITE_BACKGROUND + "      " + DrawColors.RESET + " ";
 
-        String topMiddleLeftPart =      DrawColors.WHITE_BACKGROUND + "  " + cells[0].getValue().getMoveType() + "   |" + DrawColors.RESET;
-        String topMiddleMiddlePart =  DrawColors.WHITE_BACKGROUND + "  " + cells[1].getValue().getMoveType() + "   |" + DrawColors.RESET;
-        String topMiddleRightPart =   DrawColors.WHITE_BACKGROUND + "  " + cells[2].getValue().getMoveType() + "   " + DrawColors.RESET + " ";
+        String topMiddleLeftPart =      DrawColors.WHITE_BACKGROUND + "  " + DrawColors.RESET + DrawColors.WHITE_BACKGROUND +cells[0].getValue().getMoveType()+ DrawColors.RESET + DrawColors.WHITE_BACKGROUND + "   |" + DrawColors.RESET;
+        String topMiddleMiddlePart =  DrawColors.WHITE_BACKGROUND + "  " + DrawColors.RESET + DrawColors.WHITE_BACKGROUND +cells[1].getValue().getMoveType()+ DrawColors.RESET + DrawColors.WHITE_BACKGROUND + "   |" + DrawColors.RESET;
+        String topMiddleRightPart =   DrawColors.WHITE_BACKGROUND + "  " + DrawColors.RESET + DrawColors.WHITE_BACKGROUND +cells[2].getValue().getMoveType()+ DrawColors.RESET + DrawColors.WHITE_BACKGROUND + "   " + DrawColors.RESET + " ";
 
         String topBottomLeftPart =      DrawColors.WHITE_BACKGROUND + "______|" + DrawColors.RESET;
         String topBottomMiddlePart = DrawColors.WHITE_BACKGROUND + "______|" + DrawColors.RESET;
@@ -54,9 +54,9 @@ public class Grid implements Gridable, Valuable {
         String middleTopMiddlePart = DrawColors.WHITE_BACKGROUND + "      |" + DrawColors.RESET;
         String middleTopRightPart = DrawColors.WHITE_BACKGROUND + "      " + DrawColors.RESET + " ";
 
-        String middleMiddleLeftPart =   DrawColors.WHITE_BACKGROUND + "  " + cells[3].getValue().getMoveType() + "   |" + DrawColors.RESET;
-        String middleMiddleMiddlePart =  DrawColors.WHITE_BACKGROUND + "  " + cells[4].getValue().getMoveType() + "   |" + DrawColors.RESET;
-        String middleMiddleRightPart =  DrawColors.WHITE_BACKGROUND + "  " + cells[5].getValue().getMoveType() + "   " + DrawColors.RESET + " ";
+        String middleMiddleLeftPart =   DrawColors.WHITE_BACKGROUND + "  " + DrawColors.RESET + DrawColors.WHITE_BACKGROUND +cells[3].getValue().getMoveType()+ DrawColors.RESET + DrawColors.WHITE_BACKGROUND + "   |" + DrawColors.RESET;
+        String middleMiddleMiddlePart =  DrawColors.WHITE_BACKGROUND + "  " + DrawColors.RESET + DrawColors.WHITE_BACKGROUND +cells[4].getValue().getMoveType()+ DrawColors.RESET + DrawColors.WHITE_BACKGROUND + "   |" + DrawColors.RESET;
+        String middleMiddleRightPart =  DrawColors.WHITE_BACKGROUND + "  " + DrawColors.RESET + DrawColors.WHITE_BACKGROUND +cells[5].getValue().getMoveType()+ DrawColors.RESET + DrawColors.WHITE_BACKGROUND + "   " + DrawColors.RESET + " ";
 
         String middleBottomLeftPart =   DrawColors.WHITE_BACKGROUND + "______|" + DrawColors.RESET;
         String middleBottomMiddlePart = DrawColors.WHITE_BACKGROUND + "______|" + DrawColors.RESET;
@@ -66,9 +66,9 @@ public class Grid implements Gridable, Valuable {
         String bottomTopMiddlePart = DrawColors.WHITE_BACKGROUND + "      |" + DrawColors.RESET;
         String bottomTopRightPart = DrawColors.WHITE_BACKGROUND + "      " + DrawColors.RESET + " ";
 
-        String bottomMiddleLeftPart =   DrawColors.WHITE_BACKGROUND + "  " + cells[6].getValue().getMoveType() + "   |" + DrawColors.RESET;
-        String bottomMiddleMiddlePart =  DrawColors.WHITE_BACKGROUND + "  " + cells[7].getValue().getMoveType() + "   |" + DrawColors.RESET;
-        String bottomMiddleRightPart = DrawColors.WHITE_BACKGROUND + "  " + cells[8].getValue().getMoveType() + "   " + DrawColors.RESET + " ";
+        String bottomMiddleLeftPart =   DrawColors.WHITE_BACKGROUND + "  " + DrawColors.RESET + DrawColors.WHITE_BACKGROUND +cells[6].getValue().getMoveType()+ DrawColors.RESET + DrawColors.WHITE_BACKGROUND + "   |" + DrawColors.RESET;
+        String bottomMiddleMiddlePart =  DrawColors.WHITE_BACKGROUND + "  " + DrawColors.RESET + DrawColors.WHITE_BACKGROUND +cells[7].getValue().getMoveType()+ DrawColors.RESET + DrawColors.WHITE_BACKGROUND + "   |" + DrawColors.RESET;
+        String bottomMiddleRightPart = DrawColors.WHITE_BACKGROUND + "  " + DrawColors.RESET + DrawColors.WHITE_BACKGROUND +cells[8].getValue().getMoveType()+ DrawColors.RESET + DrawColors.WHITE_BACKGROUND + "   " + DrawColors.RESET + " ";
 
 
         String bottomBottomLeftPart =   DrawColors.WHITE_BACKGROUND + "      |" + DrawColors.RESET;
@@ -89,6 +89,7 @@ public class Grid implements Gridable, Valuable {
                      3   -   |  -   |  -
                              |      |
                 */
+
                 add(topTopLeftPart);
                 add(topTopMiddlePart);
                 add(topTopRightPart);
@@ -129,11 +130,16 @@ public class Grid implements Gridable, Valuable {
             }
         };
     }
-    public void drawGameBoard(){
+    public String drawGameBoard(){
 
         initGrid();
+        player1Play();
+
+        String returnableString = "";
 
         System.out.println("  " + DrawBoardText.smallHeader);
+
+        returnableString += "  " + DrawBoardText.smallHeader + "\n";
 
         for (int i = 0; i < cellsInTheGrid.size(); i+=3) {
             //draws full game board
@@ -142,15 +148,100 @@ public class Grid implements Gridable, Valuable {
                     .concat(getCellNumber())
                     .concat(getCellList().get(i)).concat(getCellList().get(i+1)).concat(getCellList().get(i+2))
             );
+            returnableString += getCellNumber()
+                    .concat(getCellNumber())
+                    .concat(getCellList().get(i)).concat(getCellList().get(i+1)).concat(getCellList().get(i+2)) + "\n";
         }
+        System.out.println(returnableString);
+        return returnableString;
     }
 
     public void player1Play(){
-        for (Cell cell: cells) {
-            if(!cell.getValue().getMoveType().equals(CellValueType.EMPTY.getMoveType())){
-                //TODO make player paint the cell
+        String valueToPaint1 = "";
+        String valueToPaint2 = "";
+        String valueToPaint3 = "";
+        for (int i = 0; i < cells.length; i++) {
+
+            if(!cells[i].getValue().getMoveType().equals(CellValueType.EMPTY.getMoveType())){
+                switch (i){
+                    case 0:
+                        System.out.println("Passa aqui");
+                        valueToPaint1 = DrawColors.WHITE_BACKGROUND + cellsInTheGrid.get(0) + DrawColors.RESET;
+                        valueToPaint2 = DrawColors.GREEN_BACKGROUND + cellsInTheGrid.get(1) + DrawColors.RESET;
+                        valueToPaint3 = DrawColors.GREEN_BACKGROUND + cellsInTheGrid.get(2) + DrawColors.RESET;
+                        cellsInTheGrid.get(0).replaceAll("^((?!hede).)*$/s",valueToPaint1);
+                        cellsInTheGrid.get(1).replaceAll("^((?!hede).)*$/s",valueToPaint2);
+                        cellsInTheGrid.get(2).replaceAll("^((?!hede).)*$/s",valueToPaint3);
+                        return;
+                    case 1:
+                        valueToPaint1 = DrawColors.GREEN_BACKGROUND + cellsInTheGrid.get(3) + DrawColors.RESET;
+                        valueToPaint2 = DrawColors.GREEN_BACKGROUND + cellsInTheGrid.get(4) + DrawColors.RESET;
+                        valueToPaint3 = DrawColors.GREEN_BACKGROUND + cellsInTheGrid.get(5) + DrawColors.RESET;
+                        cellsInTheGrid.get(3).replaceAll("^((?!hede).)*$/s",valueToPaint1);
+                        cellsInTheGrid.get(4).replaceAll("^((?!hede).)*$/s",valueToPaint2);
+                        cellsInTheGrid.get(5).replaceAll("^((?!hede).)*$/s",valueToPaint3);
+                        return;
+                    case 2:
+                        valueToPaint1 = DrawColors.GREEN_BACKGROUND + cellsInTheGrid.get(6) + DrawColors.RESET;
+                        valueToPaint2 = DrawColors.GREEN_BACKGROUND + cellsInTheGrid.get(7) + DrawColors.RESET;
+                        valueToPaint3 = DrawColors.GREEN_BACKGROUND + cellsInTheGrid.get(8) + DrawColors.RESET;
+                        cellsInTheGrid.get(6).replaceAll("^((?!hede).)*$/s",valueToPaint1);
+                        cellsInTheGrid.get(7).replaceAll("^((?!hede).)*$/s",valueToPaint2);
+                        cellsInTheGrid.get(8).replaceAll("^((?!hede).)*$/s",valueToPaint3);
+                        return;
+                    case 3:
+                        valueToPaint1 = DrawColors.GREEN_BACKGROUND + cellsInTheGrid.get(9) + DrawColors.RESET;
+                        valueToPaint2 = DrawColors.GREEN_BACKGROUND + cellsInTheGrid.get(10) + DrawColors.RESET;
+                        valueToPaint3 = DrawColors.GREEN_BACKGROUND + cellsInTheGrid.get(11) + DrawColors.RESET;
+                        cellsInTheGrid.get(9).replaceAll("^((?!hede).)*$/s",valueToPaint1);
+                        cellsInTheGrid.get(10).replaceAll("^((?!hede).)*$/s",valueToPaint2);
+                        cellsInTheGrid.get(11).replaceAll("^((?!hede).)*$/s",valueToPaint3);
+                        return;
+                    case 4:
+                        valueToPaint1 = DrawColors.GREEN_BACKGROUND + cellsInTheGrid.get(12) + DrawColors.RESET;
+                        valueToPaint2 = DrawColors.GREEN_BACKGROUND + cellsInTheGrid.get(13) + DrawColors.RESET;
+                        valueToPaint3 = DrawColors.GREEN_BACKGROUND + cellsInTheGrid.get(14) + DrawColors.RESET;
+                        cellsInTheGrid.get(12).replaceAll("^((?!hede).)*$/s",valueToPaint1);
+                        cellsInTheGrid.get(13).replaceAll("^((?!hede).)*$/s",valueToPaint2);
+                        cellsInTheGrid.get(14).replaceAll("^((?!hede).)*$/s",valueToPaint3);
+                        return;
+                    case 5:
+                        valueToPaint1 = DrawColors.GREEN_BACKGROUND + cellsInTheGrid.get(15) + DrawColors.RESET;
+                        valueToPaint2 = DrawColors.GREEN_BACKGROUND + cellsInTheGrid.get(16) + DrawColors.RESET;
+                        valueToPaint3 = DrawColors.GREEN_BACKGROUND + cellsInTheGrid.get(17) + DrawColors.RESET;
+                        cellsInTheGrid.get(15).replaceAll("^((?!hede).)*$/s",valueToPaint1);
+                        cellsInTheGrid.get(16).replaceAll("^((?!hede).)*$/s",valueToPaint2);
+                        cellsInTheGrid.get(17).replaceAll("[A-z]",valueToPaint3);
+                        return;
+                    case 6:
+                        valueToPaint1 = DrawColors.GREEN_BACKGROUND + cellsInTheGrid.get(18) + DrawColors.RESET;
+                        valueToPaint2 = DrawColors.GREEN_BACKGROUND + cellsInTheGrid.get(19) + DrawColors.RESET;
+                        valueToPaint3 = DrawColors.GREEN_BACKGROUND + cellsInTheGrid.get(20) + DrawColors.RESET;
+                        cellsInTheGrid.get(18).replaceAll("[A-z]",valueToPaint1);
+                        cellsInTheGrid.get(19).replaceAll("[A-z]",valueToPaint2);
+                        cellsInTheGrid.get(20).replaceAll("[A-z]",valueToPaint3);
+                        return;
+                    case 7:
+                        valueToPaint1 = DrawColors.GREEN_BACKGROUND + cellsInTheGrid.get(21) + DrawColors.RESET;
+                        valueToPaint2 = DrawColors.GREEN_BACKGROUND + cellsInTheGrid.get(22) + DrawColors.RESET;
+                        valueToPaint3 = DrawColors.GREEN_BACKGROUND + cellsInTheGrid.get(23) + DrawColors.RESET;
+                        cellsInTheGrid.get(21).replaceAll("[A-z]",valueToPaint1);
+                        cellsInTheGrid.get(22).replaceAll("[A-z]",valueToPaint2);
+                        cellsInTheGrid.get(23).replaceAll("[A-z]",valueToPaint3);
+                        return;
+                    case 8:
+                        valueToPaint1 = DrawColors.GREEN_BACKGROUND + cellsInTheGrid.get(24) + DrawColors.RESET;
+                        valueToPaint2 = DrawColors.GREEN_BACKGROUND + cellsInTheGrid.get(25) + DrawColors.RESET;
+                        valueToPaint3 = DrawColors.GREEN_BACKGROUND + cellsInTheGrid.get(26) + DrawColors.RESET;
+                        cellsInTheGrid.get(24).replaceAll("[A-z]",valueToPaint1);
+                        cellsInTheGrid.get(25).replaceAll("[A-z]",valueToPaint2);
+                        cellsInTheGrid.get(26).replaceAll("[A-z]",valueToPaint3);
+                        return;
+
+                }
             }
         }
+
     }
 
     public LinkedList<String> getCellsInTheGridList() {
@@ -168,6 +259,9 @@ public class Grid implements Gridable, Valuable {
                 return DrawColors.YELLOW + "2 " + DrawColors.RESET;
             case 16:
                 return DrawColors.YELLOW + "3 " + DrawColors.RESET;
+            case 18:
+                counterForCellNumber = 0;
+                return "  ";
             default:
                 return "  ";
         }

@@ -1,10 +1,12 @@
 package org.academiadecodigo.felinux.mvc.model.cell;
 
+import org.academiadecodigo.felinux.mvc.view.textIO.DrawColors;
+
 public enum CellValueType {
 
-    PLAYER_1("X"),
-    PLAYER_2("O"),
-    EMPTY("-");
+    PLAYER_1(DrawColors.BLACK + DrawColors.GREEN_BACKGROUND + "X" + DrawColors.RESET),
+    PLAYER_2(DrawColors.BLACK + DrawColors.RED_BACKGROUND + "O" + DrawColors.RESET),
+    EMPTY(DrawColors.BLUE + "-" + DrawColors.RESET);
 
     private String moveType;
 
