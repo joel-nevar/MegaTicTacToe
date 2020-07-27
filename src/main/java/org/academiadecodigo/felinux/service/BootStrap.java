@@ -89,6 +89,8 @@ public class BootStrap {
         megaModeController.setMegaView(megaModeView);
         megaModeController.setPlayer(playerHandler);
 
+        megaModeView.setController(megaModeController);
+
         GameOverController gameOverController = new GameOverController();
         gameOverController.setGameOverView(gameOverView);
         gameOverController.setMainController(mainController);

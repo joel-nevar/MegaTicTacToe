@@ -59,7 +59,6 @@ public class MegaRoomService extends AbstractRoomService {
 
             room.broadcast(room.getSuperGrid().drawGameBoard());
             getPlayerInput(player);
-            System.out.println("MMS");
         }
 
         return true;
@@ -72,7 +71,6 @@ public class MegaRoomService extends AbstractRoomService {
 
             targetGrid = GameService.changeGrid(room.getSuperGrid(),lastMove);
             validGrid = checkValidGrid(targetGrid,player);
-            System.out.println("kebab");
             getPlayerInput(player);
             return;
         }
@@ -92,6 +90,8 @@ public class MegaRoomService extends AbstractRoomService {
         if(playOnGrid(player, targetGrid)){
 
         }
+
+        validGrid = false;
     }
 
     public void setCurrentGrid(Grid grid){

@@ -28,6 +28,13 @@ public class SuperGrid implements Gridable {
 
     public String drawGameBoard(){
 
+        initGrids();
+
+        for (int i = 0; i < grids.length; i++) {
+
+            grids[i].playerPlayPrint();
+        }
+
         String returnableString = "";
 
         returnableString += DrawBoardText.bigHeader + "\n";
