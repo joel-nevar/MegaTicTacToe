@@ -29,6 +29,17 @@ public abstract class AbstractRoom {
 
     public void broadcast(String message){
 
+        if(this instanceof MegaRoom){
+
+            player1.getMegaModeController().receive(message);
+
+            if(!(player2 == null)) {
+
+                player2.getMegaModeController().receive(message);
+            }
+            return;
+        }
+
         player1.getMultiPlayerController().receive(message);
 
         if(!(player2 == null)) {
