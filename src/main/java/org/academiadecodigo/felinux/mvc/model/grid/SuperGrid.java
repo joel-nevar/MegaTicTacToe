@@ -14,6 +14,7 @@ public class SuperGrid implements Gridable {
     private int counterForCellNumber = 0;
 
     public SuperGrid() {
+
         initGrids();
     }
 
@@ -28,10 +29,10 @@ public class SuperGrid implements Gridable {
 
     public String drawGameBoard(){
 
-        initGrids();
 
         for (int i = 0; i < grids.length; i++) {
 
+            grids[i].initGrid();
             grids[i].playerPlayPrint();
         }
 
@@ -49,13 +50,13 @@ public class SuperGrid implements Gridable {
                 //draws full game board
                 returnableString += getGridNumber()
                                 .concat(getCellNumber())
-                                .concat(grids[0].getCellList().get(i)).concat(grids[1].getCellList().get(i+1)).concat(grids[2].getCellList().get(i+2))
+                                .concat(grids[0].getCellList().get(i)).concat(grids[3].getCellList().get(i+1)).concat(grids[6].getCellList().get(i+2))
                                 .concat(DrawBoardText.cellVerticalSeparator)
                                 .concat(getCellNumber()
-                                        .concat(grids[3].getCellList().get(i)).concat(grids[4].getCellList().get(i+1)).concat(grids[5].getCellList().get(i+2))
+                                        .concat(grids[1].getCellList().get(i)).concat(grids[4].getCellList().get(i+1)).concat(grids[7].getCellList().get(i+2))
                                         .concat(DrawBoardText.cellVerticalSeparator)
                                         .concat(getCellNumber()
-                                                .concat(grids[6].getCellList().get(i)).concat(grids[7].getCellList().get(i+1)).concat(grids[8].getCellList().get(i+2))
+                                                .concat(grids[2].getCellList().get(i)).concat(grids[5].getCellList().get(i+1)).concat(grids[8].getCellList().get(i+2))
                                         )) + "\n";
             }
             if (counter != 2) {
