@@ -13,7 +13,7 @@ import java.util.LinkedList;
 
 public class Grid implements Gridable, Valuable {
 
-    private Cell[] cells;
+    public Cell[] cells;
 
     private CellValueType cellValue;
 
