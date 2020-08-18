@@ -1,13 +1,29 @@
 # MegaTicTacToe
 
-This game is played on a 3 by 3 square grid.
-You are X, your friend (and also the computer in Single Player) is O. Players take turns putting their marks in empty squares.
-The first player to make a line of 3 of her marks (vertically, horizontally or diagonally) is the winner.
-If all 9 squares are full with no line of 3, the game is tied.
-You place a mark by typing the coordinates, as shown in the grid.
+2020
 
-Made with love by:
+Our second group project which took part in our 8th week at <Academia de Código_> #49 Bootcamp @Aveiro. 
+
+### The idea
+
+We received a challenge about creating an app in Java within a weekend. With a few challenges, we had to make a server that handles everything, we connect to it using netcat, the server must be able to handle multiple clients(concurrency) and we had to use Maven.
+Another imposed challenge only for the brave, was to use the structure Model-View-Controller (MVC), that we had just learned.
+
+### The Development
+
+Starting off with a brainstorm to reach an agreement on the project. Then we drew the class UML, made the git repo, and organized the git flow. We then spent a few hours discussing mvc, since it was a new concept, we made sure everyone understood how it would work. 
+Everyone organically chose where to work on, and since everyone was following the architecture, we were able to pull off a great amount of work without much conflict.   
+
+### Tech && Methodologies
+
+Java 7, Server-Client, Maven, Netcat, IntelliJ, Git, MVC, Concurrency
+
+### Team
+
 Bernardo Costa
-David Ferreira
+
+[David Ferreira](https://github.com/thepikachu13)
+
 Eduardo Marques
-Joel Silva
+
+[Joel Silva](https://github.com/joel-nevar)
