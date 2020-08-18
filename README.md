@@ -20,7 +20,7 @@ Java 7, Server-Client, Maven, Netcat, IntelliJ, Git, MVC, Concurrency
 
 ### Team
 
-Bernardo Costa
+Bernardo Costa(https://github.com/bernardocosta5)
 
 [David Ferreira](https://github.com/thepikachu13)
 
